@@ -1,20 +1,21 @@
-# RateMyRental
-TODO: Write a project description
+# Rate My Rental
+Rate My Rental is an apartment rating web application
+
+# Technologies
+* MEAN Stack
+ * MongoDB (Mongoose)
+ * Express
+ * AngularJS
+ * NodeJS
+* Foundation or Bootstrap (?)
 
 # Installation
-TODO: Describe the installation process
+* Installing NodeJS
+ * `curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -`
+ * `sudo apt-get install nodejs`
+* Installing Express
+ * `npm install express --save`
+ * Other packages might be needed - use `npm install` in project directory to make sure all packages and dependencies.
 
 # Usage
-TODO: Write usage instructions
-
-# Contributing
-TODO: Write contributing instructions
-
-# History
-TODO: Write history
-
-# Credits
-TODO: Write credits
-
-# License
-TODO: Write license
+* `npm start` while in the project directory will run the application on http://localhost:3000
