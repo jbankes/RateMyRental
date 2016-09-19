@@ -14,6 +14,7 @@ var ratingSchema = new Schema({
     amenities: [
       washer: {type: Boolean, default: false}, //Should this be a string with a
       //dropdown as the answer on the set up page?
+      airCondition: {type: Boolean, default: false}
     ]
 });
 
