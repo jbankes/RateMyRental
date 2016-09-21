@@ -1,4 +1,4 @@
-https://travis-ci.org/ChicoState/RateMyRental.svg?branch=master
+[![Build Status](https://travis-ci.org/ChicoState/RateMyRental.svg?branch=master)](https://travis-ci.org/ChicoState/RateMyRental)
 
 # Rate My Rental
 Rate My Rental is an apartment rating web application
