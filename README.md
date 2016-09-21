@@ -18,6 +18,9 @@ Rate My Rental is an apartment rating web application
 * Installing Express
  * `npm install express --save`
  * Other packages might be needed - use `npm install` in project directory to make sure all packages and dependencies.
+* Installing MongoDB
+ * `sudo apt-get install mongodb`
+ * `sudo npm install`
 
 # Usage
 * `npm start` while in the project directory will run the application on http://localhost:3000
