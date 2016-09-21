@@ -46,4 +46,4 @@ var rental_schema = new Schema({
     rental_images: [image]
 });
 
-mongoose.model('Rating', rental_schema);
+mongoose.model('Rental', rental_schema);

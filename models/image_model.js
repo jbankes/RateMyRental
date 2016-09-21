@@ -5,4 +5,4 @@ var image_schema = new Schema({
 
 });
 
-mongoose.model('Review', image_schema)
+mongoose.model('Images', image_schema)
