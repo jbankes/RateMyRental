@@ -5,4 +5,4 @@ var review_schema = new Schema({
 
 });
 
-mongoose.model('Review', review_schema)
+mongoose.model('review', review_schema)
