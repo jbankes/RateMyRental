@@ -1,3 +1,5 @@
+https://travis-ci.org/ChicoState/RateMyRental.svg?branch=master
+
 # Rate My Rental
 Rate My Rental is an apartment rating web application
 
