@@ -1,0 +1,7 @@
+# This is for automatic testing on Travis CI.
+# Similar to Jenkins but it is hosted by Travis and
+# students get this free.
+
+language: node_js
+node_js:
+  - "6.1"
