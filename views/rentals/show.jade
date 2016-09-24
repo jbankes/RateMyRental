@@ -1,0 +1,9 @@
+extends ../layout
+
+block content
+    h1.
+        Infophoto #{rental._id}
+    p Full: #{rental.address.full_street_add}
+    p Street_num: #{rental.address.street_num}
+    p Street_name: #{rental.address.street_name}
+    p details: #{rental.bedrooms}

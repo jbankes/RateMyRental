@@ -1,0 +1,65 @@
+extends ../layout
+
+block content
+	h1.
+		Rental ID #{rental._id}
+	form(action='/rentals/#{rental._id}/edit',method='post',name='updaterental',enctype='application/x-www-form-urlencoded')
+		p Full Address: 
+			input#inputFullAddress(type="text", value='#{rental.address.full_street_add}', name="full_street_add")
+		p Street Number:
+			input#inputStreetNum(type="number", value='#{rental.address.street_num}', name="street_num")
+		p Street Name: 
+			input#inputStreetName(type="text", value='#{rental.address.street_name}', name="street_name")
+		p Zip code: 
+			input#inputZipcode(type="number", value='#{rental.address.zip_code}', name="zip_code")
+		p city: 
+			input#inputCity(type="text", value='#{rental.address.city}', name="city")
+		p country: 
+			input#inputCountry(type="text", value='#{rental.address.country}', name="country")
+		p bedrooms: 
+			input#inputBedrooms(type="number", value='#{rental.details.bedrooms}', name="bedrooms")
+		p bathrooms: 
+			input#inputBathrooms(type="number", value='#{rental.details.bathrooms}', name="bathrooms")
+		p is it a complex: 
+			input#inputIsComplex(type="checkbox", value='#{rental.details.is_complex}', name="is_compex")
+		p stories: 
+			input#inputStories(type="number", value='#{rental.details.stories}', name="stories")
+		p company_owned: 
+			input#inputCompanyOwned(type="checkbox", value='#{rental.details.company_owned}', name="company_owned")
+		p owner: 
+			input#inputOwner(type="text", value='#{rental.details.owner}', name="owner")
+		p parking: 
+			input#inputParking(type="checkbox", value='#{rental.amenities.parking}', name="parking")
+		p pets: 
+			input#inputPets(type="checkbox", value='#{rental.amenities.pets}', name="pets")
+		p washer_dryer: 
+			input#inputWasherDryer(type="checkbox", value='#{rental.amenities.washer_dryer}', name="washer_dryer")
+		p pool: 
+			input#inputPool(type="checkbox", value='#{rental.amenities.pool}', name="pool")
+		p spa: 
+			input#inputSpa(type="checkbox", value='#{rental.amenities.spa}', name="spa")
+		p gym: 
+			input#inputGym(type="checkbox", value='#{rental.amenities.gym}', name="gym")
+		p dishwasher: 
+			input#inputDishwasher(type="checkbox", value='#{rental.amenities.dishwasher}', name="dishwasher")
+		p central_air: 
+			input#inputCentralAir(type="checkbox", value='#{rental.amenities.central_air}', name="central_air")
+		p heater: 
+			input#inputHeater(type="checkbox", value='#{rental.amenities.heater}', name="heater")
+		p gas: 
+			input#inputGas(type="checkbox", value='#{rental.utilities.gas}', name="gas")
+		p electricity: 
+			input#inputElectricity(type="checkbox", value='#{rental.utilities.electricity}', name="electricity")
+		p trash: 
+			input#inputTrash(type="checkbox", value='#{rental.utilities.trash}', name="trash")
+		p water: 
+			input#inputWater(type="checkbox", value='#{rental.utilities.water}', name="water")
+		p tv: 
+			input#inputTv(type="checkbox", value='#{rental.utilities.tv}', name="tv")
+		p wifi: 
+			input#inputWifi(type="checkbox", value='#{rental.utilities.wifi}', name="wifi")
+		p
+			input(type='hidden',value='PUT',name='_method')
+		p
+			button#btnSubmit(type='submit').
+				Update
