@@ -21,7 +21,7 @@ block content
 		p bathrooms: 
 			input#inputBathrooms(type="number", value='#{rental.details.bathrooms}', name="bathrooms")
 		p is it a complex: 
-			input#inputIsComplex(type="checkbox", value='#{rental.details.is_complex}', name="is_compex")
+			input#inputIsComplex(type="checkbox", checked='(#{rental.details.is_complex} === true ? "checked" : "")', value='#{rental.details.is_complex}', name="is_compex")
 		p stories: 
 			input#inputStories(type="number", value='#{rental.details.stories}', name="stories")
 		p company_owned: 
@@ -29,7 +29,7 @@ block content
 		p owner: 
 			input#inputOwner(type="text", value='#{rental.details.owner}', name="owner")
 		p parking: 
-			input#inputParking(type="checkbox", value='#{rental.amenities.parking}', name="parking")
+			input#inputParking(type="checkbox", checked='#{rental.amenities.parking}', name="parking")
 		p pets: 
 			input#inputPets(type="checkbox", value='#{rental.amenities.pets}', name="pets")
 		p washer_dryer: 

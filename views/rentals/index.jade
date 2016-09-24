@@ -1,6 +1,8 @@
 extends ../layout
 
 block content
+    a(href='/new') Add New Rental
+
     h1.
          #{title}
     ul
@@ -17,3 +19,5 @@ block content
                     a(href='/rentals/#{rental._id}/edit') Edit
                 p
                     a(href='/rentals/#{rental._id}') Show
+
+    include new.jade

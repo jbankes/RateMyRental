@@ -10,7 +10,7 @@ var db = require('./models/db');
 var rental = require('./models/rentals');
 
 // initialize routes
-var routes = require('./routes/index');
+var routes = require('./routes/rentals');
 var users = require('./routes/users');
 var rentals = require('./routes/rentals');
 
