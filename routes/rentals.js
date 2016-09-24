@@ -306,7 +306,7 @@ router.route('/:id/edit')
           central_air: central_air,
           heater: heater
         },
-        utilites: {
+        utilities: {
           gas: gas,
           electricity: electricity,
           trash: trash,
@@ -319,6 +319,7 @@ router.route('/:id/edit')
             res.send("There was a problem updating the information to the database: " + err);
          } 
          else {
+            console.log('POST updating rental: ' + rental);
             // HTML responds by going back to the page or you can be
             // fancy and create a new view that shows a success page.
             res.format({

@@ -26,31 +26,31 @@ var address_schema = new Schema({
 var details_schema = new Schema({
    bedrooms: {type: Number, required: true},
     bathrooms: {type: Number, required: true},
-    is_complex: Boolean,
-    stories: {type: Number, required: true},
-    company_owned: Boolean,
+    is_complex: {type: Boolean, default: false},
+    stories: Number,
+    company_owned: {type: Boolean, default: false},
     owner: String
 });
 
 var amenities_schema = new Schema({
-   parking: Boolean,
-    pets: Boolean,
-    washer_dryer: Boolean,
-    pool: Boolean,
-    spa: Boolean,
-    gym: Boolean,
-    dishwasher: Boolean,
-    central_air: Boolean,
-    heater: Boolean 
+   parking: {type: Boolean, default: false},
+    pets: {type: Boolean, default: false},
+    washer_dryer: {type: Boolean, default: false},
+    pool: {type: Boolean, default: false},
+    spa: {type: Boolean, default: false},
+    gym: {type: Boolean, default: false},
+    dishwasher: {type: Boolean, default: false},
+    central_air: {type: Boolean, default: false},
+    heater: {type: Boolean, default: false}
 });
 
 var utilities_schema = new Schema({
-   gas: Boolean,
-    electricity: Boolean,
-    trash: Boolean,
-    water: Boolean,
-    tv: Boolean,
-    wifi: Boolean
+   gas: {type: Boolean, default: false},
+    electricity: {type: Boolean, default: false},
+    trash: {type: Boolean, default: false},
+    water: {type: Boolean, default: false},
+    tv: {type: Boolean, default: false},
+    wifi: {type: Boolean, default: false}
 });
 
 var rental_schema = new Schema({

@@ -20,44 +20,61 @@ block content
 			input#inputBedrooms(type="number", value='#{rental.details.bedrooms}', name="bedrooms")
 		p bathrooms: 
 			input#inputBathrooms(type="number", value='#{rental.details.bathrooms}', name="bathrooms")
-		p is it a complex: 
-			input#inputIsComplex(type="checkbox", checked='(#{rental.details.is_complex} === true ? "checked" : "")', value='#{rental.details.is_complex}', name="is_compex")
+		p is it a complex:
+			- var check = rental.details.is_complex;
+			input#inputIsComplex(type="checkbox", checked=check, name="is_complex")
 		p stories: 
 			input#inputStories(type="number", value='#{rental.details.stories}', name="stories")
 		p company_owned: 
-			input#inputCompanyOwned(type="checkbox", value='#{rental.details.company_owned}', name="company_owned")
+			- var check = rental.details.company_owned;
+			input#inputCompanyOwned(type="checkbox", checked=check, name="company_owned")
 		p owner: 
 			input#inputOwner(type="text", value='#{rental.details.owner}', name="owner")
 		p parking: 
-			input#inputParking(type="checkbox", checked='#{rental.amenities.parking}', name="parking")
+			- var check = rental.amenities.parking;
+			input#inputParking(type="checkbox", checked=check, name="parking")
 		p pets: 
-			input#inputPets(type="checkbox", value='#{rental.amenities.pets}', name="pets")
+			- var check = rental.amenities.pets;
+			input#inputPets(type="checkbox", checked=check, name="pets")
 		p washer_dryer: 
-			input#inputWasherDryer(type="checkbox", value='#{rental.amenities.washer_dryer}', name="washer_dryer")
+			- var check = rental.amenities.washer_dryer;
+			input#inputWasherDryer(type="checkbox", checked=check, name="washer_dryer")
 		p pool: 
-			input#inputPool(type="checkbox", value='#{rental.amenities.pool}', name="pool")
+			- var check = rental.amenities.pool;
+			input#inputPool(type="checkbox", checked=check, name="pool")
 		p spa: 
-			input#inputSpa(type="checkbox", value='#{rental.amenities.spa}', name="spa")
+			- var check = rental.amenities.spa;
+			input#inputSpa(type="checkbox", checked=check, name="spa")
 		p gym: 
-			input#inputGym(type="checkbox", value='#{rental.amenities.gym}', name="gym")
+			- var check = rental.amenities.gym;
+			input#inputGym(type="checkbox", checked=check, name="gym")
 		p dishwasher: 
-			input#inputDishwasher(type="checkbox", value='#{rental.amenities.dishwasher}', name="dishwasher")
+			- var check = rental.amenities.dishwasher;
+			input#inputDishwasher(type="checkbox", checked=check, name="dishwasher")
 		p central_air: 
-			input#inputCentralAir(type="checkbox", value='#{rental.amenities.central_air}', name="central_air")
+			- var check = rental.amenities.central_air;
+			input#inputCentralAir(type="checkbox", checked=check, name="central_air")
 		p heater: 
-			input#inputHeater(type="checkbox", value='#{rental.amenities.heater}', name="heater")
+			- var check = rental.amenities.heater;
+			input#inputHeater(type="checkbox", checked=check, name="heater")
 		p gas: 
-			input#inputGas(type="checkbox", value='#{rental.utilities.gas}', name="gas")
+			- var check = rental.utilities.gas;
+			input#inputGas(type="checkbox", checked=check, name="gas")
 		p electricity: 
-			input#inputElectricity(type="checkbox", value='#{rental.utilities.electricity}', name="electricity")
+			- var check = rental.utilities.electricity;
+			input#inputElectricity(type="checkbox", checked=check, name="electricity")
 		p trash: 
-			input#inputTrash(type="checkbox", value='#{rental.utilities.trash}', name="trash")
+			- var check = rental.utilities.trash;
+			input#inputTrash(type="checkbox", checked=check, name="trash")
 		p water: 
-			input#inputWater(type="checkbox", value='#{rental.utilities.water}', name="water")
+			- var check = rental.utilities.water;
+			input#inputWater(type="checkbox", checked=check, name="water")
 		p tv: 
-			input#inputTv(type="checkbox", value='#{rental.utilities.tv}', name="tv")
+			- var check = rental.utilities.tv;
+			input#inputTv(type="checkbox", checked=check, name="tv")
 		p wifi: 
-			input#inputWifi(type="checkbox", value='#{rental.utilities.wifi}', name="wifi")
+			- var check = rental.utilities.wifi;
+			input#inputWifi(type="checkbox", checked=check, name="wifi")
 		p
 			input(type='hidden',value='PUT',name='_method')
 		p
