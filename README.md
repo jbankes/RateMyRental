@@ -21,6 +21,8 @@ Rate My Rental is an apartment rating web application
 * Installing MongoDB
  * `sudo apt-get install mongodb`
  * `sudo npm install`
+ * make sure to have dir `\data\db` in your root directory
 
 # Usage
+* `mongod` to start the mongo database in a separate terminal
 * `npm start` while in the project directory will run the application on http://localhost:3000
