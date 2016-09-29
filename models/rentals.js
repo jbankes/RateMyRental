@@ -5,27 +5,18 @@ var image = new Schema({
    filename: {type: String}
 });
 
-var review = new Schema({
-   Overall: Number,
-    NeighborhoodSafety: Number,
-    Cleanliness: Number,
-    NoiseLevel: Number,
-    Price: Number,
-    Comments: String
-});
-
 var address_schema = new Schema({
    full_street_add: {type: String, required: true }, // Full address
-    street_num: {type: Number, required: true },
-    street_name: {type: String, required: true},
-    zip_code: {type: Number, required: true},
-    city: {type: String, required: true},
-    country: {type: String, required: true}
+    street_num: Number,
+    street_name: String,
+    zip_code: Number,
+    city: String,
+    country: String
 });
 
 var details_schema = new Schema({
-   bedrooms: {type: Number, required: true},
-    bathrooms: {type: Number, required: true},
+   bedrooms: Number,
+    bathrooms: Number,
     is_complex: {type: Boolean, default: false},
     stories: Number,
     company_owned: {type: Boolean, default: false},
@@ -58,7 +49,7 @@ var rental_schema = new Schema({
     details: details_schema,
     amenities: amenities_schema,
     utilities: utilities_schema,
-    rental_reviews: [review],
+    reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: "Review" }],
     rental_images: [image]
 });
 
