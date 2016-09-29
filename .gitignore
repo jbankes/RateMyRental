@@ -1,2 +1,3 @@
 # .gitignore created for RateMyRental at CSU CHICO
 node_modules
+npm-debug.log
