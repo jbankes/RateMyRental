@@ -1,0 +1,125 @@
+<%= form_for(@rental) do |f| %>
+  <% if @rental.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@rental.errors.count, "error") %> prohibited this rental from being saved:</h2>
+
+      <ul>
+      <% @rental.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :addr_full_adress %><br>
+    <%= f.text_field :addr_full_adress %>
+  </div>
+  <div class="field">
+    <%= f.label :addr_street_name %><br>
+    <%= f.text_field :addr_street_name %>
+  </div>
+  <div class="field">
+    <%= f.label :addr_street_num %><br>
+    <%= f.number_field :addr_street_num %>
+  </div>
+  <div class="field">
+    <%= f.label :addr_zip %><br>
+    <%= f.number_field :addr_zip %>
+  </div>
+  <div class="field">
+    <%= f.label :addr_city %><br>
+    <%= f.text_field :addr_city %>
+  </div>
+  <div class="field">
+    <%= f.label :addr_state %><br>
+    <%= f.text_field :addr_state %>
+  </div>
+  <div class="field">
+    <%= f.label :dets_beds %><br>
+    <%= f.number_field :dets_beds %>
+  </div>
+  <div class="field">
+    <%= f.label :dets_baths %><br>
+    <%= f.number_field :dets_baths %>
+  </div>
+  <div class="field">
+    <%= f.label :dets_is_complex %><br>
+    <%= f.check_box :dets_is_complex %>
+  </div>
+  <div class="field">
+    <%= f.label :dets_stories %><br>
+    <%= f.number_field :dets_stories %>
+  </div>
+  <div class="field">
+    <%= f.label :dets_company_owned %><br>
+    <%= f.check_box :dets_company_owned %>
+  </div>
+  <div class="field">
+    <%= f.label :dets_owner %><br>
+    <%= f.text_field :dets_owner %>
+  </div>
+  <div class="field">
+    <%= f.label :amen_parking %><br>
+    <%= f.check_box :amen_parking %>
+  </div>
+  <div class="field">
+    <%= f.label :amen_pets %><br>
+    <%= f.check_box :amen_pets %>
+  </div>
+  <div class="field">
+    <%= f.label :amen_washer_dryer %><br>
+    <%= f.check_box :amen_washer_dryer %>
+  </div>
+  <div class="field">
+    <%= f.label :amen_pool %><br>
+    <%= f.check_box :amen_pool %>
+  </div>
+  <div class="field">
+    <%= f.label :amen_spa %><br>
+    <%= f.check_box :amen_spa %>
+  </div>
+  <div class="field">
+    <%= f.label :amen_gym %><br>
+    <%= f.check_box :amen_gym %>
+  </div>
+  <div class="field">
+    <%= f.label :amen_dishwasher %><br>
+    <%= f.check_box :amen_dishwasher %>
+  </div>
+  <div class="field">
+    <%= f.label :amen_central_air %><br>
+    <%= f.check_box :amen_central_air %>
+  </div>
+  <div class="field">
+    <%= f.label :amen_heater %><br>
+    <%= f.check_box :amen_heater %>
+  </div>
+  <div class="field">
+    <%= f.label :util_gas %><br>
+    <%= f.check_box :util_gas %>
+  </div>
+  <div class="field">
+    <%= f.label :util_electricity %><br>
+    <%= f.check_box :util_electricity %>
+  </div>
+  <div class="field">
+    <%= f.label :util_trash %><br>
+    <%= f.check_box :util_trash %>
+  </div>
+  <div class="field">
+    <%= f.label :util_water %><br>
+    <%= f.check_box :util_water %>
+  </div>
+  <div class="field">
+    <%= f.label :util_tv %><br>
+    <%= f.check_box :util_tv %>
+  </div>
+  <div class="field">
+    <%= f.label :util_wifi %><br>
+    <%= f.check_box :util_wifi %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

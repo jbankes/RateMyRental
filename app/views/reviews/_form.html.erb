@@ -1,0 +1,41 @@
+<%= form_for([@rental, @review]) do |f| %>
+  <% if @review.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
+
+      <ul>
+      <% @review.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :overall %><br>
+    <%= f.number_field :overall %>
+  </div>
+  <div class="field">
+    <%= f.label :safety %><br>
+    <%= f.number_field :safety %>
+  </div>
+  <div class="field">
+    <%= f.label :clean %><br>
+    <%= f.number_field :clean %>
+  </div>
+  <div class="field">
+    <%= f.label :noise %><br>
+    <%= f.number_field :noise %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= f.number_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label :comment %><br>
+    <%= f.text_field :comment %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

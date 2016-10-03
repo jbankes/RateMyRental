@@ -1,28 +1,24 @@
-[![Build Status](https://travis-ci.org/ChicoState/RateMyRental.svg?branch=master)](https://travis-ci.org/ChicoState/RateMyRental)
-
 # Rate My Rental
 Rate My Rental is an apartment rating web application
 
 # Technologies
-* MEAN Stack
- * MongoDB (Mongoose)
- * Express
- * AngularJS
- * NodeJS
-* Foundation or Bootstrap (?)
+* Ruby
+* Rails
 
 # Installation
-* Installing NodeJS
- * `curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -`
- * `sudo apt-get install nodejs`
-* Installing Express
- * `npm install express --save`
- * Other packages might be needed - use `npm install` in project directory to make sure all packages and dependencies.
-* Installing MongoDB
- * `sudo apt-get install mongodb`
- * `sudo npm install`
- * make sure to have dir `/data/db` in your root directory
+* Installing Ruby
+ * `sudo apt-get update`
+ * `sudo apt-get install curl`
+ * `gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3`
+ * `\curl -L https://get.rvm.io | bash -s stable --ruby`
+ * `ruby -v`  We want version 2.3.0
+  - `rvm install ruby 2.3.0` to install correct verson if not right
+  - `rvm --default use 2.3.0` 
+* Installing Rails
+ * `gem install --no-rdoc --no-ri rails` installs with out documentation to speed up instaliation
+ * `sudo apt-get install node.js`
+ * `rails -v` We want version 4.2.6
 
 # Usage
-* `mongod` start mongo database in a separate terminal
-* `npm start` while in the project directory will run the application on http://localhost:3000
+* `rails s -b 0.0.0.0` while in the project directory will run the application on http://localhost:3000
+

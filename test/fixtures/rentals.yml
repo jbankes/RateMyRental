@@ -1,0 +1,59 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  addr_full_adress: MyString
+  addr_street_name: MyString
+  addr_street_num: 1
+  addr_zip: 1
+  addr_city: MyString
+  addr_country: MyString
+  dets_beds: 1
+  dets_baths: 1
+  dets_is_complex: false
+  dets_stories: 1
+  dets_company_owned: false
+  dets_owner: MyString
+  amen_parking: false
+  amen_pets: false
+  amen_washer_dryer: false
+  amen_pool: false
+  amen_spa: false
+  amen_gym: false
+  amen_dishwasher: false
+  amen_central_air: false
+  amen_heater: false
+  util_gas: false
+  util_electricity: false
+  util_trash: false
+  util_water: false
+  util_tv: false
+  util_wifi: false
+
+two:
+  addr_full_adress: MyString
+  addr_street_name: MyString
+  addr_street_num: 1
+  addr_zip: 1
+  addr_city: MyString
+  addr_country: MyString
+  dets_beds: 1
+  dets_baths: 1
+  dets_is_complex: false
+  dets_stories: 1
+  dets_company_owned: false
+  dets_owner: MyString
+  amen_parking: false
+  amen_pets: false
+  amen_washer_dryer: false
+  amen_pool: false
+  amen_spa: false
+  amen_gym: false
+  amen_dishwasher: false
+  amen_central_air: false
+  amen_heater: false
+  util_gas: false
+  util_electricity: false
+  util_trash: false
+  util_water: false
+  util_tv: false
+  util_wifi: false

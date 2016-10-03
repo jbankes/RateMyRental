@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  overall: 1
+  safety: 1
+  clean: 1
+  noise: 1
+  price: 1
+  comment: MyString
+  rental_id: 
+
+two:
+  overall: 1
+  safety: 1
+  clean: 1
+  noise: 1
+  price: 1
+  comment: MyString
+  rental_id: 
