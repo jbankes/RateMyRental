@@ -4,6 +4,7 @@ Rate My Rental is an apartment rating web application
 # Technologies
 * Ruby
 * Rails
+* Foundation
 
 # Installation
 * Installing Ruby
@@ -12,8 +13,8 @@ Rate My Rental is an apartment rating web application
  * `gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3`
  * `\curl -L https://get.rvm.io | bash -s stable --ruby`
  * `ruby -v`  We want version 2.3.0
-  - `rvm install ruby 2.3.0` to install correct verson if not right
-  - `rvm --default use 2.3.0` 
+    - `rvm install ruby 2.3.0` to install correct verson if not right
+    - `rvm --default use 2.3.0` 
 * Installing Rails
  * `gem install --no-rdoc --no-ri rails` installs with out documentation to speed up instaliation
  * `sudo apt-get install node.js`
