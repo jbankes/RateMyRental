@@ -6,6 +6,7 @@ Rate My Rental is an apartment rating web application
 * Rails
 * Foundation
 * SQLite 3
+
 # Installation
 * Installing Ruby
  * `sudo apt-get update`
@@ -21,6 +22,7 @@ Rate My Rental is an apartment rating web application
 * Foundation
  * `bundle install
  * `rails g foundation:install
+
 # Usage
 * `rails s -b 0.0.0.0` while in the project directory will run the application on http://localhost:3000
 * How to seed database
