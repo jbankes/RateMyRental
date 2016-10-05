@@ -923,3 +923,946 @@ Processing by RentalsController#show as HTML
   Rendered rentals/show.html.erb within layouts/application (284.8ms)
   [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
 Completed 200 OK in 502ms (Views: 336.7ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-03 15:45:31 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RentalsController#index as HTML
+  [1m[35mRental Load (0.2ms)[0m  SELECT "rentals".* FROM "rentals"
+  Rendered rentals/index.html.erb within layouts/application (25.6ms)
+Completed 200 OK in 1553ms (Views: 1538.5ms | ActiveRecord: 0.6ms)
+  [1m[36m (5.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (2.9ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to DeviseCreateUsers (20160930025654)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.6ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36m (0.2ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160930025654"]]
+  [1m[36m (2.9ms)[0m  [1mcommit transaction[0m
+Migrating to CreateRentals (20160930032616)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.8ms)[0m  [1mCREATE TABLE "rentals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "addr_full_adress" varchar, "addr_street_name" varchar, "addr_street_num" integer, "addr_zip" integer, "addr_city" varchar, "addr_state" varchar, "dets_beds" integer, "dets_baths" integer, "dets_is_complex" boolean, "dets_stories" integer, "dets_company_owned" boolean, "dets_owner" varchar, "amen_parking" boolean, "amen_pets" boolean, "amen_washer_dryer" boolean, "amen_pool" boolean, "amen_spa" boolean, "amen_gym" boolean, "amen_dishwasher" boolean, "amen_central_air" boolean, "amen_heater" boolean, "util_gas" boolean, "util_electricity" boolean, "util_trash" boolean, "util_water" boolean, "util_tv" boolean, "util_wifi" boolean, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160930032616"]]
+  [1m[36m (7.3ms)[0m  [1mcommit transaction[0m
+Migrating to CreateReviews (20160930033549)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "reviews" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "overall" integer, "safety" integer, "clean" integer, "noise" integer, "price" integer, "comment" varchar, "rental_id" integer, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  CREATE  INDEX "index_reviews_on_rental_id" ON "reviews" ("rental_id")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reviews_on_rental_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reviews_on_rental_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  CREATE  INDEX "index_reviews_on_user_id" ON "reviews" ("user_id")
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160930033549"]]
+  [1m[35m (2.3ms)[0m  commit transaction
+Migrating to CreateImages (20160930062439)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "images" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "filename" varchar, "rental_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_images_on_rental_id" ON "images" ("rental_id")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160930062439"]]
+  [1m[36m (2.6ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_images_on_rental_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_images_on_rental_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reviews_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reviews_on_user_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reviews_on_rental_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reviews_on_rental_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'a@a.com' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "a@a.com"], ["encrypted_password", "$2a$11$tDeg2HXp9wMD8LoxfNlPIO1vYY9.s5f3m3wr4utI8uwNIt0ct/MzC"], ["created_at", "2016-10-04 04:12:24.819025"], ["updated_at", "2016-10-04 04:12:24.819025"]]
+  [1m[36m (2.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'b@b.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "b@b.com"], ["encrypted_password", "$2a$11$oc85CRNu5e/NsQPzsRQt5OxvZK4c3sNe.nYrDQbMZv4RyyhAWrWx2"], ["created_at", "2016-10-04 04:12:24.968715"], ["updated_at", "2016-10-04 04:12:24.968715"]]
+  [1m[36m (2.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'c@c.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "c@c.com"], ["encrypted_password", "$2a$11$BK2bFyyZTAfNrYDo/SExOusw9BXiXjF3bYGKvHsUZw/DP1XJEyE0a"], ["created_at", "2016-10-04 04:12:25.115218"], ["updated_at", "2016-10-04 04:12:25.115218"]]
+  [1m[36m (2.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rentals" ("addr_full_adress", "addr_street_name", "addr_street_num", "addr_zip", "addr_city", "addr_state", "dets_beds", "dets_baths", "dets_is_complex", "dets_stories", "dets_company_owned", "dets_owner", "amen_parking", "amen_pets", "amen_washer_dryer", "amen_pool", "amen_spa", "amen_gym", "amen_dishwasher", "amen_central_air", "amen_heater", "util_gas", "util_electricity", "util_trash", "util_water", "util_tv", "util_wifi", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["addr_full_adress", "208 Wollaston Ave Arlington MA 02476"], ["addr_street_name", "Wollaston Ave"], ["addr_street_num", 208], ["addr_zip", 2476], ["addr_city", "Arlington"], ["addr_state", "MA"], ["dets_beds", 3], ["dets_baths", 2], ["dets_is_complex", "f"], ["dets_stories", 2], ["dets_company_owned", "f"], ["dets_owner", ""], ["amen_parking", "t"], ["amen_pets", "f"], ["amen_washer_dryer", "t"], ["amen_pool", "t"], ["amen_spa", "f"], ["amen_gym", "f"], ["amen_dishwasher", "f"], ["amen_central_air", "t"], ["amen_heater", "t"], ["util_gas", "f"], ["util_electricity", "f"], ["util_trash", "t"], ["util_water", "t"], ["util_tv", "f"], ["util_wifi", "t"], ["created_at", "2016-10-04 04:12:25.143048"], ["updated_at", "2016-10-04 04:12:25.143048"]]
+  [1m[35m (2.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rentals" ("addr_full_adress", "addr_street_name", "addr_street_num", "addr_zip", "addr_city", "addr_state", "dets_beds", "dets_baths", "dets_is_complex", "dets_stories", "dets_company_owned", "dets_owner", "amen_parking", "amen_pets", "amen_washer_dryer", "amen_pool", "amen_spa", "amen_gym", "amen_dishwasher", "amen_central_air", "amen_heater", "util_gas", "util_electricity", "util_trash", "util_water", "util_tv", "util_wifi", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["addr_full_adress", "201 Chilean Ave Palm Beach FL 33480"], ["addr_street_name", "Chilean Ave"], ["addr_street_num", 201], ["addr_zip", 33480], ["addr_city", "Palm Beach"], ["addr_state", "FL"], ["dets_beds", 2], ["dets_baths", 1], ["dets_is_complex", "t"], ["dets_stories", 2], ["dets_company_owned", "t"], ["dets_owner", "John Doe"], ["amen_parking", "f"], ["amen_pets", "t"], ["amen_washer_dryer", "t"], ["amen_pool", "f"], ["amen_spa", "t"], ["amen_gym", "f"], ["amen_dishwasher", "f"], ["amen_central_air", "t"], ["amen_heater", "f"], ["util_gas", "f"], ["util_electricity", "f"], ["util_trash", "t"], ["util_water", "f"], ["util_tv", "t"], ["util_wifi", "f"], ["created_at", "2016-10-04 04:12:25.148573"], ["updated_at", "2016-10-04 04:12:25.148573"]]
+  [1m[36m (2.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "reviews" ("overall", "safety", "clean", "noise", "price", "comment", "rental_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["overall", 4], ["safety", 4], ["clean", 5], ["noise", 1], ["price", 3], ["comment", "This was an interesting house"], ["rental_id", 1], ["user_id", 3], ["created_at", "2016-10-04 04:12:25.179384"], ["updated_at", "2016-10-04 04:12:25.179384"]]
+  [1m[35m (2.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "reviews" ("overall", "safety", "clean", "noise", "price", "comment", "rental_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["overall", 2], ["safety", 1], ["clean", 3], ["noise", 3], ["price", 2], ["comment", "Horible expirence living here. Can't wait to move."], ["rental_id", 1], ["user_id", 2], ["created_at", "2016-10-04 04:12:25.184118"], ["updated_at", "2016-10-04 04:12:25.184118"]]
+  [1m[36m (2.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "reviews" ("overall", "safety", "clean", "noise", "price", "comment", "rental_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["overall", 5], ["safety", 5], ["clean", 4], ["noise", 1], ["price", 5], ["comment", "Loved this place, but expensive"], ["rental_id", 2], ["user_id", 1], ["created_at", "2016-10-04 04:12:25.188748"], ["updated_at", "2016-10-04 04:12:25.188748"]]
+  [1m[35m (2.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "reviews" ("overall", "safety", "clean", "noise", "price", "comment", "rental_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["overall", 4], ["safety", 3], ["clean", 2], ["noise", 2], ["price", 2], ["comment", "dirty but nice enough"], ["rental_id", 1], ["user_id", 1], ["created_at", "2016-10-04 04:12:25.193277"], ["updated_at", "2016-10-04 04:12:25.193277"]]
+  [1m[36m (2.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "reviews" ("overall", "safety", "clean", "noise", "price", "comment", "rental_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["overall", 1], ["safety", 1], ["clean", 1], ["noise", 1], ["price", 1], ["comment", "A dump"], ["rental_id", 2], ["user_id", 2], ["created_at", "2016-10-04 04:12:25.197976"], ["updated_at", "2016-10-04 04:12:25.197976"]]
+  [1m[35m (2.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "reviews" ("overall", "safety", "clean", "noise", "price", "comment", "rental_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["overall", 3], ["safety", 3], ["clean", 1], ["noise", 4], ["price", 2], ["comment", "In the process of remodeling"], ["rental_id", 2], ["user_id", 3], ["created_at", "2016-10-04 04:12:25.202712"], ["updated_at", "2016-10-04 04:12:25.202712"]]
+  [1m[36m (2.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "reviews" ("overall", "safety", "clean", "noise", "price", "comment", "rental_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["overall", 5], ["safety", 5], ["clean", 5], ["noise", 2], ["price", 4], ["comment", "Newly remodeled. Very nice"], ["rental_id", 2], ["user_id", 1], ["created_at", "2016-10-04 04:12:25.207730"], ["updated_at", "2016-10-04 04:12:25.207730"]]
+  [1m[35m (2.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "reviews" ("overall", "safety", "clean", "noise", "price", "comment", "rental_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["overall", 4], ["safety", 4], ["clean", 5], ["noise", 2], ["price", 4], ["comment", "Lovely little place now. Sooo much better than before"], ["rental_id", 2], ["user_id", 2], ["created_at", "2016-10-04 04:12:25.212840"], ["updated_at", "2016-10-04 04:12:25.212840"]]
+  [1m[36m (2.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "images" ("filename", "rental_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["filename", "h01.jpg"], ["rental_id", 1], ["created_at", "2016-10-04 04:12:25.237566"], ["updated_at", "2016-10-04 04:12:25.237566"]]
+  [1m[35m (2.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "images" ("filename", "rental_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["filename", "h02.jpg"], ["rental_id", 1], ["created_at", "2016-10-04 04:12:25.242352"], ["updated_at", "2016-10-04 04:12:25.242352"]]
+  [1m[36m (2.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "images" ("filename", "rental_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["filename", "h03.jpg"], ["rental_id", 1], ["created_at", "2016-10-04 04:12:25.247836"], ["updated_at", "2016-10-04 04:12:25.247836"]]
+  [1m[35m (2.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "images" ("filename", "rental_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["filename", "h04.jpg"], ["rental_id", 1], ["created_at", "2016-10-04 04:12:25.253571"], ["updated_at", "2016-10-04 04:12:25.253571"]]
+  [1m[36m (2.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "images" ("filename", "rental_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["filename", "h05.jpg"], ["rental_id", 2], ["created_at", "2016-10-04 04:12:25.259094"], ["updated_at", "2016-10-04 04:12:25.259094"]]
+  [1m[35m (2.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "images" ("filename", "rental_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["filename", "h06.jpg"], ["rental_id", 2], ["created_at", "2016-10-04 04:12:25.264510"], ["updated_at", "2016-10-04 04:12:25.264510"]]
+  [1m[36m (2.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "images" ("filename", "rental_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["filename", "h07.jpg"], ["rental_id", 2], ["created_at", "2016-10-04 04:12:25.269791"], ["updated_at", "2016-10-04 04:12:25.269791"]]
+  [1m[35m (3.0ms)[0m  commit transaction
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-03 21:12:59 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RentalsController#index as HTML
+  [1m[35mRental Load (0.2ms)[0m  SELECT "rentals".* FROM "rentals"
+  Rendered rentals/index.html.erb within layouts/application (29.5ms)
+Completed 200 OK in 31327ms (Views: 31308.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-03 21:13:30 -0700
+Processing by RentalsController#index as HTML
+  [1m[36mRental Load (0.2ms)[0m  [1mSELECT "rentals".* FROM "rentals"[0m
+  Rendered rentals/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 121ms (Views: 120.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rentals/1" for 127.0.0.1 at 2016-10-03 21:13:37 -0700
+Processing by RentalsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mRental Load (0.2ms)[0m  SELECT  "rentals".* FROM "rentals" WHERE "rentals"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mReview Load (0.2ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."rental_id" = ?[0m  [["rental_id", 1]]
+  [1m[35mImage Load (0.2ms)[0m  SELECT "images".* FROM "images" WHERE "images"."rental_id" = ?  [["rental_id", 1]]
+  Rendered reviews/_form.html.erb (114.1ms)
+  Rendered images/_form.html.erb (8.5ms)
+  Rendered rentals/show.html.erb within layouts/application (152.3ms)
+Completed 200 OK in 386ms (Views: 267.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/rentals/new" for 127.0.0.1 at 2016-10-03 21:13:56 -0700
+Processing by RentalsController#new as HTML
+  Rendered rentals/_form.html.erb (25.3ms)
+  Rendered rentals/new.html.erb within layouts/application (31.7ms)
+Completed 200 OK in 155ms (Views: 154.2ms | ActiveRecord: 0.0ms)
+  [1m[36m (3.1ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (3.6ms)[0m  select sqlite_version(*)
+  [1m[36m (3.5ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to DeviseCreateUsers (20160930025654)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.5ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36m (0.2ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160930025654"]]
+  [1m[36m (2.9ms)[0m  [1mcommit transaction[0m
+Migrating to CreateRentals (20160930032616)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (1.0ms)[0m  [1mCREATE TABLE "rentals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "addr_full_adress" varchar, "addr_street_name" varchar, "addr_street_num" integer, "addr_zip" integer, "addr_city" varchar, "addr_state" varchar, "dets_beds" integer, "dets_baths" integer, "dets_is_complex" boolean, "dets_stories" integer, "dets_company_owned" boolean, "dets_owner" varchar, "amen_parking" boolean, "amen_pets" boolean, "amen_washer_dryer" boolean, "amen_pool" boolean, "amen_spa" boolean, "amen_gym" boolean, "amen_dishwasher" boolean, "amen_central_air" boolean, "amen_heater" boolean, "util_gas" boolean, "util_electricity" boolean, "util_trash" boolean, "util_water" boolean, "util_tv" boolean, "util_wifi" boolean, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160930032616"]]
+  [1m[36m (7.5ms)[0m  [1mcommit transaction[0m
+Migrating to CreateReviews (20160930033549)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.6ms)[0m  [1mCREATE TABLE "reviews" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "overall" integer, "safety" integer, "clean" integer, "noise" integer, "price" integer, "comment" varchar, "rental_id" integer, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  CREATE  INDEX "index_reviews_on_rental_id" ON "reviews" ("rental_id")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reviews_on_rental_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reviews_on_rental_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  CREATE  INDEX "index_reviews_on_user_id" ON "reviews" ("user_id")
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160930033549"]]
+  [1m[35m (2.5ms)[0m  commit transaction
+Migrating to CreateImages (20160930062439)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  CREATE TABLE "images" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "filename" varchar, "rental_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.3ms)[0m  [1mCREATE  INDEX "index_images_on_rental_id" ON "images" ("rental_id")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160930062439"]]
+  [1m[36m (9.5ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_images_on_rental_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_images_on_rental_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reviews_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reviews_on_user_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reviews_on_rental_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reviews_on_rental_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'a@a.com' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "a@a.com"], ["encrypted_password", "$2a$11$O5x8io7wNTrOyl2G9y2xrueDD/X2IeKOLiUdNQaLPfZhA/4Drk49C"], ["created_at", "2016-10-04 22:29:14.701799"], ["updated_at", "2016-10-04 22:29:14.701799"]]
+  [1m[36m (2.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'b@b.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "b@b.com"], ["encrypted_password", "$2a$11$qu/Q.OTKWA/.9W4VUp0Tp.KkCjEWU/etETvfRcxrl5z8GdVgvpHou"], ["created_at", "2016-10-04 22:29:14.857843"], ["updated_at", "2016-10-04 22:29:14.857843"]]
+  [1m[36m (2.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'c@c.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "c@c.com"], ["encrypted_password", "$2a$11$cFbUBCb47SlU9s3eDZY02OjShupvgBmg4FcLEyxzALjRook6uEZS6"], ["created_at", "2016-10-04 22:29:15.012274"], ["updated_at", "2016-10-04 22:29:15.012274"]]
+  [1m[36m (2.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rentals" ("addr_full_adress", "addr_street_name", "addr_street_num", "addr_zip", "addr_city", "addr_state", "dets_beds", "dets_baths", "dets_is_complex", "dets_stories", "dets_company_owned", "dets_owner", "amen_parking", "amen_pets", "amen_washer_dryer", "amen_pool", "amen_spa", "amen_gym", "amen_dishwasher", "amen_central_air", "amen_heater", "util_gas", "util_electricity", "util_trash", "util_water", "util_tv", "util_wifi", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["addr_full_adress", "208 Wollaston Ave Arlington MA 02476"], ["addr_street_name", "Wollaston Ave"], ["addr_street_num", 208], ["addr_zip", 2476], ["addr_city", "Arlington"], ["addr_state", "MA"], ["dets_beds", 3], ["dets_baths", 2], ["dets_is_complex", "f"], ["dets_stories", 2], ["dets_company_owned", "f"], ["dets_owner", ""], ["amen_parking", "t"], ["amen_pets", "f"], ["amen_washer_dryer", "t"], ["amen_pool", "t"], ["amen_spa", "f"], ["amen_gym", "f"], ["amen_dishwasher", "f"], ["amen_central_air", "t"], ["amen_heater", "t"], ["util_gas", "f"], ["util_electricity", "f"], ["util_trash", "t"], ["util_water", "t"], ["util_tv", "f"], ["util_wifi", "t"], ["created_at", "2016-10-04 22:29:15.040756"], ["updated_at", "2016-10-04 22:29:15.040756"]]
+  [1m[35m (3.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rentals" ("addr_full_adress", "addr_street_name", "addr_street_num", "addr_zip", "addr_city", "addr_state", "dets_beds", "dets_baths", "dets_is_complex", "dets_stories", "dets_company_owned", "dets_owner", "amen_parking", "amen_pets", "amen_washer_dryer", "amen_pool", "amen_spa", "amen_gym", "amen_dishwasher", "amen_central_air", "amen_heater", "util_gas", "util_electricity", "util_trash", "util_water", "util_tv", "util_wifi", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["addr_full_adress", "201 Chilean Ave Palm Beach FL 33480"], ["addr_street_name", "Chilean Ave"], ["addr_street_num", 201], ["addr_zip", 33480], ["addr_city", "Palm Beach"], ["addr_state", "FL"], ["dets_beds", 2], ["dets_baths", 1], ["dets_is_complex", "t"], ["dets_stories", 2], ["dets_company_owned", "t"], ["dets_owner", "John Doe"], ["amen_parking", "f"], ["amen_pets", "t"], ["amen_washer_dryer", "t"], ["amen_pool", "f"], ["amen_spa", "t"], ["amen_gym", "f"], ["amen_dishwasher", "f"], ["amen_central_air", "t"], ["amen_heater", "f"], ["util_gas", "f"], ["util_electricity", "f"], ["util_trash", "t"], ["util_water", "f"], ["util_tv", "t"], ["util_wifi", "f"], ["created_at", "2016-10-04 22:29:15.047460"], ["updated_at", "2016-10-04 22:29:15.047460"]]
+  [1m[36m (2.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "reviews" ("overall", "safety", "clean", "noise", "price", "comment", "rental_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["overall", 4], ["safety", 4], ["clean", 5], ["noise", 1], ["price", 3], ["comment", "This was an interesting house"], ["rental_id", 1], ["user_id", 3], ["created_at", "2016-10-04 22:29:15.078180"], ["updated_at", "2016-10-04 22:29:15.078180"]]
+  [1m[35m (2.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "reviews" ("overall", "safety", "clean", "noise", "price", "comment", "rental_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["overall", 2], ["safety", 1], ["clean", 3], ["noise", 3], ["price", 2], ["comment", "Horible expirence living here. Can't wait to move."], ["rental_id", 1], ["user_id", 2], ["created_at", "2016-10-04 22:29:15.083044"], ["updated_at", "2016-10-04 22:29:15.083044"]]
+  [1m[36m (2.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "reviews" ("overall", "safety", "clean", "noise", "price", "comment", "rental_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["overall", 5], ["safety", 5], ["clean", 4], ["noise", 1], ["price", 5], ["comment", "Loved this place, but expensive"], ["rental_id", 2], ["user_id", 1], ["created_at", "2016-10-04 22:29:15.088255"], ["updated_at", "2016-10-04 22:29:15.088255"]]
+  [1m[35m (2.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "reviews" ("overall", "safety", "clean", "noise", "price", "comment", "rental_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["overall", 4], ["safety", 3], ["clean", 2], ["noise", 2], ["price", 2], ["comment", "dirty but nice enough"], ["rental_id", 1], ["user_id", 1], ["created_at", "2016-10-04 22:29:15.093175"], ["updated_at", "2016-10-04 22:29:15.093175"]]
+  [1m[36m (2.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "reviews" ("overall", "safety", "clean", "noise", "price", "comment", "rental_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["overall", 1], ["safety", 1], ["clean", 1], ["noise", 1], ["price", 1], ["comment", "A dump"], ["rental_id", 2], ["user_id", 2], ["created_at", "2016-10-04 22:29:15.097775"], ["updated_at", "2016-10-04 22:29:15.097775"]]
+  [1m[35m (2.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "reviews" ("overall", "safety", "clean", "noise", "price", "comment", "rental_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["overall", 3], ["safety", 3], ["clean", 1], ["noise", 4], ["price", 2], ["comment", "In the process of remodeling"], ["rental_id", 2], ["user_id", 3], ["created_at", "2016-10-04 22:29:15.102226"], ["updated_at", "2016-10-04 22:29:15.102226"]]
+  [1m[36m (3.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "reviews" ("overall", "safety", "clean", "noise", "price", "comment", "rental_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["overall", 5], ["safety", 5], ["clean", 5], ["noise", 2], ["price", 4], ["comment", "Newly remodeled. Very nice"], ["rental_id", 2], ["user_id", 1], ["created_at", "2016-10-04 22:29:15.107497"], ["updated_at", "2016-10-04 22:29:15.107497"]]
+  [1m[35m (2.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "reviews" ("overall", "safety", "clean", "noise", "price", "comment", "rental_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["overall", 4], ["safety", 4], ["clean", 5], ["noise", 2], ["price", 4], ["comment", "Lovely little place now. Sooo much better than before"], ["rental_id", 2], ["user_id", 2], ["created_at", "2016-10-04 22:29:15.113010"], ["updated_at", "2016-10-04 22:29:15.113010"]]
+  [1m[36m (2.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "images" ("filename", "rental_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["filename", "h01.jpg"], ["rental_id", 1], ["created_at", "2016-10-04 22:29:15.131960"], ["updated_at", "2016-10-04 22:29:15.131960"]]
+  [1m[35m (2.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "images" ("filename", "rental_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["filename", "h02.jpg"], ["rental_id", 1], ["created_at", "2016-10-04 22:29:15.136210"], ["updated_at", "2016-10-04 22:29:15.136210"]]
+  [1m[36m (2.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "images" ("filename", "rental_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["filename", "h03.jpg"], ["rental_id", 1], ["created_at", "2016-10-04 22:29:15.140947"], ["updated_at", "2016-10-04 22:29:15.140947"]]
+  [1m[35m (3.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "images" ("filename", "rental_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["filename", "h04.jpg"], ["rental_id", 1], ["created_at", "2016-10-04 22:29:15.146283"], ["updated_at", "2016-10-04 22:29:15.146283"]]
+  [1m[36m (3.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "images" ("filename", "rental_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["filename", "h05.jpg"], ["rental_id", 2], ["created_at", "2016-10-04 22:29:15.151544"], ["updated_at", "2016-10-04 22:29:15.151544"]]
+  [1m[35m (3.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "images" ("filename", "rental_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["filename", "h06.jpg"], ["rental_id", 2], ["created_at", "2016-10-04 22:29:15.157165"], ["updated_at", "2016-10-04 22:29:15.157165"]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "images" ("filename", "rental_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["filename", "h07.jpg"], ["rental_id", 2], ["created_at", "2016-10-04 22:29:15.163117"], ["updated_at", "2016-10-04 22:29:15.163117"]]
+  [1m[35m (2.6ms)[0m  commit transaction
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-04 15:29:43 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RentalsController#index as HTML
+  [1m[35mRental Load (0.3ms)[0m  SELECT "rentals".* FROM "rentals"
+  Rendered rentals/index.html.erb within layouts/application (39.7ms)
+Completed 200 OK in 13487ms (Views: 13468.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-04 15:29:57 -0700
+Processing by RentalsController#index as HTML
+  [1m[36mRental Load (0.5ms)[0m  [1mSELECT "rentals".* FROM "rentals"[0m
+  Rendered rentals/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 139ms (Views: 137.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-04 15:30:15 -0700
+Processing by RentalsController#index as HTML
+  [1m[35mRental Load (0.4ms)[0m  SELECT "rentals".* FROM "rentals"
+  Rendered rentals/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 190ms (Views: 188.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-04 15:34:09 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RentalsController#index as HTML
+  [1m[35mRental Load (0.2ms)[0m  SELECT "rentals".* FROM "rentals"
+  Rendered rentals/index.html.erb within layouts/application (26.7ms)
+Completed 200 OK in 932ms (Views: 918.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-04 15:34:11 -0700
+Processing by RentalsController#index as HTML
+  [1m[36mRental Load (0.2ms)[0m  [1mSELECT "rentals".* FROM "rentals"[0m
+  Rendered rentals/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 143ms (Views: 142.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-04 15:34:40 -0700
+Processing by RentalsController#index as HTML
+  [1m[35mRental Load (0.3ms)[0m  SELECT "rentals".* FROM "rentals"
+  Rendered rentals/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 125ms (Views: 123.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-04 15:44:05 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RentalsController#index as HTML
+  [1m[35mRental Load (0.2ms)[0m  SELECT "rentals".* FROM "rentals"
+  Rendered rentals/index.html.erb within layouts/application (30.1ms)
+Completed 200 OK in 1020ms (Views: 1004.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-04 15:44:10 -0700
+Processing by RentalsController#index as HTML
+  [1m[36mRental Load (0.2ms)[0m  [1mSELECT "rentals".* FROM "rentals"[0m
+  Rendered rentals/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 110ms (Views: 108.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-04 15:45:06 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RentalsController#index as HTML
+  [1m[35mRental Load (0.2ms)[0m  SELECT "rentals".* FROM "rentals"
+  Rendered rentals/index.html.erb within layouts/application (29.2ms)
+Completed 200 OK in 882ms (Views: 866.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-04 15:46:03 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RentalsController#index as HTML
+  [1m[35mRental Load (0.2ms)[0m  SELECT "rentals".* FROM "rentals"
+  Rendered rentals/index.html.erb within layouts/application (27.6ms)
+Completed 200 OK in 860ms (Views: 846.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-04 15:49:36 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RentalsController#index as HTML
+  [1m[35mRental Load (0.2ms)[0m  SELECT "rentals".* FROM "rentals"
+  Rendered rentals/index.html.erb within layouts/application (27.2ms)
+Completed 200 OK in 893ms (Views: 878.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-04 15:51:32 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RentalsController#index as HTML
+  [1m[35mRental Load (0.2ms)[0m  SELECT "rentals".* FROM "rentals"
+  Rendered rentals/index.html.erb within layouts/application (26.8ms)
+Completed 200 OK in 856ms (Views: 839.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-04 15:52:32 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RentalsController#index as HTML
+  [1m[35mRental Load (0.2ms)[0m  SELECT "rentals".* FROM "rentals"
+  Rendered rentals/index.html.erb within layouts/application (26.9ms)
+Completed 200 OK in 888ms (Views: 874.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-04 16:32:35 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RentalsController#index as HTML
+  [1m[35mRental Load (0.2ms)[0m  SELECT "rentals".* FROM "rentals"
+  Rendered rentals/index.html.erb within layouts/application (29.1ms)
+Completed 500 Internal Server Error in 677ms (ActiveRecord: 0.6ms)
+
+Sprockets::Rails::Helper::AssetNotPrecompiled - Asset was not declared to be precompiled in production.
+Add `Rails.application.config.assets.precompile += %w( foundation_and_overrides.css )` to `config/initializers/assets.rb` and restart your server:
+  sprockets-rails (3.2.0) lib/sprockets/rails/helper.rb:363:in `raise_unless_precompiled_asset'
+  sprockets-rails (3.2.0) lib/sprockets/rails/helper.rb:348:in `find_debug_asset'
+  sprockets-rails (3.2.0) lib/sprockets/rails/helper.rb:229:in `block in lookup_debug_asset'
+  sprockets-rails (3.2.0) lib/sprockets/rails/helper.rb:242:in `block in resolve_asset'
+  sprockets-rails (3.2.0) lib/sprockets/rails/helper.rb:241:in `resolve_asset'
+  sprockets-rails (3.2.0) lib/sprockets/rails/helper.rb:228:in `lookup_debug_asset'
+  sprockets-rails (3.2.0) lib/sprockets/rails/helper.rb:170:in `block in stylesheet_link_tag'
+  sprockets-rails (3.2.0) lib/sprockets/rails/helper.rb:169:in `stylesheet_link_tag'
+  app/views/layouts/application.html.erb:9:in `_app_views_layouts_application_html_erb___1341258811558805463_70194432964160'
+  actionview (4.2.6) lib/action_view/template.rb:145:in `block in render'
+  activesupport (4.2.6) lib/active_support/notifications.rb:166:in `instrument'
+  actionview (4.2.6) lib/action_view/template.rb:333:in `instrument'
+  actionview (4.2.6) lib/action_view/template.rb:143:in `render'
+  actionview (4.2.6) lib/action_view/renderer/template_renderer.rb:66:in `render_with_layout'
+  actionview (4.2.6) lib/action_view/renderer/template_renderer.rb:52:in `render_template'
+  actionview (4.2.6) lib/action_view/renderer/template_renderer.rb:14:in `render'
+  actionview (4.2.6) lib/action_view/renderer/renderer.rb:46:in `render_template'
+  actionview (4.2.6) lib/action_view/renderer/renderer.rb:27:in `render'
+  actionview (4.2.6) lib/action_view/rendering.rb:100:in `_render_template'
+  actionpack (4.2.6) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.2.6) lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (4.2.6) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.2.6) lib/action_controller/metal/renderers.rb:37:in `render_to_body'
+  actionpack (4.2.6) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.2.6) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.2.6) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+  activesupport (4.2.6) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/stephanieguest/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/benchmark.rb:308:in `realtime'
+  activesupport (4.2.6) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.2.6) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+  actionpack (4.2.6) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+  activerecord (4.2.6) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.2.6) lib/action_controller/metal/instrumentation.rb:43:in `render'
+  actionpack (4.2.6) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.2.6) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.2.6) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.6) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.6) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:92:in `__run_callbacks__'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:778:in `_run_process_action_callbacks'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.6) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.6) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.6) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.6) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.6) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.6) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.6) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.6) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.6) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.6) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.6) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.6) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.6) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.6) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.6) lib/action_dispatch/routing/route_set.rb:74:in `dispatch'
+  actionpack (4.2.6) lib/action_dispatch/routing/route_set.rb:43:in `serve'
+  actionpack (4.2.6) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.6) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.6) lib/action_dispatch/routing/route_set.rb:817:in `call'
+  warden (1.2.6) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.6) lib/warden/manager.rb:34:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.6) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.6) lib/active_record/connection_adapters/abstract/connection_pool.rb:653:in `call'
+  activerecord (4.2.6) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.6) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.1.0) lib/quiet_assets.rb:27:in `call_with_quiet_assets'
+  actionpack (4.2.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.6) lib/rails/engine.rb:518:in `call'
+  railties (4.2.6) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/stephanieguest/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /Users/stephanieguest/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /Users/stephanieguest/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+
+Started POST "/__better_errors/d1208960e2f39ff1/variables" for 127.0.0.1 at 2016-10-04 16:32:36 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-04 16:33:18 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RentalsController#index as HTML
+  [1m[35mRental Load (0.2ms)[0m  SELECT "rentals".* FROM "rentals"
+  Rendered rentals/index.html.erb within layouts/application (26.9ms)
+Completed 200 OK in 955ms (Views: 937.9ms | ActiveRecord: 0.5ms)
+  [1m[36m (2.7ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (3.1ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to DeviseCreateUsers (20160930025654)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.3ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160930025654"]]
+  [1m[36m (2.6ms)[0m  [1mcommit transaction[0m
+Migrating to CreateRentals (20160930032616)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "rentals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "addr_full_adress" varchar, "addr_street_name" varchar, "addr_street_num" integer, "addr_zip" integer, "addr_city" varchar, "addr_state" varchar, "dets_beds" integer, "dets_baths" integer, "dets_is_complex" boolean, "dets_stories" integer, "dets_company_owned" boolean, "dets_owner" varchar, "amen_parking" boolean, "amen_pets" boolean, "amen_washer_dryer" boolean, "amen_pool" boolean, "amen_spa" boolean, "amen_gym" boolean, "amen_dishwasher" boolean, "amen_central_air" boolean, "amen_heater" boolean, "util_gas" boolean, "util_electricity" boolean, "util_trash" boolean, "util_water" boolean, "util_tv" boolean, "util_wifi" boolean, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160930032616"]]
+  [1m[36m (2.4ms)[0m  [1mcommit transaction[0m
+Migrating to CreateReviews (20160930033549)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "reviews" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "overall" integer, "safety" integer, "clean" integer, "noise" integer, "price" integer, "comment" varchar, "rental_id" integer, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  CREATE  INDEX "index_reviews_on_rental_id" ON "reviews" ("rental_id")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reviews_on_rental_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reviews_on_rental_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  CREATE  INDEX "index_reviews_on_user_id" ON "reviews" ("user_id")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160930033549"]]
+  [1m[35m (2.4ms)[0m  commit transaction
+Migrating to CreateImages (20160930062439)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "images" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "filename" varchar, "rental_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_images_on_rental_id" ON "images" ("rental_id")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160930062439"]]
+  [1m[36m (2.6ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_images_on_rental_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_images_on_rental_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reviews_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reviews_on_user_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reviews_on_rental_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reviews_on_rental_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'a@a.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "a@a.com"], ["encrypted_password", "$2a$11$eCkBWwjZgoAT0l/YRUg8fONb269Cb9OWbVCs1DBWamiOpn9ATqSlm"], ["created_at", "2016-10-04 23:35:48.097518"], ["updated_at", "2016-10-04 23:35:48.097518"]]
+  [1m[36m (5.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'b@b.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "b@b.com"], ["encrypted_password", "$2a$11$VhSpjtzrFURUeLSzput3cunaoJixFaTx7Z8mRjGPyHj4J/3fmlaOK"], ["created_at", "2016-10-04 23:35:48.255144"], ["updated_at", "2016-10-04 23:35:48.255144"]]
+  [1m[36m (2.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'c@c.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "c@c.com"], ["encrypted_password", "$2a$11$NOwzH.3Ox.jQgaYqe/QIneC297OyM9TPvXt1x22zU25.OlKK3UEzS"], ["created_at", "2016-10-04 23:35:48.405505"], ["updated_at", "2016-10-04 23:35:48.405505"]]
+  [1m[36m (2.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rentals" ("addr_full_adress", "addr_street_name", "addr_street_num", "addr_zip", "addr_city", "addr_state", "dets_beds", "dets_baths", "dets_is_complex", "dets_stories", "dets_company_owned", "dets_owner", "amen_parking", "amen_pets", "amen_washer_dryer", "amen_pool", "amen_spa", "amen_gym", "amen_dishwasher", "amen_central_air", "amen_heater", "util_gas", "util_electricity", "util_trash", "util_water", "util_tv", "util_wifi", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["addr_full_adress", "208 Wollaston Ave Arlington MA 02476"], ["addr_street_name", "Wollaston Ave"], ["addr_street_num", 208], ["addr_zip", 2476], ["addr_city", "Arlington"], ["addr_state", "MA"], ["dets_beds", 3], ["dets_baths", 2], ["dets_is_complex", "f"], ["dets_stories", 2], ["dets_company_owned", "f"], ["dets_owner", ""], ["amen_parking", "t"], ["amen_pets", "f"], ["amen_washer_dryer", "t"], ["amen_pool", "t"], ["amen_spa", "f"], ["amen_gym", "f"], ["amen_dishwasher", "f"], ["amen_central_air", "t"], ["amen_heater", "t"], ["util_gas", "f"], ["util_electricity", "f"], ["util_trash", "t"], ["util_water", "t"], ["util_tv", "f"], ["util_wifi", "t"], ["created_at", "2016-10-04 23:35:48.433391"], ["updated_at", "2016-10-04 23:35:48.433391"]]
+  [1m[35m (2.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rentals" ("addr_full_adress", "addr_street_name", "addr_street_num", "addr_zip", "addr_city", "addr_state", "dets_beds", "dets_baths", "dets_is_complex", "dets_stories", "dets_company_owned", "dets_owner", "amen_parking", "amen_pets", "amen_washer_dryer", "amen_pool", "amen_spa", "amen_gym", "amen_dishwasher", "amen_central_air", "amen_heater", "util_gas", "util_electricity", "util_trash", "util_water", "util_tv", "util_wifi", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["addr_full_adress", "201 Chilean Ave Palm Beach FL 33480"], ["addr_street_name", "Chilean Ave"], ["addr_street_num", 201], ["addr_zip", 33480], ["addr_city", "Palm Beach"], ["addr_state", "FL"], ["dets_beds", 2], ["dets_baths", 1], ["dets_is_complex", "t"], ["dets_stories", 2], ["dets_company_owned", "t"], ["dets_owner", "John Doe"], ["amen_parking", "f"], ["amen_pets", "t"], ["amen_washer_dryer", "t"], ["amen_pool", "f"], ["amen_spa", "t"], ["amen_gym", "f"], ["amen_dishwasher", "f"], ["amen_central_air", "t"], ["amen_heater", "f"], ["util_gas", "f"], ["util_electricity", "f"], ["util_trash", "t"], ["util_water", "f"], ["util_tv", "t"], ["util_wifi", "f"], ["created_at", "2016-10-04 23:35:48.438958"], ["updated_at", "2016-10-04 23:35:48.438958"]]
+  [1m[36m (2.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "reviews" ("overall", "safety", "clean", "noise", "price", "comment", "rental_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["overall", 4], ["safety", 4], ["clean", 5], ["noise", 1], ["price", 3], ["comment", "This was an interesting house"], ["rental_id", 1], ["user_id", 3], ["created_at", "2016-10-04 23:35:48.464589"], ["updated_at", "2016-10-04 23:35:48.464589"]]
+  [1m[35m (2.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "reviews" ("overall", "safety", "clean", "noise", "price", "comment", "rental_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["overall", 2], ["safety", 1], ["clean", 3], ["noise", 3], ["price", 2], ["comment", "Horible expirence living here. Can't wait to move."], ["rental_id", 1], ["user_id", 2], ["created_at", "2016-10-04 23:35:48.469201"], ["updated_at", "2016-10-04 23:35:48.469201"]]
+  [1m[36m (5.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "reviews" ("overall", "safety", "clean", "noise", "price", "comment", "rental_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["overall", 5], ["safety", 5], ["clean", 4], ["noise", 1], ["price", 5], ["comment", "Loved this place, but expensive"], ["rental_id", 2], ["user_id", 1], ["created_at", "2016-10-04 23:35:48.477332"], ["updated_at", "2016-10-04 23:35:48.477332"]]
+  [1m[35m (2.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "reviews" ("overall", "safety", "clean", "noise", "price", "comment", "rental_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["overall", 4], ["safety", 3], ["clean", 2], ["noise", 2], ["price", 2], ["comment", "dirty but nice enough"], ["rental_id", 1], ["user_id", 1], ["created_at", "2016-10-04 23:35:48.483723"], ["updated_at", "2016-10-04 23:35:48.483723"]]
+  [1m[36m (5.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "reviews" ("overall", "safety", "clean", "noise", "price", "comment", "rental_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["overall", 1], ["safety", 1], ["clean", 1], ["noise", 1], ["price", 1], ["comment", "A dump"], ["rental_id", 2], ["user_id", 2], ["created_at", "2016-10-04 23:35:48.491928"], ["updated_at", "2016-10-04 23:35:48.491928"]]
+  [1m[35m (2.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "reviews" ("overall", "safety", "clean", "noise", "price", "comment", "rental_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["overall", 3], ["safety", 3], ["clean", 1], ["noise", 4], ["price", 2], ["comment", "In the process of remodeling"], ["rental_id", 2], ["user_id", 3], ["created_at", "2016-10-04 23:35:48.497218"], ["updated_at", "2016-10-04 23:35:48.497218"]]
+  [1m[36m (2.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "reviews" ("overall", "safety", "clean", "noise", "price", "comment", "rental_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["overall", 5], ["safety", 5], ["clean", 5], ["noise", 2], ["price", 4], ["comment", "Newly remodeled. Very nice"], ["rental_id", 2], ["user_id", 1], ["created_at", "2016-10-04 23:35:48.502561"], ["updated_at", "2016-10-04 23:35:48.502561"]]
+  [1m[35m (2.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "reviews" ("overall", "safety", "clean", "noise", "price", "comment", "rental_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["overall", 4], ["safety", 4], ["clean", 5], ["noise", 2], ["price", 4], ["comment", "Lovely little place now. Sooo much better than before"], ["rental_id", 2], ["user_id", 2], ["created_at", "2016-10-04 23:35:48.507456"], ["updated_at", "2016-10-04 23:35:48.507456"]]
+  [1m[36m (2.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "images" ("filename", "rental_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["filename", "h01.jpg"], ["rental_id", 1], ["created_at", "2016-10-04 23:35:48.522060"], ["updated_at", "2016-10-04 23:35:48.522060"]]
+  [1m[35m (2.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "images" ("filename", "rental_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["filename", "h02.jpg"], ["rental_id", 1], ["created_at", "2016-10-04 23:35:48.526512"], ["updated_at", "2016-10-04 23:35:48.526512"]]
+  [1m[36m (2.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "images" ("filename", "rental_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["filename", "h03.jpg"], ["rental_id", 1], ["created_at", "2016-10-04 23:35:48.531220"], ["updated_at", "2016-10-04 23:35:48.531220"]]
+  [1m[35m (2.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "images" ("filename", "rental_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["filename", "h04.jpg"], ["rental_id", 1], ["created_at", "2016-10-04 23:35:48.535896"], ["updated_at", "2016-10-04 23:35:48.535896"]]
+  [1m[36m (2.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "images" ("filename", "rental_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["filename", "h05.jpg"], ["rental_id", 2], ["created_at", "2016-10-04 23:35:48.540473"], ["updated_at", "2016-10-04 23:35:48.540473"]]
+  [1m[35m (2.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "images" ("filename", "rental_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["filename", "h06.jpg"], ["rental_id", 2], ["created_at", "2016-10-04 23:35:48.545206"], ["updated_at", "2016-10-04 23:35:48.545206"]]
+  [1m[36m (2.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "images" ("filename", "rental_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["filename", "h07.jpg"], ["rental_id", 2], ["created_at", "2016-10-04 23:35:48.550117"], ["updated_at", "2016-10-04 23:35:48.550117"]]
+  [1m[35m (2.6ms)[0m  commit transaction
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-04 16:36:13 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RentalsController#index as HTML
+  [1m[35mRental Load (0.2ms)[0m  SELECT "rentals".* FROM "rentals"
+  Rendered rentals/index.html.erb within layouts/application (28.2ms)
+Completed 200 OK in 875ms (Views: 858.7ms | ActiveRecord: 0.7ms)
+  [1m[36m (3.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (3.2ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to DeviseCreateUsers (20160930025654)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.5ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36m (0.2ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160930025654"]]
+  [1m[36m (2.8ms)[0m  [1mcommit transaction[0m
+Migrating to CreateRentals (20160930032616)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.7ms)[0m  [1mCREATE TABLE "rentals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "addr_full_adress" varchar, "addr_street_name" varchar, "addr_street_num" integer, "addr_zip" integer, "addr_city" varchar, "addr_state" varchar, "dets_beds" integer, "dets_baths" integer, "dets_is_complex" boolean, "dets_stories" integer, "dets_company_owned" boolean, "dets_owner" varchar, "amen_parking" boolean, "amen_pets" boolean, "amen_washer_dryer" boolean, "amen_pool" boolean, "amen_spa" boolean, "amen_gym" boolean, "amen_dishwasher" boolean, "amen_central_air" boolean, "amen_heater" boolean, "util_gas" boolean, "util_electricity" boolean, "util_trash" boolean, "util_water" boolean, "util_tv" boolean, "util_wifi" boolean, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160930032616"]]
+  [1m[36m (5.4ms)[0m  [1mcommit transaction[0m
+Migrating to CreateReviews (20160930033549)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "reviews" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "overall" integer, "safety" integer, "clean" integer, "noise" integer, "price" integer, "comment" varchar, "rental_id" integer, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  CREATE  INDEX "index_reviews_on_rental_id" ON "reviews" ("rental_id")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reviews_on_rental_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reviews_on_rental_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  CREATE  INDEX "index_reviews_on_user_id" ON "reviews" ("user_id")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160930033549"]]
+  [1m[35m (2.4ms)[0m  commit transaction
+Migrating to CreateImages (20160930062439)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "images" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "filename" varchar, "rental_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mCREATE  INDEX "index_images_on_rental_id" ON "images" ("rental_id")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160930062439"]]
+  [1m[36m (2.7ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_images_on_rental_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_images_on_rental_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reviews_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reviews_on_user_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reviews_on_rental_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reviews_on_rental_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'a@a.com' LIMIT 1[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "a@a.com"], ["encrypted_password", "$2a$11$OirEsLZRsk0F6lUJj.c8euDTnzfJ6CSgrZWBY/wD5zqApLnFzMOWC"], ["created_at", "2016-10-05 19:09:15.842646"], ["updated_at", "2016-10-05 19:09:15.842646"]]
+  [1m[36m (2.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'b@b.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "b@b.com"], ["encrypted_password", "$2a$11$z00wFeuHDBTOHjuekUK6XuqT4R.4tSK/l77YQqNt9uMVVc.DY4/Ki"], ["created_at", "2016-10-05 19:09:16.005789"], ["updated_at", "2016-10-05 19:09:16.005789"]]
+  [1m[36m (2.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'c@c.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "c@c.com"], ["encrypted_password", "$2a$11$JJ7DLt3Febwq7Bi.ViK8R.fTbM52PZ228cpopWJVmU.4Y7QlsT.tW"], ["created_at", "2016-10-05 19:09:16.171848"], ["updated_at", "2016-10-05 19:09:16.171848"]]
+  [1m[36m (2.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rentals" ("addr_full_adress", "addr_street_name", "addr_street_num", "addr_zip", "addr_city", "addr_state", "dets_beds", "dets_baths", "dets_is_complex", "dets_stories", "dets_company_owned", "dets_owner", "amen_parking", "amen_pets", "amen_washer_dryer", "amen_pool", "amen_spa", "amen_gym", "amen_dishwasher", "amen_central_air", "amen_heater", "util_gas", "util_electricity", "util_trash", "util_water", "util_tv", "util_wifi", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["addr_full_adress", "208 Wollaston Ave Arlington MA 02476"], ["addr_street_name", "Wollaston Ave"], ["addr_street_num", 208], ["addr_zip", 2476], ["addr_city", "Arlington"], ["addr_state", "MA"], ["dets_beds", 3], ["dets_baths", 2], ["dets_is_complex", "f"], ["dets_stories", 2], ["dets_company_owned", "f"], ["dets_owner", ""], ["amen_parking", "t"], ["amen_pets", "f"], ["amen_washer_dryer", "t"], ["amen_pool", "t"], ["amen_spa", "f"], ["amen_gym", "f"], ["amen_dishwasher", "f"], ["amen_central_air", "t"], ["amen_heater", "t"], ["util_gas", "f"], ["util_electricity", "f"], ["util_trash", "t"], ["util_water", "t"], ["util_tv", "f"], ["util_wifi", "t"], ["created_at", "2016-10-05 19:09:16.205950"], ["updated_at", "2016-10-05 19:09:16.205950"]]
+  [1m[35m (7.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "rentals" ("addr_full_adress", "addr_street_name", "addr_street_num", "addr_zip", "addr_city", "addr_state", "dets_beds", "dets_baths", "dets_is_complex", "dets_stories", "dets_company_owned", "dets_owner", "amen_parking", "amen_pets", "amen_washer_dryer", "amen_pool", "amen_spa", "amen_gym", "amen_dishwasher", "amen_central_air", "amen_heater", "util_gas", "util_electricity", "util_trash", "util_water", "util_tv", "util_wifi", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["addr_full_adress", "201 Chilean Ave Palm Beach FL 33480"], ["addr_street_name", "Chilean Ave"], ["addr_street_num", 201], ["addr_zip", 33480], ["addr_city", "Palm Beach"], ["addr_state", "FL"], ["dets_beds", 2], ["dets_baths", 1], ["dets_is_complex", "t"], ["dets_stories", 2], ["dets_company_owned", "t"], ["dets_owner", "John Doe"], ["amen_parking", "f"], ["amen_pets", "t"], ["amen_washer_dryer", "t"], ["amen_pool", "f"], ["amen_spa", "t"], ["amen_gym", "f"], ["amen_dishwasher", "f"], ["amen_central_air", "t"], ["amen_heater", "f"], ["util_gas", "f"], ["util_electricity", "f"], ["util_trash", "t"], ["util_water", "f"], ["util_tv", "t"], ["util_wifi", "f"], ["created_at", "2016-10-05 19:09:16.217046"], ["updated_at", "2016-10-05 19:09:16.217046"]]
+  [1m[36m (3.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "reviews" ("overall", "safety", "clean", "noise", "price", "comment", "rental_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["overall", 4], ["safety", 4], ["clean", 5], ["noise", 1], ["price", 3], ["comment", "This was an interesting house"], ["rental_id", 1], ["user_id", 3], ["created_at", "2016-10-05 19:09:16.257675"], ["updated_at", "2016-10-05 19:09:16.257675"]]
+  [1m[35m (0.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "reviews" ("overall", "safety", "clean", "noise", "price", "comment", "rental_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["overall", 2], ["safety", 1], ["clean", 3], ["noise", 3], ["price", 2], ["comment", "Horible expirence living here. Can't wait to move."], ["rental_id", 1], ["user_id", 2], ["created_at", "2016-10-05 19:09:16.260439"], ["updated_at", "2016-10-05 19:09:16.260439"]]
+  [1m[36m (2.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "reviews" ("overall", "safety", "clean", "noise", "price", "comment", "rental_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["overall", 5], ["safety", 5], ["clean", 4], ["noise", 1], ["price", 5], ["comment", "Loved this place, but expensive"], ["rental_id", 2], ["user_id", 1], ["created_at", "2016-10-05 19:09:16.264660"], ["updated_at", "2016-10-05 19:09:16.264660"]]
+  [1m[35m (2.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "reviews" ("overall", "safety", "clean", "noise", "price", "comment", "rental_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["overall", 4], ["safety", 3], ["clean", 2], ["noise", 2], ["price", 2], ["comment", "dirty but nice enough"], ["rental_id", 1], ["user_id", 1], ["created_at", "2016-10-05 19:09:16.269170"], ["updated_at", "2016-10-05 19:09:16.269170"]]
+  [1m[36m (2.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "reviews" ("overall", "safety", "clean", "noise", "price", "comment", "rental_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["overall", 1], ["safety", 1], ["clean", 1], ["noise", 1], ["price", 1], ["comment", "A dump"], ["rental_id", 2], ["user_id", 2], ["created_at", "2016-10-05 19:09:16.273943"], ["updated_at", "2016-10-05 19:09:16.273943"]]
+  [1m[35m (2.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "reviews" ("overall", "safety", "clean", "noise", "price", "comment", "rental_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["overall", 3], ["safety", 3], ["clean", 1], ["noise", 4], ["price", 2], ["comment", "In the process of remodeling"], ["rental_id", 2], ["user_id", 3], ["created_at", "2016-10-05 19:09:16.278289"], ["updated_at", "2016-10-05 19:09:16.278289"]]
+  [1m[36m (2.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "reviews" ("overall", "safety", "clean", "noise", "price", "comment", "rental_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["overall", 5], ["safety", 5], ["clean", 5], ["noise", 2], ["price", 4], ["comment", "Newly remodeled. Very nice"], ["rental_id", 2], ["user_id", 1], ["created_at", "2016-10-05 19:09:16.283057"], ["updated_at", "2016-10-05 19:09:16.283057"]]
+  [1m[35m (2.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "reviews" ("overall", "safety", "clean", "noise", "price", "comment", "rental_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["overall", 4], ["safety", 4], ["clean", 5], ["noise", 2], ["price", 4], ["comment", "Lovely little place now. Sooo much better than before"], ["rental_id", 2], ["user_id", 2], ["created_at", "2016-10-05 19:09:16.288112"], ["updated_at", "2016-10-05 19:09:16.288112"]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "images" ("filename", "rental_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["filename", "h01.jpg"], ["rental_id", 1], ["created_at", "2016-10-05 19:09:16.308569"], ["updated_at", "2016-10-05 19:09:16.308569"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "images" ("filename", "rental_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["filename", "h02.jpg"], ["rental_id", 1], ["created_at", "2016-10-05 19:09:16.310834"], ["updated_at", "2016-10-05 19:09:16.310834"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "images" ("filename", "rental_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["filename", "h03.jpg"], ["rental_id", 1], ["created_at", "2016-10-05 19:09:16.313054"], ["updated_at", "2016-10-05 19:09:16.313054"]]
+  [1m[35m (3.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "images" ("filename", "rental_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["filename", "h04.jpg"], ["rental_id", 1], ["created_at", "2016-10-05 19:09:16.318079"], ["updated_at", "2016-10-05 19:09:16.318079"]]
+  [1m[36m (2.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "images" ("filename", "rental_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["filename", "h05.jpg"], ["rental_id", 2], ["created_at", "2016-10-05 19:09:16.322167"], ["updated_at", "2016-10-05 19:09:16.322167"]]
+  [1m[35m (2.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "images" ("filename", "rental_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["filename", "h06.jpg"], ["rental_id", 2], ["created_at", "2016-10-05 19:09:16.326061"], ["updated_at", "2016-10-05 19:09:16.326061"]]
+  [1m[36m (3.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "images" ("filename", "rental_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["filename", "h07.jpg"], ["rental_id", 2], ["created_at", "2016-10-05 19:09:16.331276"], ["updated_at", "2016-10-05 19:09:16.331276"]]
+  [1m[35m (2.5ms)[0m  commit transaction
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-05 12:09:33 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RentalsController#index as HTML
+  [1m[35mRental Load (0.3ms)[0m  SELECT "rentals".* FROM "rentals"
+  Rendered rentals/index.html.erb within layouts/application (29.9ms)
+Completed 200 OK in 2052ms (Views: 2033.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-05 12:09:36 -0700
+Processing by RentalsController#index as HTML
+  [1m[36mRental Load (0.2ms)[0m  [1mSELECT "rentals".* FROM "rentals"[0m
+  Rendered rentals/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 119ms (Views: 118.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-05 12:16:44 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RentalsController#index as HTML
+  [1m[35mRental Load (0.2ms)[0m  SELECT "rentals".* FROM "rentals"
+  Rendered rentals/index.html.erb within layouts/application (25.9ms)
+Completed 200 OK in 868ms (Views: 852.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-05 12:16:52 -0700
+Processing by RentalsController#index as HTML
+  [1m[36mRental Load (0.4ms)[0m  [1mSELECT "rentals".* FROM "rentals"[0m
+  Rendered rentals/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 124ms (Views: 122.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-05 12:16:53 -0700
+Processing by RentalsController#index as HTML
+  [1m[35mRental Load (0.2ms)[0m  SELECT "rentals".* FROM "rentals"
+  Rendered rentals/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 126ms (Views: 124.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-05 12:16:53 -0700
+Processing by RentalsController#index as HTML
+  [1m[36mRental Load (0.3ms)[0m  [1mSELECT "rentals".* FROM "rentals"[0m
+  Rendered rentals/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 132ms (Views: 130.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rentals/new" for 127.0.0.1 at 2016-10-05 12:16:57 -0700
+Processing by RentalsController#new as HTML
+  Rendered rentals/_form.html.erb (112.9ms)
+  Rendered rentals/new.html.erb within layouts/application (125.7ms)
+Completed 200 OK in 264ms (Views: 263.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-05 12:22:15 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RentalsController#index as HTML
+  [1m[35mRental Load (0.3ms)[0m  SELECT "rentals".* FROM "rentals"
+  Rendered rentals/index.html.erb within layouts/application (34.0ms)
+Completed 200 OK in 949ms (Views: 933.0ms | ActiveRecord: 1.0ms)
