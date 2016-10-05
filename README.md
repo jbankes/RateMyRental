@@ -5,7 +5,7 @@ Rate My Rental is an apartment rating web application
 * Ruby
 * Rails
 * Foundation
-
+* SQLite 3
 # Installation
 * Installing Ruby
  * `sudo apt-get update`
@@ -17,9 +17,10 @@ Rate My Rental is an apartment rating web application
     - `rvm --default use 2.3.0` 
 * Installing Rails
  * `gem install --no-rdoc --no-ri rails` installs with out documentation to speed up instaliation
- * `sudo apt-get install node.js`
  * `rails -v` We want version 4.2.6
-
+* Foundation
+ * `bundle install
+ * `rails g foundation:install
 # Usage
 * `rails s -b 0.0.0.0` while in the project directory will run the application on http://localhost:3000
 * How to seed database

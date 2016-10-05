@@ -1866,3 +1866,11 @@ Processing by RentalsController#index as HTML
   [1m[35mRental Load (0.3ms)[0m  SELECT "rentals".* FROM "rentals"
   Rendered rentals/index.html.erb within layouts/application (34.0ms)
 Completed 200 OK in 949ms (Views: 933.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-05 12:39:16 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RentalsController#index as HTML
+  [1m[35mRental Load (0.2ms)[0m  SELECT "rentals".* FROM "rentals"
+  Rendered rentals/index.html.erb within layouts/application (26.0ms)
+Completed 200 OK in 904ms (Views: 889.9ms | ActiveRecord: 0.6ms)
