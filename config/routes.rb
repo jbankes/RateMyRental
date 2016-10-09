@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'search/new'
+
+  get 'search/create'
+
   resources :images
   resources :reviews
   resources :rentals
