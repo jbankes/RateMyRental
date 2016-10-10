@@ -1,0 +1,190 @@
+<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="small-6 large-centered columns">
+		<div id="owl-carousel" class="owl-carousel">
+  		<% @rental.images.each do |image| %>
+				<% if !image.new_record? %>
+    			<div class ="item">
+						<%= image_tag (root_url + "/images/" + image.filename) %>
+					</div>
+				<% end %>
+			<% end %>
+		</div>
+	</div>
+</div>
+<p>
+<strong>Full address:</strong>
+<%= @rental.addr_full_adress %>
+</p>
+
+<p>
+<strong>Street name:</strong>
+<%= @rental.addr_street_name %>
+</p>
+
+<p>
+<strong>Street num:</strong>
+<%= @rental.addr_street_num %>
+</p>
+
+<p>
+<strong>Zip:</strong>
+<%= @rental.addr_zip %>
+</p>
+
+<p>
+<strong>City:</strong>
+<%= @rental.addr_city %>
+</p>
+
+<p>
+<strong>State:</strong>
+<%= @rental.addr_state %>
+</p>
+
+<p>
+<strong>Beds:</strong>
+<%= @rental.dets_beds %>
+</p>
+
+<p>
+<strong>Baths:</strong>
+<%= @rental.dets_baths %>
+</p>
+
+<p>
+<strong>Complex:</strong>
+<%= @rental.dets_is_complex %>
+</p>
+
+<p>
+<strong>Stories:</strong>
+<%= @rental.dets_stories %>
+</p>
+
+<p>
+<strong>Company owned:</strong>
+<%= @rental.dets_company_owned %>
+</p>
+
+<p>
+<strong>Owner:</strong>
+<%= @rental.dets_owner %>
+</p>
+
+<p>
+<strong>Parking:</strong>
+<%= @rental.amen_parking %>
+</p>
+
+<p>
+<strong>Pets:</strong>
+<%= @rental.amen_pets %>
+</p>
+
+<p>
+<strong>Washer dryer:</strong>
+<%= @rental.amen_washer_dryer %>
+</p>
+
+<p>
+<strong>Pool:</strong>
+<%= @rental.amen_pool %>
+</p>
+
+<p>
+<strong>Spa:</strong>
+<%= @rental.amen_spa %>
+</p>
+
+<p>
+<strong>Gym:</strong>
+<%= @rental.amen_gym %>
+</p>
+
+<p>
+<strong>Dishwasher:</strong>
+<%= @rental.amen_dishwasher %>
+</p>
+
+<p>
+<strong>Central air:</strong>
+<%= @rental.amen_central_air %>
+</p>
+
+<p>
+<strong>Heater:</strong>
+<%= @rental.amen_heater %>
+</p>
+
+<p>
+<strong>Gas:</strong>
+<%= @rental.util_gas %>
+</p>
+
+<p>
+<strong>Electricity:</strong>
+<%= @rental.util_electricity %>
+</p>
+
+<p>
+<strong>Trash:</strong>
+<%= @rental.util_trash %>
+</p>
+
+<p>
+<strong>Water:</strong>
+<%= @rental.util_water %>
+</p>
+
+<p>
+<strong>Tv:</strong>
+<%= @rental.util_tv %>
+</p>
+
+<p>
+<strong>Wifi:</strong>
+<%= @rental.util_wifi %>
+</p>
+<table>
+  <tr>
+    <th>Overall &nbsp;</th>
+    <th>Safety &nbsp;</th>
+    <th>Noise &nbsp;</th>
+    <th>Clean &nbsp;</th>
+    <th>Price &nbsp;</th>
+    <th>Comment</th>
+  </tr>
+<% @rental.reviews.each do |review| %>
+	<% if !review.new_record? %>
+		<tr>
+			<td><%= review.overall %></td>
+			<td><%= review.safety %></td>
+			<td><%= review.noise %></td>
+			<td><%= review.clean %></td>
+			<td><%= review.price %></td>
+			<td><%= review.comment %></td>
+			<td><%= link_to 'Edit', edit_review_path(review) %></td>
+			<td><%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		</tr>
+	<% end %>
+<% end %>
+</table>
+<% @rental.images.each do |image| %>
+	<% if !image.new_record? %>
+			<%= image_tag (root_url + "/images/" + image.filename), alt: image.filename, size: "200x200", overflow: "hidden", remote: image %><br>
+	<% end %>
+<% end %>
+
+<h3>Create New Review</h3>
+<%= render 'reviews/form' %>
+<%= render 'images/form' %>
+<br>
+
+<%= link_to 'Edit', edit_rental_path(@rental) %> |
+<%= link_to 'Back', rentals_path %>
+
+     
+    
+
+

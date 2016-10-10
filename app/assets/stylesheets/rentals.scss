@@ -1,3 +1,22 @@
 // Place all the styles related to the Rentals controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+
+
+.owl-carousel .item img{
+  display: block;
+  width: 100%;
+  height: auto;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+    }
+
+.owl-carousel .item div{
+  padding:5px;
+}
+
+

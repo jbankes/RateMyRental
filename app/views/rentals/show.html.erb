@@ -1,5 +1,17 @@
 <p id="notice"><%= notice %></p>
-
+<div class="row">
+  <div class="small-6 large-centered columns">
+		<div id="owl-carousel" class="owl-carousel">
+  		<% @rental.images.each do |image| %>
+				<% if !image.new_record? %>
+    			<div class ="item">
+						<%= image_tag (root_url + "/images/" + image.filename) %>
+					</div>
+				<% end %>
+			<% end %>
+		</div>
+	</div>
+</div>
 <p>
 <strong>Full address:</strong>
 <%= @rental.addr_full_adress %>
@@ -158,11 +170,6 @@
 	<% end %>
 <% end %>
 </table>
-<% @rental.images.each do |image| %>
-	<% if !image.new_record? %>
-			<%= image_tag (root_url + "/images/" + image.filename), alt: image.filename, size: "200x200", overflow: "hidden", remote: image %><br>
-	<% end %>
-<% end %>
 
 <h3>Create New Review</h3>
 <%= render 'reviews/form' %>
@@ -171,3 +178,8 @@
 
 <%= link_to 'Edit', edit_rental_path(@rental) %> |
 <%= link_to 'Back', rentals_path %>
+
+     
+    
+
+

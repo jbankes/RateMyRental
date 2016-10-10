@@ -15,5 +15,17 @@
 //= require foundation
 //= require turbolinks
 //= require_tree .
+//= require owl.carousel
 
-$(function(){ $(document).foundation(); });
+$(document).foundation();
+
+$(document).ready(function(){
+	$("#owl-carousel").owlCarousel({
+		navigation:true,
+		paginationSpeed : 400,
+		slideSpeed : 300,
+		singleItem : true,
+		autoHeight : true,
+	});
+});
+
