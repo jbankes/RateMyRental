@@ -201,6 +201,9 @@
 		    handler.getMap().setZoom(16);
 	       });
         </script>
+	<% if @rental.geocoded? %>
+		<%= @rental.distance_from([39.7276114, -121.8479014]) %>
+	<% end %>
 
 <h3>Create New Review</h3>
 <%= render 'reviews/form' %>
