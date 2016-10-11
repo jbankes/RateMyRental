@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20160930062439) do
     t.integer  "addr_zip"
     t.string   "addr_city"
     t.string   "addr_state"
+    t.string   "addr_country"
     t.integer  "dets_beds"
     t.integer  "dets_baths"
     t.boolean  "dets_is_complex"
@@ -50,6 +51,8 @@ ActiveRecord::Schema.define(version: 20160930062439) do
     t.boolean  "util_water"
     t.boolean  "util_tv"
     t.boolean  "util_wifi"
+    t.float    "latitude"
+    t.float    "longitude"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
   end

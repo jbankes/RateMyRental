@@ -7,6 +7,7 @@ class CreateRentals < ActiveRecord::Migration
       t.integer :addr_zip
       t.string :addr_city
       t.string :addr_state
+      t.string :addr_country
       t.integer :dets_beds
       t.integer :dets_baths
       t.boolean :dets_is_complex
@@ -28,6 +29,8 @@ class CreateRentals < ActiveRecord::Migration
       t.boolean :util_water
       t.boolean :util_tv
       t.boolean :util_wifi
+      t.float :latitude
+      t.float :longitude
 
       t.timestamps null: false
     end

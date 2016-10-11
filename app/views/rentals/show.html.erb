@@ -43,6 +43,11 @@
 </p>
 
 <p>
+<strong>Country:</strong>
+<%= @rental.addr_country %>
+</p>
+
+<p>
 <strong>Beds:</strong>
 <%= @rental.dets_beds %>
 </p>
@@ -146,6 +151,17 @@
 <strong>Wifi:</strong>
 <%= @rental.util_wifi %>
 </p>
+
+<p>
+<strong>Latitude:</strong>
+<%= @rental.latitude %>
+</p>
+
+<p>
+<strong>Longitude:</strong>
+<%= @rental.longitude %>
+</p>
+
 <table>
   <tr>
     <th>Overall &nbsp;</th>
@@ -170,6 +186,21 @@
 	<% end %>
 <% end %>
 </table>
+
+	<div style='width: 800px;'>
+	  	<div id="multi_markers" style='width: 800px; height: 400px;'></div>
+  	</div>
+        <script type="text/javascript">
+	      var handler = Gmaps.build('Google');
+	      handler.buildMap({ internal: {id: 'multi_markers'}}, function(){
+		    var markers = handler.addMarkers([
+			    { lat: <%= @rental.latitude%>, lng: <%=@rental.longitude%>},
+		    ]);
+		    handler.bounds.extendWith(markers);
+		    handler.fitMapToBounds();
+		    handler.getMap().setZoom(16);
+	       });
+        </script>
 
 <h3>Create New Review</h3>
 <%= render 'reviews/form' %>

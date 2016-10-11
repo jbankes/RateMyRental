@@ -44,7 +44,7 @@
   <tbody>
     <% @rentals.each do |rental| %>
       <tr>
-        <td><%= link_to 'Show', rental %></td>
+	<td><%= link_to 'Show', rental, data: { no_turbolink: true } %></td>
         <td><%= link_to 'Edit', edit_rental_path(rental) %></td>
         <td><%= link_to 'Destroy', rental, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <td><%= rental.addr_full_adress %></td>
@@ -76,6 +76,8 @@
         <td><%= rental.util_water %></td>
         <td><%= rental.util_tv %></td>
         <td><%= rental.util_wifi %></td>
+	<%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{rental.latitude},#{rental.longitude}&markers=#{rental.latitude},#{rental.longitude}&zoom=17&size=440x200&key=AIzaSyA4BHW3txEdqfxzdTlPwaHsYRSZbfeIcd8",
+	class: 'img-fluid img-rounded', alt: "#{rental.addr_full_adress} on the map"%><br><br>
       </tr>
     <% end %>
   </tbody>
