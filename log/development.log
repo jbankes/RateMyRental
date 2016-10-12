@@ -4171,3 +4171,25 @@ Processing by RentalsController#show as HTML
   [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
   Rendered layouts/_header.html.erb (3.7ms)
 Completed 200 OK in 444ms (Views: 432.5ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/" for ::1 at 2016-10-10 12:06:38 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RentalsController#index as HTML
+  [1m[35mRental Load (0.7ms)[0m  SELECT "rentals".* FROM "rentals"
+  Rendered rentals/index.html.erb within layouts/application (95.7ms)
+  Rendered layouts/_header.html.erb (19.5ms)
+Completed 200 OK in 2553ms (Views: 2497.0ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/rentals/1" for ::1 at 2016-10-10 12:06:43 -0700
+Processing by RentalsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRental Load (0.7ms)[0m  [1mSELECT  "rentals".* FROM "rentals" WHERE "rentals"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mImage Load (0.6ms)[0m  SELECT "images".* FROM "images" WHERE "images"."rental_id" = ?  [["rental_id", 1]]
+  [1m[36mReview Load (0.7ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."rental_id" = ?[0m  [["rental_id", 1]]
+  Rendered reviews/_form.html.erb (58.3ms)
+  Rendered images/_form.html.erb (5.8ms)
+  Rendered rentals/show.html.erb within layouts/application (88.0ms)
+  Rendered layouts/_header.html.erb (1.4ms)
+Completed 200 OK in 558ms (Views: 440.3ms | ActiveRecord: 3.2ms)
