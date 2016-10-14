@@ -3,9 +3,11 @@
 <h1>Listing Rentals</h1>
 
 <div class="SearchBar">
-<%= form_tag(search_show_path, :method => "get", id: "search-form") do %>
-<%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
-<%= submit_tag "Search" %>
+<% form_tag search_show_path, :method => 'get'  do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
 <% end %>
 
 
