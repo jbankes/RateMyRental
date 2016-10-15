@@ -191,7 +191,7 @@
 	  	<div id="directions" style='width: 800px; height: 400px;'></div>
   	</div>
         <script type="text/javascript">
-	      // OPTION FOR ONE POINT (the rental)
+	      // OPTION FOR ONE POINT (the rental) @sstrauser prefers two points below
 	      /*var handler = Gmaps.build('Google');
 	      handler.buildMap({ internal: {id: 'multi_markers'}}, function(){
 		    var markers = handler.addMarkers([
@@ -221,7 +221,7 @@
 
 	       calcRoute();
 	       var handler = Gmaps.build('Google');
-	       handler.buildMap({ internal: {id: 'directions'}}, function(){
+	       handler.buildMap({ provider: { scrollwheel: false }, internal: {id: 'directions'}}, function(){
 	         directionsDisplay.setMap(handler.getMap());
 	       });
         </script>
