@@ -2241,7 +2241,7 @@ Sass::SyntaxError - Invalid CSS after "  height: auto": expected "{", was "":
   sprockets-rails (3.2.0) lib/sprockets/rails/helper.rb:228:in `lookup_debug_asset'
   sprockets-rails (3.2.0) lib/sprockets/rails/helper.rb:170:in `block in stylesheet_link_tag'
   sprockets-rails (3.2.0) lib/sprockets/rails/helper.rb:169:in `stylesheet_link_tag'
-  app/views/layouts/application.html.erb:9:in `_app_views_layouts_application_html_erb__1894110372405036920_45053980'
+  app/views/layouts/application.html.erb:9:in `_app_views_layouts_application_html_erb___4205687940031877726_28852860'
   actionview (4.2.6) lib/action_view/template.rb:145:in `block in render'
   activesupport (4.2.6) lib/active_support/notifications.rb:166:in `instrument'
   actionview (4.2.6) lib/action_view/template.rb:333:in `instrument'
