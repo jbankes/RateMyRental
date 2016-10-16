@@ -1,10 +1,140 @@
 <p id="notice"><%= notice %></p>
+<div id="top_bar" class="row">
+	<div class="small-12 columns">
+		<a href="#"><h3> < </h3></a> <!-- Need to fix -->
+	</div>
+</div>
+
+
 <div class="row">
-  <div class="small-6 large-centered columns">
+	<div class="small-6 columns">
+		<h3><%= @rental.addr_full_adress %> </h3>
+		<h6><%= @rental.dets_beds %> Bed | <%= @rental.dets_baths %> Bath | Calc $$ </h3>
+		<table>
+			<tr>
+				<th> Details </th>
+				<th> Amenities </th>
+				<th> Utilities </th>
+			</tr>
+			<tr>
+				<% if( @rental.dets_is_complex ) %>
+					<td> <b>Complex</b> </td>
+				<% else %>
+					<td> Complex </td>
+				<% end %>
+                <% if( @rental.amen_parking ) %>
+                    <td> <b>Reserved Parking</b> </td>
+                <% else %>
+                    <td> Reserved Parking </td>
+                <% end %> 
+                <% if( @rental.util_gas ) %>
+                    <td> <b>Gas</b> </td>
+                <% else %>
+                    <td> Gas </td>
+                <% end %>
+			</tr>
+            <tr>
+                <td> <b>Stories: <%= @rental.dets_stories %></b> </td>
+                <% if( @rental.amen_pets ) %>
+                    <td> <b>Pets Allowed</b> </td>
+                <% else %>
+                    <td> Pets Allowed </td>
+                <% end %> 
+                <% if( @rental.util_electricity ) %>
+                    <td> <b>Electricity</b> </td>
+                <% else %>
+                    <td> Electricity </td>
+                <% end %>
+            </tr>
+            <tr>
+                <% if( @rental.dets_company_owned ) %>
+                    <td> <b>Company Owned</b> </td>
+                <% else %>
+                    <td> Company Owned </td>
+                <% end %>
+                <% if( @rental.amen_washer_dryer ) %>
+                    <td> <b>Washer & Dryer</b> </td>
+                <% else %>
+                    <td> Washer & Dryer </td>
+                <% end %> 
+                <% if( @rental.util_trash ) %>
+                    <td> <b>Trash</b> </td>
+                <% else %>
+                    <td> Trash </td>
+                <% end %>
+            </tr>
+            <tr>
+                <td> <b><%= @rental.dets_owner %></b> </td>
+                <% if( @rental.amen_pool ) %>
+                    <td> <b>Pool</b> </td>
+                <% else %>
+                    <td> Pool </td>
+                <% end %> 
+                <% if( @rental.util_water ) %>
+                    <td> <b>Water</b> </td>
+                <% else %>
+                    <td> Water </td>
+                <% end %>
+            </tr>            <tr>
+                <td> </td>
+                <% if( @rental.amen_spa ) %>
+                    <td> <b>Spa</b> </td>
+                <% else %>
+                    <td> Spa </td>
+                <% end %> 
+                <% if( @rental.util_tv ) %>
+                    <td> <b>Cable</b> </td>
+                <% else %>
+                    <td> Cable </td>
+                <% end %>
+            </tr>
+            <tr>
+                <td> </td>
+                <% if( @rental.amen_gym ) %>
+                    <td> <b>Gym</b> </td>
+                <% else %>
+                    <td> Gym </td>
+                <% end %> 
+                <% if( @rental.util_wifi ) %>
+                    <td> <b>Wifi</b> </td>
+                <% else %>
+                    <td> Wifi </td>
+                <% end %>
+            </tr>
+            <tr>
+                <td> </td>
+                <% if( @rental.amen_dishwasher ) %>
+                    <td> <b>Dishwasher</b> </td>
+                <% else %>
+                    <td> Dishwasher </td>
+                <% end %> 
+                <td> </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <% if( @rental.amen_central_air ) %>
+                    <td> <b>Central Air</b> </td>
+                <% else %>
+                    <td> Central Air </td>
+                <% end %> 
+                <td> </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <% if( @rental.amen_heater ) %>
+                    <td> <b>Heater</b> </td>
+                <% else %>
+                    <td> Heater </td>
+                <% end %> 
+                <td> </td>
+            </tr>
+		</table>
+	</div>
+	<div class="small-6 columns">
 		<div id="owl-carousel" class="owl-carousel">
-  		<% @rental.images.each do |image| %>
+			<% @rental.images.each do |image| %>
 				<% if !image.new_record? %>
-    			<div class ="item">
+					<div class ="item">
 						<%= image_tag (root_url + "/images/" + image.filename) %>
 					</div>
 				<% end %>
@@ -12,198 +142,71 @@
 		</div>
 	</div>
 </div>
+<div class="row">
+	<div class="small-12 small-centered columns">
+		<div style='width: 800px;'>
+			<div id="multi_markers" style='width: 800px; height: 400px;'></div>
+		</div>
+		<script type="text/javascript">
+			var handler = Gmaps.build('Google');
+			handler.buildMap({ internal: {id: 'multi_markers'}}, function(){
+                var markers = handler.addMarkers([
+                        { lat: <%= @rental.latitude%>, lng: <%=@rental.longitude%>},
+                        ]);
+                handler.bounds.extendWith(markers);
+                handler.fitMapToBounds();
+                handler.getMap().setZoom(16);
+                });
+		</script>
+		<% if @rental.geocoded? %>
+			<%= @rental.distance_from([39.7276114, -121.8479014]) %>
+		<% end %>
+	</div>
+</div>
 <p>
-<strong>Full address:</strong>
-<%= @rental.addr_full_adress %>
-</p>
-
-<p>
-<strong>Street name:</strong>
-<%= @rental.addr_street_name %>
-</p>
-
-<p>
-<strong>Street num:</strong>
-<%= @rental.addr_street_num %>
-</p>
-
-<p>
-<strong>Zip:</strong>
-<%= @rental.addr_zip %>
-</p>
-
-<p>
-<strong>City:</strong>
-<%= @rental.addr_city %>
-</p>
-
-<p>
-<strong>State:</strong>
-<%= @rental.addr_state %>
-</p>
-
-<p>
-<strong>Country:</strong>
-<%= @rental.addr_country %>
-</p>
-
-<p>
-<strong>Beds:</strong>
-<%= @rental.dets_beds %>
-</p>
-
-<p>
-<strong>Baths:</strong>
-<%= @rental.dets_baths %>
-</p>
-
-<p>
-<strong>Complex:</strong>
-<%= @rental.dets_is_complex %>
-</p>
-
-<p>
-<strong>Stories:</strong>
-<%= @rental.dets_stories %>
-</p>
-
-<p>
-<strong>Company owned:</strong>
-<%= @rental.dets_company_owned %>
-</p>
-
-<p>
-<strong>Owner:</strong>
-<%= @rental.dets_owner %>
-</p>
-
-<p>
-<strong>Parking:</strong>
-<%= @rental.amen_parking %>
-</p>
-
-<p>
-<strong>Pets:</strong>
-<%= @rental.amen_pets %>
-</p>
-
-<p>
-<strong>Washer dryer:</strong>
-<%= @rental.amen_washer_dryer %>
-</p>
-
-<p>
-<strong>Pool:</strong>
-<%= @rental.amen_pool %>
-</p>
-
-<p>
-<strong>Spa:</strong>
-<%= @rental.amen_spa %>
-</p>
-
-<p>
-<strong>Gym:</strong>
-<%= @rental.amen_gym %>
-</p>
-
-<p>
-<strong>Dishwasher:</strong>
-<%= @rental.amen_dishwasher %>
-</p>
-
-<p>
-<strong>Central air:</strong>
-<%= @rental.amen_central_air %>
-</p>
-
-<p>
-<strong>Heater:</strong>
-<%= @rental.amen_heater %>
-</p>
-
-<p>
-<strong>Gas:</strong>
-<%= @rental.util_gas %>
-</p>
-
-<p>
-<strong>Electricity:</strong>
-<%= @rental.util_electricity %>
-</p>
-
-<p>
-<strong>Trash:</strong>
-<%= @rental.util_trash %>
-</p>
-
-<p>
-<strong>Water:</strong>
-<%= @rental.util_water %>
-</p>
-
-<p>
-<strong>Tv:</strong>
-<%= @rental.util_tv %>
-</p>
-
-<p>
-<strong>Wifi:</strong>
-<%= @rental.util_wifi %>
-</p>
-
-<p>
-<strong>Latitude:</strong>
-<%= @rental.latitude %>
-</p>
-
-<p>
-<strong>Longitude:</strong>
-<%= @rental.longitude %>
-</p>
 
 <table>
-  <tr>
-    <th>Overall &nbsp;</th>
-    <th>Safety &nbsp;</th>
-    <th>Noise &nbsp;</th>
-    <th>Clean &nbsp;</th>
-    <th>Price &nbsp;</th>
-    <th>Comment</th>
-  </tr>
+<tr>
+<th>Overall &nbsp;</th>
+<th>Safety &nbsp;</th>
+<th>Noise &nbsp;</th>
+<th>Clean &nbsp;</th>
+<th>Price &nbsp;</th>
+<th>Comment</th>
+</tr>
 <% @rental.reviews.each do |review| %>
-	<% if !review.new_record? %>
-		<tr>
-			<td><%= review.overall %></td>
-			<td><%= review.safety %></td>
-			<td><%= review.noise %></td>
-			<td><%= review.clean %></td>
-			<td><%= review.price %></td>
-			<td><%= review.comment %></td>
-			<td><%= link_to 'Edit', edit_review_path(review) %></td>
-			<td><%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-		</tr>
-	<% end %>
+<% if !review.new_record? %>
+<tr>
+<td><%= review.overall %></td>
+<td><%= review.safety %></td>
+<td><%= review.noise %></td>
+<td><%= review.clean %></td>
+<td><%= review.price %></td>
+<td><%= review.comment %></td>
+<td><%= link_to 'Edit', edit_review_path(review) %></td>
+<td><%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>
+<% end %>
 <% end %>
 </table>
 
-	<div style='width: 800px;'>
-	  	<div id="multi_markers" style='width: 800px; height: 400px;'></div>
-  	</div>
-        <script type="text/javascript">
-	      var handler = Gmaps.build('Google');
-	      handler.buildMap({ internal: {id: 'multi_markers'}}, function(){
-		    var markers = handler.addMarkers([
-			    { lat: <%= @rental.latitude%>, lng: <%=@rental.longitude%>},
-		    ]);
-		    handler.bounds.extendWith(markers);
-		    handler.fitMapToBounds();
-		    handler.getMap().setZoom(16);
-	       });
-        </script>
-	<% if @rental.geocoded? %>
-		<%= @rental.distance_from([39.7276114, -121.8479014]) %>
-	<% end %>
+<div style='width: 800px;'>
+<div id="multi_markers" style='width: 800px; height: 400px;'></div>
+</div>
+<script type="text/javascript">
+var handler = Gmaps.build('Google');
+handler.buildMap({ internal: {id: 'multi_markers'}}, function(){
+				var markers = handler.addMarkers([
+						{ lat: <%= @rental.latitude%>, lng: <%=@rental.longitude%>},
+						]);
+				handler.bounds.extendWith(markers);
+				handler.fitMapToBounds();
+				handler.getMap().setZoom(16);
+				});
+</script>
+<% if @rental.geocoded? %>
+<%= @rental.distance_from([39.7276114, -121.8479014]) %>
+<% end %>
 
 <h3>Create New Review</h3>
 <%= render 'reviews/form' %>
@@ -213,7 +216,7 @@
 <%= link_to 'Edit', edit_rental_path(@rental) %> |
 <%= link_to 'Back', rentals_path %>
 
-     
-    
+
+
 
 

@@ -10479,3 +10479,819 @@ Processing by RentalsController#index as HTML
   Rendered rentals/index.html.erb within layouts/application (35.9ms)
   Rendered layouts/_header.html.erb (5.2ms)
 Completed 200 OK in 1189ms (Views: 1168.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-16 15:04:20 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RentalsController#index as HTML
+  [1m[35mRental Load (2.7ms)[0m  SELECT "rentals".* FROM "rentals"
+  Rendered rentals/index.html.erb within layouts/application (39.1ms)
+  Rendered layouts/_header.html.erb (6.2ms)
+Completed 200 OK in 2243ms (Views: 2201.6ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/rentals/1" for 127.0.0.1 at 2016-10-16 15:04:30 -0700
+Processing by RentalsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRental Load (0.3ms)[0m  [1mSELECT  "rentals".* FROM "rentals" WHERE "rentals"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mImage Load (2.2ms)[0m  SELECT "images".* FROM "images" WHERE "images"."rental_id" = ?  [["rental_id", 1]]
+  [1m[36mReview Load (2.3ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."rental_id" = ?[0m  [["rental_id", 1]]
+  Rendered reviews/_form.html.erb (90.4ms)
+  Rendered images/_form.html.erb (5.0ms)
+  Rendered rentals/show.html.erb within layouts/application (114.5ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+Completed 200 OK in 561ms (Views: 442.0ms | ActiveRecord: 5.5ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-10-16 15:05:04 -0700
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (2.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (30.4ms)
+  Rendered layouts/_header.html.erb (0.5ms)
+Completed 200 OK in 309ms (Views: 292.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rentals/1" for 127.0.0.1 at 2016-10-16 15:05:07 -0700
+Processing by RentalsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mRental Load (0.2ms)[0m  SELECT  "rentals".* FROM "rentals" WHERE "rentals"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mImage Load (0.2ms)[0m  [1mSELECT "images".* FROM "images" WHERE "images"."rental_id" = ?[0m  [["rental_id", 1]]
+  [1m[35mReview Load (0.1ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."rental_id" = ?  [["rental_id", 1]]
+  Rendered reviews/_form.html.erb (2.4ms)
+  Rendered images/_form.html.erb (0.6ms)
+  Rendered rentals/show.html.erb within layouts/application (11.7ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+Completed 200 OK in 416ms (Views: 411.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-16 15:05:08 -0700
+Processing by RentalsController#index as HTML
+  [1m[36mRental Load (0.3ms)[0m  [1mSELECT "rentals".* FROM "rentals"[0m
+  Rendered rentals/index.html.erb within layouts/application (4.0ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 353ms (Views: 352.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-16 15:05:12 -0700
+Processing by RentalsController#index as HTML
+  [1m[35mRental Load (0.3ms)[0m  SELECT "rentals".* FROM "rentals"
+  Rendered rentals/index.html.erb within layouts/application (3.4ms)
+  Rendered layouts/_header.html.erb (0.6ms)
+Completed 200 OK in 276ms (Views: 274.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rentals/new" for 127.0.0.1 at 2016-10-16 15:05:14 -0700
+Processing by RentalsController#new as HTML
+  Rendered rentals/_form.html.erb (14.1ms)
+  Rendered rentals/new.html.erb within layouts/application (20.5ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 288ms (Views: 287.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-16 15:05:16 -0700
+Processing by RentalsController#index as HTML
+  [1m[36mRental Load (0.3ms)[0m  [1mSELECT "rentals".* FROM "rentals"[0m
+  Rendered rentals/index.html.erb within layouts/application (4.5ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+Completed 200 OK in 345ms (Views: 343.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rentals/1" for 127.0.0.1 at 2016-10-16 15:05:19 -0700
+Processing by RentalsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mRental Load (0.2ms)[0m  SELECT  "rentals".* FROM "rentals" WHERE "rentals"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mImage Load (0.2ms)[0m  [1mSELECT "images".* FROM "images" WHERE "images"."rental_id" = ?[0m  [["rental_id", 1]]
+  [1m[35mReview Load (0.2ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."rental_id" = ?  [["rental_id", 1]]
+  Rendered reviews/_form.html.erb (6.6ms)
+  Rendered images/_form.html.erb (0.8ms)
+  Rendered rentals/show.html.erb within layouts/application (16.9ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 474ms (Views: 468.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/rentals/new" for 127.0.0.1 at 2016-10-16 15:05:27 -0700
+Processing by RentalsController#new as HTML
+  Rendered rentals/_form.html.erb (27.6ms)
+  Rendered rentals/new.html.erb within layouts/application (30.1ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 384ms (Views: 383.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-16 15:05:28 -0700
+Processing by RentalsController#index as HTML
+  [1m[36mRental Load (0.3ms)[0m  [1mSELECT "rentals".* FROM "rentals"[0m
+  Rendered rentals/index.html.erb within layouts/application (4.6ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+Completed 200 OK in 466ms (Views: 465.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rentals/new" for 127.0.0.1 at 2016-10-16 15:05:33 -0700
+Processing by RentalsController#new as HTML
+  Rendered rentals/_form.html.erb (16.0ms)
+  Rendered rentals/new.html.erb within layouts/application (18.0ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 300ms (Views: 299.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rentals/new" for 127.0.0.1 at 2016-10-16 15:05:34 -0700
+Processing by RentalsController#new as HTML
+  Rendered rentals/_form.html.erb (14.1ms)
+  Rendered rentals/new.html.erb within layouts/application (15.4ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+Completed 200 OK in 318ms (Views: 316.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-16 15:05:34 -0700
+Processing by RentalsController#index as HTML
+  [1m[35mRental Load (0.3ms)[0m  SELECT "rentals".* FROM "rentals"
+  Rendered rentals/index.html.erb within layouts/application (4.4ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+Completed 200 OK in 278ms (Views: 276.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-16 15:05:35 -0700
+Processing by RentalsController#index as HTML
+  [1m[36mRental Load (0.6ms)[0m  [1mSELECT "rentals".* FROM "rentals"[0m
+  Rendered rentals/index.html.erb within layouts/application (5.6ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+Completed 200 OK in 326ms (Views: 324.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/rentals/1" for 127.0.0.1 at 2016-10-16 15:05:42 -0700
+Processing by RentalsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mRental Load (0.1ms)[0m  SELECT  "rentals".* FROM "rentals" WHERE "rentals"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mImage Load (0.2ms)[0m  [1mSELECT "images".* FROM "images" WHERE "images"."rental_id" = ?[0m  [["rental_id", 1]]
+  [1m[35mReview Load (0.2ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."rental_id" = ?  [["rental_id", 1]]
+  Rendered reviews/_form.html.erb (5.1ms)
+  Rendered images/_form.html.erb (0.6ms)
+  Rendered rentals/show.html.erb within layouts/application (12.1ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+Completed 200 OK in 304ms (Views: 299.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/rentals/1" for 127.0.0.1 at 2016-10-16 15:51:46 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RentalsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mRental Load (2.5ms)[0m  SELECT  "rentals".* FROM "rentals" WHERE "rentals"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mImage Load (0.2ms)[0m  [1mSELECT "images".* FROM "images" WHERE "images"."rental_id" = ?[0m  [["rental_id", 1]]
+  [1m[35mReview Load (0.2ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."rental_id" = ?  [["rental_id", 1]]
+  Rendered reviews/_form.html.erb (35.3ms)
+  Rendered images/_form.html.erb (5.8ms)
+  Rendered rentals/show.html.erb within layouts/application (62.5ms)
+  Rendered layouts/_header.html.erb (4.9ms)
+Completed 200 OK in 1404ms (Views: 1269.6ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-16 15:51:51 -0700
+Processing by RentalsController#index as HTML
+  [1m[36mRental Load (0.2ms)[0m  [1mSELECT "rentals".* FROM "rentals"[0m
+  Rendered rentals/index.html.erb within layouts/application (3.6ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+Completed 200 OK in 296ms (Views: 294.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rentals/new" for 127.0.0.1 at 2016-10-16 15:52:00 -0700
+Processing by RentalsController#new as HTML
+  Rendered rentals/_form.html.erb (17.1ms)
+  Rendered rentals/new.html.erb within layouts/application (18.9ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+Completed 200 OK in 250ms (Views: 249.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-16 15:52:02 -0700
+Processing by RentalsController#index as HTML
+  [1m[35mRental Load (0.3ms)[0m  SELECT "rentals".* FROM "rentals"
+  Rendered rentals/index.html.erb within layouts/application (4.2ms)
+  Rendered layouts/_header.html.erb (0.6ms)
+Completed 200 OK in 363ms (Views: 361.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-16 15:52:04 -0700
+Processing by RentalsController#index as HTML
+  [1m[36mRental Load (0.3ms)[0m  [1mSELECT "rentals".* FROM "rentals"[0m
+  Rendered rentals/index.html.erb within layouts/application (4.0ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+Completed 200 OK in 264ms (Views: 263.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-16 15:52:06 -0700
+Processing by RentalsController#index as HTML
+  [1m[35mRental Load (0.4ms)[0m  SELECT "rentals".* FROM "rentals"
+  Rendered rentals/index.html.erb within layouts/application (4.2ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+Completed 200 OK in 320ms (Views: 319.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-16 16:00:47 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RentalsController#index as HTML
+  [1m[35mRental Load (0.3ms)[0m  SELECT "rentals".* FROM "rentals"
+  Rendered rentals/index.html.erb within layouts/application (63.4ms)
+  Rendered layouts/_header.html.erb (9.1ms)
+Completed 200 OK in 1449ms (Views: 1422.7ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-16 16:00:48 -0700
+Processing by RentalsController#index as HTML
+  [1m[36mRental Load (0.3ms)[0m  [1mSELECT "rentals".* FROM "rentals"[0m
+  Rendered rentals/index.html.erb within layouts/application (3.4ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+Completed 200 OK in 319ms (Views: 317.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-16 16:00:51 -0700
+Processing by RentalsController#index as HTML
+  [1m[35mRental Load (0.2ms)[0m  SELECT "rentals".* FROM "rentals"
+  Rendered rentals/index.html.erb within layouts/application (2.7ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+Completed 200 OK in 208ms (Views: 207.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rentals/1" for 127.0.0.1 at 2016-10-16 16:00:55 -0700
+Processing by RentalsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRental Load (0.2ms)[0m  [1mSELECT  "rentals".* FROM "rentals" WHERE "rentals"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered rentals/show.html.erb within layouts/application (30.8ms)
+Completed 500 Internal Server Error in 102ms (ActiveRecord: 0.8ms)
+
+NoMethodError - undefined method `addr_full_address' for #<Rental:0x007fe64b02a808>
+Did you mean?  addr_full_adress
+               addr_full_adress=
+               addr_full_adress?
+               addr_full_adress_was:
+  activemodel (4.2.6) lib/active_model/attribute_methods.rb:433:in `method_missing'
+  app/views/rentals/show.html.erb:11:in `_app_views_rentals_show_html_erb__3518797424482680537_70313532859720'
+  actionview (4.2.6) lib/action_view/template.rb:145:in `block in render'
+  activesupport (4.2.6) lib/active_support/notifications.rb:166:in `instrument'
+  actionview (4.2.6) lib/action_view/template.rb:333:in `instrument'
+  actionview (4.2.6) lib/action_view/template.rb:143:in `render'
+  actionview (4.2.6) lib/action_view/renderer/template_renderer.rb:54:in `block (2 levels) in render_template'
+  actionview (4.2.6) lib/action_view/renderer/abstract_renderer.rb:39:in `block in instrument'
+  activesupport (4.2.6) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.6) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.6) lib/active_support/notifications.rb:164:in `instrument'
+  actionview (4.2.6) lib/action_view/renderer/abstract_renderer.rb:39:in `instrument'
+  actionview (4.2.6) lib/action_view/renderer/template_renderer.rb:53:in `block in render_template'
+  actionview (4.2.6) lib/action_view/renderer/template_renderer.rb:61:in `render_with_layout'
+  actionview (4.2.6) lib/action_view/renderer/template_renderer.rb:52:in `render_template'
+  actionview (4.2.6) lib/action_view/renderer/template_renderer.rb:14:in `render'
+  actionview (4.2.6) lib/action_view/renderer/renderer.rb:46:in `render_template'
+  actionview (4.2.6) lib/action_view/renderer/renderer.rb:27:in `render'
+  actionview (4.2.6) lib/action_view/rendering.rb:100:in `_render_template'
+  actionpack (4.2.6) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.2.6) lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (4.2.6) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.2.6) lib/action_controller/metal/renderers.rb:37:in `render_to_body'
+  actionpack (4.2.6) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.2.6) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.2.6) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+  activesupport (4.2.6) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/stephanieguest/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/benchmark.rb:308:in `realtime'
+  activesupport (4.2.6) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.2.6) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+  actionpack (4.2.6) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+  activerecord (4.2.6) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.2.6) lib/action_controller/metal/instrumentation.rb:43:in `render'
+  actionpack (4.2.6) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.2.6) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.2.6) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.6) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.6) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:92:in `__run_callbacks__'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:778:in `_run_process_action_callbacks'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.6) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.6) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.6) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.6) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.6) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.6) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.6) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.6) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.6) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.6) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.6) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.6) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.6) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.6) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.6) lib/action_dispatch/routing/route_set.rb:74:in `dispatch'
+  actionpack (4.2.6) lib/action_dispatch/routing/route_set.rb:43:in `serve'
+  actionpack (4.2.6) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.6) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.6) lib/action_dispatch/routing/route_set.rb:817:in `call'
+  warden (1.2.6) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.6) lib/warden/manager.rb:34:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.6) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.6) lib/active_record/connection_adapters/abstract/connection_pool.rb:653:in `call'
+  activerecord (4.2.6) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.6) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.1.0) lib/quiet_assets.rb:27:in `call_with_quiet_assets'
+  actionpack (4.2.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.6) lib/rails/engine.rb:518:in `call'
+  railties (4.2.6) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/stephanieguest/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /Users/stephanieguest/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /Users/stephanieguest/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+
+Started POST "/__better_errors/402201c592c98920/variables" for 127.0.0.1 at 2016-10-16 16:00:55 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-16 16:01:35 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RentalsController#index as HTML
+  [1m[35mRental Load (0.2ms)[0m  SELECT "rentals".* FROM "rentals"
+  Rendered rentals/index.html.erb within layouts/application (34.7ms)
+  Rendered layouts/_header.html.erb (5.9ms)
+Completed 200 OK in 1178ms (Views: 1156.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-16 16:01:37 -0700
+Processing by RentalsController#index as HTML
+  [1m[36mRental Load (0.2ms)[0m  [1mSELECT "rentals".* FROM "rentals"[0m
+  Rendered rentals/index.html.erb within layouts/application (2.7ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+Completed 200 OK in 234ms (Views: 232.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rentals/1" for 127.0.0.1 at 2016-10-16 16:01:42 -0700
+Processing by RentalsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mRental Load (0.2ms)[0m  SELECT  "rentals".* FROM "rentals" WHERE "rentals"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mImage Load (0.2ms)[0m  [1mSELECT "images".* FROM "images" WHERE "images"."rental_id" = ?[0m  [["rental_id", 1]]
+  [1m[35mReview Load (0.2ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."rental_id" = ?  [["rental_id", 1]]
+  Rendered reviews/_form.html.erb (31.2ms)
+  Rendered images/_form.html.erb (3.2ms)
+  Rendered rentals/show.html.erb within layouts/application (45.7ms)
+  Rendered layouts/_header.html.erb (0.5ms)
+Completed 200 OK in 369ms (Views: 304.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/rentals/1" for 127.0.0.1 at 2016-10-16 16:03:55 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RentalsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mRental Load (0.5ms)[0m  SELECT  "rentals".* FROM "rentals" WHERE "rentals"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mImage Load (0.2ms)[0m  [1mSELECT "images".* FROM "images" WHERE "images"."rental_id" = ?[0m  [["rental_id", 1]]
+  [1m[35mReview Load (0.2ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."rental_id" = ?  [["rental_id", 1]]
+  Rendered reviews/_form.html.erb (28.4ms)
+  Rendered images/_form.html.erb (2.5ms)
+  Rendered rentals/show.html.erb within layouts/application (46.0ms)
+  Rendered layouts/_header.html.erb (5.9ms)
+Completed 200 OK in 1271ms (Views: 1168.1ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/rentals/1" for 127.0.0.1 at 2016-10-16 16:06:30 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RentalsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mRental Load (0.2ms)[0m  SELECT  "rentals".* FROM "rentals" WHERE "rentals"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mImage Load (0.2ms)[0m  [1mSELECT "images".* FROM "images" WHERE "images"."rental_id" = ?[0m  [["rental_id", 1]]
+  [1m[35mReview Load (0.2ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."rental_id" = ?  [["rental_id", 1]]
+  Rendered reviews/_form.html.erb (31.1ms)
+  Rendered images/_form.html.erb (2.5ms)
+  Rendered rentals/show.html.erb within layouts/application (48.2ms)
+  Rendered layouts/_header.html.erb (5.2ms)
+Completed 200 OK in 1241ms (Views: 1142.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/index.html.erb" for 127.0.0.1 at 2016-10-16 16:06:51 -0700
+
+ActionController::RoutingError (No route matches [GET] "/index.html.erb"):
+  actionpack (4.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.1.0) lib/quiet_assets.rb:27:in `call_with_quiet_assets'
+  actionpack (4.2.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.6) lib/rails/engine.rb:518:in `call'
+  railties (4.2.6) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/stephanieguest/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /Users/stephanieguest/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /Users/stephanieguest/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /Users/stephanieguest/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /Users/stephanieguest/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (4.0ms)
+  Rendered /Users/stephanieguest/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (6.0ms)
+  Rendered /Users/stephanieguest/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.4ms)
+  Rendered /Users/stephanieguest/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (129.9ms)
+  Rendered /Users/stephanieguest/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/stephanieguest/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/stephanieguest/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/stephanieguest/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/stephanieguest/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (72.9ms)
+  Rendered /Users/stephanieguest/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.8ms)
+  Rendered /Users/stephanieguest/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.9ms)
+  Rendered /Users/stephanieguest/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (165.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-16 16:15:20 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RentalsController#index as HTML
+  [1m[35mRental Load (2.5ms)[0m  SELECT "rentals".* FROM "rentals"
+  Rendered rentals/index.html.erb within layouts/application (46.0ms)
+  Rendered layouts/_header.html.erb (8.2ms)
+Completed 200 OK in 2331ms (Views: 2293.6ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/rentals/1" for 127.0.0.1 at 2016-10-16 16:15:28 -0700
+Processing by RentalsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRental Load (0.3ms)[0m  [1mSELECT  "rentals".* FROM "rentals" WHERE "rentals"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mImage Load (0.2ms)[0m  SELECT "images".* FROM "images" WHERE "images"."rental_id" = ?  [["rental_id", 1]]
+  [1m[36mReview Load (0.2ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."rental_id" = ?[0m  [["rental_id", 1]]
+  Rendered reviews/_form.html.erb (84.9ms)
+  Rendered images/_form.html.erb (5.1ms)
+  Rendered rentals/show.html.erb within layouts/application (105.4ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 542ms (Views: 430.3ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-16 16:40:17 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RentalsController#index as HTML
+  [1m[35mRental Load (0.2ms)[0m  SELECT "rentals".* FROM "rentals"
+  Rendered rentals/index.html.erb within layouts/application (35.3ms)
+  Rendered layouts/_header.html.erb (4.6ms)
+Completed 200 OK in 1192ms (Views: 1167.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-16 16:40:18 -0700
+Processing by RentalsController#index as HTML
+  [1m[36mRental Load (0.2ms)[0m  [1mSELECT "rentals".* FROM "rentals"[0m
+  Rendered rentals/index.html.erb within layouts/application (2.1ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+Completed 200 OK in 230ms (Views: 229.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rentals/1" for 127.0.0.1 at 2016-10-16 16:40:23 -0700
+Processing by RentalsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mRental Load (0.2ms)[0m  SELECT  "rentals".* FROM "rentals" WHERE "rentals"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered rentals/show.html.erb within layouts/application (17.8ms)
+Completed 500 Internal Server Error in 92ms (ActiveRecord: 0.6ms)
+
+NoMethodError - undefined method `wifi' for #<Rental:0x007fe41a9aefd8>:
+  activemodel (4.2.6) lib/active_model/attribute_methods.rb:433:in `method_missing'
+  app/views/rentals/show.html.erb:98:in `_app_views_rentals_show_html_erb___852707045033142603_70308881458620'
+  actionview (4.2.6) lib/action_view/template.rb:145:in `block in render'
+  activesupport (4.2.6) lib/active_support/notifications.rb:166:in `instrument'
+  actionview (4.2.6) lib/action_view/template.rb:333:in `instrument'
+  actionview (4.2.6) lib/action_view/template.rb:143:in `render'
+  actionview (4.2.6) lib/action_view/renderer/template_renderer.rb:54:in `block (2 levels) in render_template'
+  actionview (4.2.6) lib/action_view/renderer/abstract_renderer.rb:39:in `block in instrument'
+  activesupport (4.2.6) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.6) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.6) lib/active_support/notifications.rb:164:in `instrument'
+  actionview (4.2.6) lib/action_view/renderer/abstract_renderer.rb:39:in `instrument'
+  actionview (4.2.6) lib/action_view/renderer/template_renderer.rb:53:in `block in render_template'
+  actionview (4.2.6) lib/action_view/renderer/template_renderer.rb:61:in `render_with_layout'
+  actionview (4.2.6) lib/action_view/renderer/template_renderer.rb:52:in `render_template'
+  actionview (4.2.6) lib/action_view/renderer/template_renderer.rb:14:in `render'
+  actionview (4.2.6) lib/action_view/renderer/renderer.rb:46:in `render_template'
+  actionview (4.2.6) lib/action_view/renderer/renderer.rb:27:in `render'
+  actionview (4.2.6) lib/action_view/rendering.rb:100:in `_render_template'
+  actionpack (4.2.6) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.2.6) lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (4.2.6) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.2.6) lib/action_controller/metal/renderers.rb:37:in `render_to_body'
+  actionpack (4.2.6) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.2.6) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.2.6) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+  activesupport (4.2.6) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/stephanieguest/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/benchmark.rb:308:in `realtime'
+  activesupport (4.2.6) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.2.6) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+  actionpack (4.2.6) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+  activerecord (4.2.6) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.2.6) lib/action_controller/metal/instrumentation.rb:43:in `render'
+  actionpack (4.2.6) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.2.6) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.2.6) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.6) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.6) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:92:in `__run_callbacks__'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:778:in `_run_process_action_callbacks'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.6) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.6) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.6) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.6) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.6) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.6) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.6) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.6) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.6) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.6) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.6) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.6) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.6) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.6) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.6) lib/action_dispatch/routing/route_set.rb:74:in `dispatch'
+  actionpack (4.2.6) lib/action_dispatch/routing/route_set.rb:43:in `serve'
+  actionpack (4.2.6) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.6) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.6) lib/action_dispatch/routing/route_set.rb:817:in `call'
+  warden (1.2.6) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.6) lib/warden/manager.rb:34:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.6) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.6) lib/active_record/connection_adapters/abstract/connection_pool.rb:653:in `call'
+  activerecord (4.2.6) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.6) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.1.0) lib/quiet_assets.rb:27:in `call_with_quiet_assets'
+  actionpack (4.2.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.6) lib/rails/engine.rb:518:in `call'
+  railties (4.2.6) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/stephanieguest/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /Users/stephanieguest/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /Users/stephanieguest/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+
+Started POST "/__better_errors/40b49832d94c98d0/variables" for 127.0.0.1 at 2016-10-16 16:40:23 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-16 16:40:52 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RentalsController#index as HTML
+  [1m[35mRental Load (0.2ms)[0m  SELECT "rentals".* FROM "rentals"
+  Rendered rentals/index.html.erb within layouts/application (33.3ms)
+  Rendered layouts/_header.html.erb (7.9ms)
+Completed 200 OK in 1183ms (Views: 1160.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-16 16:40:53 -0700
+Processing by RentalsController#index as HTML
+  [1m[36mRental Load (0.5ms)[0m  [1mSELECT "rentals".* FROM "rentals"[0m
+  Rendered rentals/index.html.erb within layouts/application (2.9ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+Completed 200 OK in 262ms (Views: 259.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/rentals/1" for 127.0.0.1 at 2016-10-16 16:40:56 -0700
+Processing by RentalsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mRental Load (0.2ms)[0m  SELECT  "rentals".* FROM "rentals" WHERE "rentals"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered rentals/show.html.erb within layouts/application (22.1ms)
+Completed 500 Internal Server Error in 85ms (ActiveRecord: 0.7ms)
+
+NoMethodError - undefined method `amen_wifi' for #<Rental:0x007f8c29378798>
+Did you mean?  amen_gym:
+  activemodel (4.2.6) lib/active_model/attribute_methods.rb:433:in `method_missing'
+  app/views/rentals/show.html.erb:98:in `_app_views_rentals_show_html_erb___988506682501516950_70119985878340'
+  actionview (4.2.6) lib/action_view/template.rb:145:in `block in render'
+  activesupport (4.2.6) lib/active_support/notifications.rb:166:in `instrument'
+  actionview (4.2.6) lib/action_view/template.rb:333:in `instrument'
+  actionview (4.2.6) lib/action_view/template.rb:143:in `render'
+  actionview (4.2.6) lib/action_view/renderer/template_renderer.rb:54:in `block (2 levels) in render_template'
+  actionview (4.2.6) lib/action_view/renderer/abstract_renderer.rb:39:in `block in instrument'
+  activesupport (4.2.6) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.6) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.6) lib/active_support/notifications.rb:164:in `instrument'
+  actionview (4.2.6) lib/action_view/renderer/abstract_renderer.rb:39:in `instrument'
+  actionview (4.2.6) lib/action_view/renderer/template_renderer.rb:53:in `block in render_template'
+  actionview (4.2.6) lib/action_view/renderer/template_renderer.rb:61:in `render_with_layout'
+  actionview (4.2.6) lib/action_view/renderer/template_renderer.rb:52:in `render_template'
+  actionview (4.2.6) lib/action_view/renderer/template_renderer.rb:14:in `render'
+  actionview (4.2.6) lib/action_view/renderer/renderer.rb:46:in `render_template'
+  actionview (4.2.6) lib/action_view/renderer/renderer.rb:27:in `render'
+  actionview (4.2.6) lib/action_view/rendering.rb:100:in `_render_template'
+  actionpack (4.2.6) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.2.6) lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (4.2.6) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.2.6) lib/action_controller/metal/renderers.rb:37:in `render_to_body'
+  actionpack (4.2.6) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.2.6) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.2.6) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+  activesupport (4.2.6) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/stephanieguest/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/benchmark.rb:308:in `realtime'
+  activesupport (4.2.6) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.2.6) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+  actionpack (4.2.6) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+  activerecord (4.2.6) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.2.6) lib/action_controller/metal/instrumentation.rb:43:in `render'
+  actionpack (4.2.6) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.2.6) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.2.6) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.6) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.6) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:92:in `__run_callbacks__'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:778:in `_run_process_action_callbacks'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.6) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.6) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.6) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.6) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.6) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.6) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.6) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.6) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.6) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.6) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.6) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.6) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.6) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.6) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.6) lib/action_dispatch/routing/route_set.rb:74:in `dispatch'
+  actionpack (4.2.6) lib/action_dispatch/routing/route_set.rb:43:in `serve'
+  actionpack (4.2.6) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.6) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.6) lib/action_dispatch/routing/route_set.rb:817:in `call'
+  warden (1.2.6) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.6) lib/warden/manager.rb:34:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.6) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.6) lib/active_record/connection_adapters/abstract/connection_pool.rb:653:in `call'
+  activerecord (4.2.6) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.6) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.1.0) lib/quiet_assets.rb:27:in `call_with_quiet_assets'
+  actionpack (4.2.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.6) lib/rails/engine.rb:518:in `call'
+  railties (4.2.6) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/stephanieguest/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /Users/stephanieguest/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /Users/stephanieguest/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+
+Started POST "/__better_errors/117baea189fc7e2f/variables" for 127.0.0.1 at 2016-10-16 16:40:56 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-16 16:41:32 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RentalsController#index as HTML
+  [1m[35mRental Load (0.4ms)[0m  SELECT "rentals".* FROM "rentals"
+  Rendered rentals/index.html.erb within layouts/application (38.8ms)
+  Rendered layouts/_header.html.erb (6.2ms)
+Completed 200 OK in 1208ms (Views: 1189.8ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-16 16:41:34 -0700
+Processing by RentalsController#index as HTML
+  [1m[36mRental Load (0.2ms)[0m  [1mSELECT "rentals".* FROM "rentals"[0m
+  Rendered rentals/index.html.erb within layouts/application (2.3ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+Completed 200 OK in 277ms (Views: 276.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rentals/1" for 127.0.0.1 at 2016-10-16 16:41:40 -0700
+Processing by RentalsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mRental Load (0.4ms)[0m  SELECT  "rentals".* FROM "rentals" WHERE "rentals"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mImage Load (0.2ms)[0m  [1mSELECT "images".* FROM "images" WHERE "images"."rental_id" = ?[0m  [["rental_id", 1]]
+  [1m[35mReview Load (0.2ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."rental_id" = ?  [["rental_id", 1]]
+  Rendered reviews/_form.html.erb (29.6ms)
+  Rendered images/_form.html.erb (3.1ms)
+  Rendered rentals/show.html.erb within layouts/application (45.3ms)
+  Rendered layouts/_header.html.erb (0.5ms)
+Completed 200 OK in 323ms (Views: 266.9ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/rentals/1" for 127.0.0.1 at 2016-10-16 16:47:21 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RentalsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mRental Load (0.4ms)[0m  SELECT  "rentals".* FROM "rentals" WHERE "rentals"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mImage Load (0.2ms)[0m  [1mSELECT "images".* FROM "images" WHERE "images"."rental_id" = ?[0m  [["rental_id", 1]]
+  [1m[35mReview Load (0.2ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."rental_id" = ?  [["rental_id", 1]]
+  Rendered reviews/_form.html.erb (30.5ms)
+  Rendered images/_form.html.erb (3.5ms)
+  Rendered rentals/show.html.erb within layouts/application (48.6ms)
+  Rendered layouts/_header.html.erb (4.4ms)
+Completed 200 OK in 1277ms (Views: 1175.6ms | ActiveRecord: 1.9ms)
