@@ -11295,3 +11295,168 @@ Processing by RentalsController#show as HTML
   Rendered rentals/show.html.erb within layouts/application (48.6ms)
   Rendered layouts/_header.html.erb (4.4ms)
 Completed 200 OK in 1277ms (Views: 1175.6ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-17 12:08:51 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RentalsController#index as HTML
+  [1m[35mRental Load (2.3ms)[0m  SELECT "rentals".* FROM "rentals"
+  Rendered rentals/index.html.erb within layouts/application (55.6ms)
+  Rendered layouts/_header.html.erb (8.8ms)
+Completed 200 OK in 3235ms (Views: 3193.7ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-17 12:08:55 -0700
+Processing by RentalsController#index as HTML
+  [1m[36mRental Load (0.2ms)[0m  [1mSELECT "rentals".* FROM "rentals"[0m
+  Rendered rentals/index.html.erb within layouts/application (3.8ms)
+  Rendered layouts/_header.html.erb (1.7ms)
+Completed 200 OK in 393ms (Views: 392.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rentals/new" for 127.0.0.1 at 2016-10-17 12:10:23 -0700
+Processing by RentalsController#new as HTML
+  Rendered rentals/_form.html.erb (118.1ms)
+  Rendered rentals/new.html.erb within layouts/application (124.5ms)
+  Rendered layouts/_header.html.erb (0.5ms)
+Completed 200 OK in 347ms (Views: 346.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-17 12:10:28 -0700
+Processing by RentalsController#index as HTML
+  [1m[35mRental Load (0.3ms)[0m  SELECT "rentals".* FROM "rentals"
+  Rendered rentals/index.html.erb within layouts/application (9.2ms)
+  Rendered layouts/_header.html.erb (0.6ms)
+Completed 200 OK in 302ms (Views: 301.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-17 12:10:29 -0700
+Processing by RentalsController#index as HTML
+  [1m[36mRental Load (0.2ms)[0m  [1mSELECT "rentals".* FROM "rentals"[0m
+  Rendered rentals/index.html.erb within layouts/application (3.1ms)
+  Rendered layouts/_header.html.erb (0.5ms)
+Completed 200 OK in 237ms (Views: 235.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-17 12:10:31 -0700
+Processing by RentalsController#index as HTML
+  [1m[35mRental Load (0.2ms)[0m  SELECT "rentals".* FROM "rentals"
+  Rendered rentals/index.html.erb within layouts/application (2.2ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 244ms (Views: 242.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rentals/1" for 127.0.0.1 at 2016-10-17 12:10:52 -0700
+Processing by RentalsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRental Load (0.2ms)[0m  [1mSELECT  "rentals".* FROM "rentals" WHERE "rentals"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mImage Load (0.3ms)[0m  SELECT "images".* FROM "images" WHERE "images"."rental_id" = ?  [["rental_id", 1]]
+  [1m[36mReview Load (0.2ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."rental_id" = ?[0m  [["rental_id", 1]]
+  Rendered reviews/_form.html.erb (8.1ms)
+  Rendered images/_form.html.erb (4.9ms)
+  Rendered rentals/show.html.erb within layouts/application (30.2ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+Completed 200 OK in 391ms (Views: 283.0ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/rentals/1" for 127.0.0.1 at 2016-10-17 12:14:27 -0700
+Processing by RentalsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mRental Load (0.2ms)[0m  SELECT  "rentals".* FROM "rentals" WHERE "rentals"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mImage Load (0.1ms)[0m  [1mSELECT "images".* FROM "images" WHERE "images"."rental_id" = ?[0m  [["rental_id", 1]]
+  [1m[35mReview Load (0.1ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."rental_id" = ?  [["rental_id", 1]]
+  Rendered reviews/_form.html.erb (2.8ms)
+  Rendered images/_form.html.erb (0.8ms)
+  Rendered rentals/show.html.erb within layouts/application (9.9ms)
+  Rendered layouts/_header.html.erb (0.6ms)
+Completed 200 OK in 256ms (Views: 252.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/rentals/1" for 127.0.0.1 at 2016-10-17 12:14:30 -0700
+Processing by RentalsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRental Load (0.2ms)[0m  [1mSELECT  "rentals".* FROM "rentals" WHERE "rentals"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mImage Load (0.1ms)[0m  SELECT "images".* FROM "images" WHERE "images"."rental_id" = ?  [["rental_id", 1]]
+  [1m[36mReview Load (0.2ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."rental_id" = ?[0m  [["rental_id", 1]]
+  Rendered reviews/_form.html.erb (3.0ms)
+  Rendered images/_form.html.erb (0.7ms)
+  Rendered rentals/show.html.erb within layouts/application (11.9ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+Completed 200 OK in 463ms (Views: 459.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-17 12:14:31 -0700
+Processing by RentalsController#index as HTML
+  [1m[35mRental Load (0.2ms)[0m  SELECT "rentals".* FROM "rentals"
+  Rendered rentals/index.html.erb within layouts/application (3.9ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+Completed 200 OK in 355ms (Views: 353.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-17 12:18:07 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RentalsController#index as HTML
+  [1m[35mRental Load (0.2ms)[0m  SELECT "rentals".* FROM "rentals"
+  Rendered rentals/index.html.erb within layouts/application (32.1ms)
+  Rendered layouts/_header.html.erb (4.6ms)
+Completed 200 OK in 1152ms (Views: 1129.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/rentals/1" for 127.0.0.1 at 2016-10-17 12:18:12 -0700
+Processing by RentalsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRental Load (0.5ms)[0m  [1mSELECT  "rentals".* FROM "rentals" WHERE "rentals"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mImage Load (0.2ms)[0m  SELECT "images".* FROM "images" WHERE "images"."rental_id" = ?  [["rental_id", 1]]
+  [1m[36mReview Load (0.2ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."rental_id" = ?[0m  [["rental_id", 1]]
+  Rendered reviews/_form.html.erb (31.0ms)
+  Rendered images/_form.html.erb (3.5ms)
+  Rendered rentals/show.html.erb within layouts/application (44.9ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+Completed 200 OK in 349ms (Views: 285.6ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/rentals/1" for 127.0.0.1 at 2016-10-17 12:19:16 -0700
+Processing by RentalsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mRental Load (0.1ms)[0m  SELECT  "rentals".* FROM "rentals" WHERE "rentals"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mImage Load (0.1ms)[0m  [1mSELECT "images".* FROM "images" WHERE "images"."rental_id" = ?[0m  [["rental_id", 1]]
+  [1m[35mReview Load (0.1ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."rental_id" = ?  [["rental_id", 1]]
+  Rendered reviews/_form.html.erb (3.3ms)
+  Rendered images/_form.html.erb (0.5ms)
+  Rendered rentals/show.html.erb within layouts/application (12.2ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+Completed 200 OK in 258ms (Views: 255.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rentals/1" for 127.0.0.1 at 2016-10-17 12:21:49 -0700
+Processing by RentalsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRental Load (0.2ms)[0m  [1mSELECT  "rentals".* FROM "rentals" WHERE "rentals"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mImage Load (0.1ms)[0m  SELECT "images".* FROM "images" WHERE "images"."rental_id" = ?  [["rental_id", 1]]
+  [1m[36mReview Load (0.1ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."rental_id" = ?[0m  [["rental_id", 1]]
+  Rendered reviews/_form.html.erb (2.6ms)
+  Rendered images/_form.html.erb (0.5ms)
+  Rendered rentals/show.html.erb within layouts/application (10.5ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+Completed 200 OK in 264ms (Views: 259.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rentals/1" for 127.0.0.1 at 2016-10-17 12:23:46 -0700
+Processing by RentalsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mRental Load (0.1ms)[0m  SELECT  "rentals".* FROM "rentals" WHERE "rentals"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mImage Load (0.1ms)[0m  [1mSELECT "images".* FROM "images" WHERE "images"."rental_id" = ?[0m  [["rental_id", 1]]
+  [1m[35mReview Load (0.1ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."rental_id" = ?  [["rental_id", 1]]
+  Rendered reviews/_form.html.erb (2.6ms)
+  Rendered images/_form.html.erb (0.6ms)
+  Rendered rentals/show.html.erb within layouts/application (20.5ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+Completed 200 OK in 273ms (Views: 270.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-17 12:24:10 -0700
+Processing by RentalsController#index as HTML
+  [1m[36mRental Load (0.3ms)[0m  [1mSELECT "rentals".* FROM "rentals"[0m
+  Rendered rentals/index.html.erb within layouts/application (2.9ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 242ms (Views: 240.9ms | ActiveRecord: 0.3ms)

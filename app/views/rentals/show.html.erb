@@ -75,8 +75,14 @@
                 <% else %>
                     <td> Water </td>
                 <% end %>
-            </tr>            <tr>
-                <td> </td>
+			</tr>
+			<tr>
+                <td>
+                    <!-- Distance from CSUC -->
+                    <% if @rental.geocoded? %>
+                        <b> Distance from CSUC: <%= @rental.distance_from([39.7276114, -121.8479014]) %></b>
+                    <% end %>
+                </td>
                 <% if( @rental.amen_spa ) %>
                     <td> <b>Spa</b> </td>
                 <% else %>
@@ -89,7 +95,7 @@
                 <% end %>
             </tr>
             <tr>
-                <td> </td>
+                <td></td>
                 <% if( @rental.amen_gym ) %>
                     <td> <b>Gym</b> </td>
                 <% else %>
@@ -144,8 +150,8 @@
 </div>
 <div class="row">
 	<div class="small-12 small-centered columns">
-		<div style='width: 800px;'>
-			<div id="multi_markers" style='width: 800px; height: 400px;'></div>
+		<div style='width: 100%;'>
+			<div id="multi_markers" style='width: 100%; height: 400px;'></div>
 		</div>
 		<script type="text/javascript">
 			var handler = Gmaps.build('Google');
@@ -158,6 +164,7 @@
                 handler.getMap().setZoom(16);
                 });
 		</script>
+		<!-- Distance from CSUC -->
 		<% if @rental.geocoded? %>
 			<%= @rental.distance_from([39.7276114, -121.8479014]) %>
 		<% end %>
