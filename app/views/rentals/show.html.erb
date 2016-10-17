@@ -43,6 +43,11 @@
 </p>
 
 <p>
+<strong>Country:</strong>
+<%= @rental.addr_country %>
+</p>
+
+<p>
 <strong>Beds:</strong>
 <%= @rental.dets_beds %>
 </p>
@@ -146,6 +151,17 @@
 <strong>Wifi:</strong>
 <%= @rental.util_wifi %>
 </p>
+
+<p>
+<strong>Latitude:</strong>
+<%= @rental.latitude %>
+</p>
+
+<p>
+<strong>Longitude:</strong>
+<%= @rental.longitude %>
+</p>
+
 <table>
   <tr>
     <th>Overall &nbsp;</th>
@@ -170,6 +186,48 @@
 	<% end %>
 <% end %>
 </table>
+
+	<div style='width: 800px;'>
+	  	<div id="directions" style='width: 800px; height: 400px;'></div>
+  	</div>
+        <script type="text/javascript">
+	      // OPTION FOR ONE POINT (the rental) @sstrauser prefers two points below
+	      /*var handler = Gmaps.build('Google');
+	      handler.buildMap({ internal: {id: 'multi_markers'}}, function(){
+		    var markers = handler.addMarkers([
+			    { lat: <%= @rental.latitude%>, lng: <%=@rental.longitude%>},
+		    ]);
+		    handler.bounds.extendWith(markers);
+		    handler.fitMapToBounds();
+		    handler.getMap().setZoom(16);
+	       });*/
+		var directionsDisplay = new google.maps.DirectionsRenderer();
+		var directionsService = new google.maps.DirectionsService();
+         	function calcRoute() {
+		  var origin = new google.maps.LatLng(<%= @rental.latitude %>, <%= @rental.longitude %>);
+       	          var destination = new google.maps.LatLng(39.727900, -121.844173);
+													  					  
+		  var request = {
+		      origin:      origin, 
+		      destination: destination, 
+		      travelMode:  google.maps.TravelMode.WALKING
+		 };
+		 directionsService.route(request, function(response, status) {
+		    if (status == google.maps.DirectionsStatus.OK) {
+		      directionsDisplay.setDirections(response);
+		    }
+		  });
+		}
+
+	       calcRoute();
+	       var handler = Gmaps.build('Google');
+	       handler.buildMap({ provider: { scrollwheel: false }, internal: {id: 'directions'}}, function(){
+	         directionsDisplay.setMap(handler.getMap());
+	       });
+        </script>
+	<% if @rental.geocoded? %>
+		<%= @rental.distance_from([39.727975, -121.844173]) %>
+	<% end %>
 
 <h3>Create New Review</h3>
 <%= render 'reviews/form' %>

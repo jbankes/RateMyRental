@@ -25,6 +25,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'foundation-rails'
 
+gem 'geocoder'
+gem 'gmaps4rails'
 gem 'devise'
 
 gem 'quiet_assets', group: :development

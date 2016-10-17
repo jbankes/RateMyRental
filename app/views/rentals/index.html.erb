@@ -17,14 +17,8 @@
       <th></th>
       <th></th>
       <th></th>
+      <th>Image</th>
       <th>Full address</th>
-<!--
-      <th>Addr street name</th>
-      <th>Addr street num</th>
-      <th>Addr zip</th>
-      <th>Addr city</th>
-      <th>Addr state</th>
--->
       <th>Beds</th>
       <th>Baths</th>
       <th>Complex</th>
@@ -53,17 +47,15 @@
   <tbody>
     <% @rentals.each do |rental| %>
       <tr>
-        <td><%= link_to 'Show', rental %></td>
+	<td><%= link_to 'Show', rental, data: { no_turbolink: true } %></td>
         <td><%= link_to 'Edit', edit_rental_path(rental) %></td>
         <td><%= link_to 'Destroy', rental, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% rental.images.each do |image| %>
+          <% if image.default == true %>
+             <td><%= image_tag (root_url + "/images/" + image.filename) %>
+          <%end%>
+        <%end%>  
         <td><%= rental.addr_full_adress %></td>
-<!--
-        <td><%= rental.addr_street_name %></td>
-        <td><%= rental.addr_street_num %></td>
-        <td><%= rental.addr_zip %></td>
-        <td><%= rental.addr_city %></td>
-        <td><%= rental.addr_state %></td>
--->
         <td><%= rental.dets_beds %></td>
         <td><%= rental.dets_baths %></td>
         <td><%= rental.dets_is_complex %></td>
@@ -85,6 +77,8 @@
         <td><%= rental.util_water %></td>
         <td><%= rental.util_tv %></td>
         <td><%= rental.util_wifi %></td>
+	<%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{rental.latitude},#{rental.longitude}&markers=#{rental.latitude},#{rental.longitude}&zoom=17&size=440x200&key=AIzaSyA4BHW3txEdqfxzdTlPwaHsYRSZbfeIcd8",
+	class: 'img-fluid img-rounded', alt: "#{rental.addr_full_adress} on the map"%><br><br>
       </tr>
     <% end %>
   </tbody>
