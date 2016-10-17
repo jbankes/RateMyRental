@@ -170,11 +170,6 @@
 	<% end %>
 <% end %>
 </table>
-<% @rental.images.each do |image| %>
-	<% if !image.new_record? %>
-			<%= image_tag (root_url + "/images/" + image.filename), alt: image.filename, size: "200x200", overflow: "hidden", remote: image %><br>
-	<% end %>
-<% end %>
 
 <h3>Create New Review</h3>
 <%= render 'reviews/form' %>

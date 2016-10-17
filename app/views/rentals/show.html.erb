@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 <div class="row">
   <div class="small-6 large-centered columns">
-		<div id="owl-carousel" class="owl-carousel">
+		<div class="owl-carousel">
   		<% @rental.images.each do |image| %>
 				<% if !image.new_record? %>
     			<div class ="item">

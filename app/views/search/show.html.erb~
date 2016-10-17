@@ -1,0 +1,7 @@
+<% if @rentals.present? %>
+  <% @rentals.each do |rental| %>
+    <%= link_to 'Show', rental %>
+    <%= rental.addr_full_adress %>
+<% else %>
+  <p>There are no rentals containing the term(s) <%= params[:search] %>.</p>
+<% end %>

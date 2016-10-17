@@ -1,4 +1,4 @@
-# .gitignore created for RateMyRental at CSU CHICO
+#.gitignore created for RateMyRental at CSU CHICO
 *.rbc
 capybara-*.html
 .rspec
@@ -43,3 +43,7 @@ bower.json
 
 # Ignore Byebug command history file.
 .byebug_history
+
+#Vagrant
+Vagrantfile
+.vagrant/
