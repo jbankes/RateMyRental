@@ -1,9 +1,18 @@
 class SearchController < ApplicationController
  
   def show
-    if params[:search]
-    @rentals = Rental.search(params[:search])
+    @filterrific = initialize_filterrific(
+    Rental,
+    params[:filterrific],
+		select_options: {
+        beds: Rental.options_for_select
+      }
+  ) or return
+  @rentals = @filterrific.find
+
+  respond_to do |format|
+    format.html
+    format.js
     end
-    render `search/show`
   end
 end

@@ -18,6 +18,7 @@
 //= require turbolinks
 //= require_tree .
 //= require owl.carousel
+//= require filterrific/filterrific-jquery
 
 $(document).foundation();
 
