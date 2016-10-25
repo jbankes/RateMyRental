@@ -5,5 +5,3 @@
 language: ruby
 rvm:
   - 2.3
-# Install Dependencies
-bundle install --jobs=3 --retry=3
