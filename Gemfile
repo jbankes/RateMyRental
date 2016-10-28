@@ -40,6 +40,19 @@ gem 'binding_of_caller', group: :development
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# Development and Testing Gems
+group :development, :test do
+  gem 'rspec-rails'
+end
+
+# Needed for testing
+group :test do
+  gem 'rake'
+end
+
+# Code coverage implementation
+gem 'simplecov', :require => false, :group => :test
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
