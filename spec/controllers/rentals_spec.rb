@@ -30,4 +30,5 @@ RSpec.describe RentalsController, :type => :controller do
     end
   end
 
+
 end
