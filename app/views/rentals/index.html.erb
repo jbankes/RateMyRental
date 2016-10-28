@@ -3,12 +3,14 @@
 <h1>Listing Rentals</h1>
 
 <div class="SearchBar">
-<%= form_tag(search_show_path, :method => "get", id: "search-form") do %>
-<%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
-<%= submit_tag "Search" %>
-<% end %>
-
-
+	<%= form_for_filterrific @filterrific, :url => search_show_path do |f| %>
+  	<div>
+    	Search
+    	<%= f.text_field(
+      	:search_query,
+    	) %>
+  	</div>
+	<% end %>
 </div>
 
 <table>
