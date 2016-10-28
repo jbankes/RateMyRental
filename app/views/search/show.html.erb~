@@ -6,11 +6,11 @@
 					<%= form_for_filterrific @filterrific do |f| %>
 						<div>
 							<%= f.label :washer_dryer, "Washer&Dryer" %>
-							<%= f.check_box(:washer_dryer) %>
+							<%= f.check_box :washer_dryer,{}, '1', '' %>
 						</div>
 						<div>
 							<%= f.label :parking, "Parking" %>
-							<%= f.check_box(:parking) %>
+							<%= f.check_box :parking,{}, '1', '' %>
 						</div>
 					<div>
     				Beds
@@ -20,6 +20,66 @@
      					 { include_blank: '- Any -' }
     				) %>
   				</div>
+					<div>
+    				Baths
+    				<%= f.select(
+      				:baths,
+      				@filterrific.select_options[:baths],
+     					 { include_blank: '- Any -' }
+    				) %>
+  				</div>
+					<div>
+							<%= f.label :pets, "Pets" %>
+							<%= f.check_box :pets,{}, '1', ''  %>
+					</div>
+					<div>
+							<%= f.label :pool, "Pool" %>
+							<%= f.check_box :pool,{}, '1', '' %>
+					</div>
+					<div>
+							<%= f.label :spa, "Spa" %>
+							<%= f.check_box :spa,{}, '1', ''  %>
+					</div>
+					<div>
+							<%= f.label :gym, "Gym" %>
+							<%= f.check_box :gym,{}, '1', '' %>
+					</div>
+					<div>
+							<%= f.label :dishwasher, "Dishwasher" %>
+							<%= f.check_box :dishwasher,{}, '1', '' %>
+					</div>
+					<div>
+							<%= f.label :central_air, "Central Air" %>
+							<%= f.check_box :central_air,{}, '1', '' %>
+					</div>
+					<div>
+							<%= f.label :heater, "Heater" %>
+							<%= f.check_box :heater, ,{}, '1', '' %>
+					</div>
+					<div>
+							<%= f.label :gas, "Gas" %>
+							<%= f.check_box :gas,{}, '1', '' %>
+					</div>
+					<div>
+							<%= f.label :electricity, "Electricity" %>
+							<%= f.check_box :electricity,{}, '1', '' %>
+					</div>
+					<div>
+							<%= f.label :trash, "Trash" %>
+							<%= f.check_box :trash,{}, '1', '' %>
+					</div>
+					<div>
+							<%= f.label :water, "Water" %>
+							<%= f.check_box :water,{}, '1', '' %>
+					</div>
+					<div>
+							<%= f.label :tv, "TV" %>
+							<%= f.check_box :tv,{}, '1', '' %>
+					</div>
+					<div>
+							<%= f.label :wifi, "Wifi" %>
+							<%= f.check_box :wifi,{}, '1', '' %>
+					</div>
        		<%= f.hidden_field (:search_query) %>
  					 <%= f.submit 'Filter'%>
 					<% end %>
@@ -28,7 +88,7 @@
 		</ul>
 	</div>
 
-<div class="SearchBar">
+<div class="medium-8 columns">
 <%= form_for_filterrific @filterrific, :url => search_show_path do |f| %>
   <div>
     Search
