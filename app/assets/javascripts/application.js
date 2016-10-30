@@ -18,16 +18,16 @@
 //= require turbolinks
 //= require_tree .
 //= require owl.carousel
+//= require filterrific/filterrific-jquery
 
 $(document).foundation();
 
 $(document).ready(function(){
-	$("#owl-carousel").owlCarousel({
+	$(".owl-carousel").owlCarousel({
 		navigation:true,
 		paginationSpeed : 400,
 		slideSpeed : 300,
 		singleItem : true,
-		autoHeight : true,
 	});
 });
 

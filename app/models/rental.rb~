@@ -26,7 +26,7 @@ class Rental < ActiveRecord::Base
 		end
 	}
   scope :parking, lambda { |parking|
-		if parking == "0"
+		if parking == 0
 			where(amen_parking: false)
 		else
 			where(amen_parking: true)

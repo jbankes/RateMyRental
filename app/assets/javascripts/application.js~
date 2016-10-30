@@ -10,8 +10,9 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require gmaps/google
+//= require underscore.js
 //= require jquery
-//= require jquery.turbolinks
 //= require jquery_ujs
 //= require foundation
 //= require turbolinks
@@ -21,12 +22,11 @@
 $(document).foundation();
 
 $(document).ready(function(){
-	$("#owl-carousel").owlCarousel({
+	$(".owl-carousel").owlCarousel({
 		navigation:true,
 		paginationSpeed : 400,
 		slideSpeed : 300,
 		singleItem : true,
-		autoHeight : true,
 	});
 });
 

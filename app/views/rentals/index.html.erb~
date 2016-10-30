@@ -1,83 +1,20 @@
 <p id="notice"><%= notice %></p>
-<!-- Top Bar -->
-<div id="top_bar" class="row">
-	<div class="small-3 columns">
-		Rate My Rental
-	</div>
-	<div class="small-7 columns">
 
-	</div>
-	<div class="small-1 columns">
-		<!-- could't get login to link correctly -->
-		<a id="login_button" href="#" class="button">LOGIN</a>
-	</div>
-	<div class="small-1 columns">
-		<%= link_to "<button id='add_button'>ADD</button>".html_safe, new_rental_path %>
-	</div>
-</div>
-<!-- Search Bar -->
-<form>
-<div id="search_bar" class="row">
-	<div class="large-12 columns">
-		<div class="row collapse">
-			<div class="small-10 small-center columns">
-				<input id="search_input" type="text" placeholder="Type adress here...">	
-			</div>
-			<div class="small-2 columns">
-				<a id="search_button" href="#" class="button postfix">Search</a>
-			</div>
-		</div>
-	</div>
-</div>
-</form>
-<!-- Rental Gallery -->
-<div id="rental_gallery" class="row">
-	<div class="small-1 columns">
-		Left arrow
-	</div>
-	<div class="small-3 columns">
-        Left Rental
-    </div>
-    <div class="small-4 columns">
-        Middle Rental 
-    </div>
-    <div class="small-3 columns">
-        Right Rental
-    </div>
-    <div class="small-1 columns">
-        Right arrow
-    </div>
-</div>
-<!-- Mission Statement Title-->
-<div id="mission_title" class="row">
-	<div class="small-12 columns">
-		<h3>Rate My Rentals Mission ...</h3>
-	</div>
-</div>
-<!-- Mission Statement Contents -->
-<div id="mission_statement" class="row">
-	<div class="small-12 columns">
-	<p>Mission Statement Contents. The mission statement should guide the actions of the organization, spell out its overall goal, provide a path, and guide decision-making. It provides "the framework or context within which the company's strategies are formulated." It is like a goal for what the company wants to do for the world.
-	</p>
-	</div>
-</div>
-<!-- Contact Us -->
-<div id="footer" class="row">
-	<div class="small-12 columns">
-		<i>Contact Us:</i> PHONE | EMAIL
-	</div>
-</div>
 <h1>Listing Rentals</h1>
 
 <div class="SearchBar">
-	<%= form_for_filterrific @filterrific, :url => search_show_path do |f| %>
-  	<div>
-    	Search
-    	<%= f.text_field(
-      	:search_query,
-    	) %>
-  	</div>
-	<% end %>
+<%= form_for_filterrific @filterrific, :url => search_show_path do |f| %>
+  <div>
+    Search
+    <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
+    <%= f.text_field(
+      :search_query,
+      class: 'filterrific-periodically-observed'
+    ) %>
+  </div>
+<% end %>
+
+
 </div>
 
 <table>

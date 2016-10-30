@@ -4,7 +4,11 @@ class RentalsController < ApplicationController
   # GET /rentals
   # GET /rentals.json
   def index
-    @rentals = Rental.all
+    @filterrific = initialize_filterrific(
+    	Rental,
+   		params[:filterrific]
+  	) or return
+		@rentals = Rental.all
   end
 
   # GET /rentals/1

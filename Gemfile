@@ -13,6 +13,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+# gem for advance search
+gem 'filterrific'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -37,6 +39,19 @@ gem 'binding_of_caller', group: :development
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+
+# Development and Testing Gems
+group :development, :test do
+  gem 'rspec-rails'
+end
+
+# Needed for testing
+group :test do
+  gem 'rake'
+end
+
+# Code coverage implementation
+gem 'simplecov', :require => false, :group => :test
 
 # Use Unicorn as the app server
 # gem 'unicorn'
