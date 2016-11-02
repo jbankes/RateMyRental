@@ -32,17 +32,6 @@
 <br>
 <!-- RENTAL LISTINGS -->
 <div id="rental_listings">
-	<!-- @rental.each_slice(3) -->
-	<!-- https://github.com/kristianmandrup/rails-gallery might be an option -->
-    <% @rentals.each do |rental| %>
-		<div class="row">	
-		<%rental.images.each do |image| %>
-          	<%if image.default == true %>
-             	<%= image_tag (root_url + '/images/' + image.filename) %>
-          	<%end%>
-        <%end%>
-		</div>
-    <% end %>
 </div>
 <!-- MISSION STATEMENT-->
 <div id="mission_statement">
