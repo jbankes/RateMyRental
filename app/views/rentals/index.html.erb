@@ -1,4 +1,4 @@
-<!-- Top Bar -->
+<!-- TOP BAR -->
 <div id="top_bar" class="top-bar">
   <div class="top-bar-left">
     <ul class="dropdown menu" data-dropdown-menu>
@@ -10,11 +10,11 @@
 		<!-- Need to fix button link -->
       	<li><a id="login_button" href="#" class="button">LOGIN</a></li>
 		<!-- Need to make link a button -->
-		<li id="top_bar"><%= link_to "<button id='add_button'>ADD</button>".html_safe, new_rental_path %></li>
+		<li id="top_bar"><%= link_to "<a id='add_button' href='#' class='button'>ADD</a>".html_safe, new_rental_path %></li>
     </ul>
   </div>
 </div>
-<!-- Search Bar -->
+<!-- SEARCH BAR -->
 <form>
 <div id="search_bar" class="row">
 	<div class="large-12 columns">
@@ -29,42 +29,31 @@
 	</div>
 </div>
 </form>
-<!-- Rental Gallery -->
-<div id="rental_gallery" class="row">
-	<div class="small-1 columns">
-		Left arrow
-	</div>
-	<div class="small-3 columns">
-        Left Rental
-    </div>
-    <div class="small-4 columns">
-        Middle Rental 
-    </div>
-    <div class="small-3 columns">
-        Right Rental
-    </div>
-    <div class="small-1 columns">
-        Right arrow
-    </div>
+<br>
+<!-- RENTAL LISTINGS -->
+<div id="rental_listings">
+    <% @rentals.each do |rental| %>
+      <div class="img">
+		<a href="<%= link_to 'Show', rental, data: {no_turbolink:true} %>">
+			<%rental.images.each do |image| %>
+          		<%if image.default == true %>
+             		<img src="<%= image_tag (root_url + '/images/' + image.filename) %>" width="200" height="300">
+          		<%end%>
+        	<%end%>
+		</a>
+    <% end %>
 </div>
-<!-- Mission Statement Title-->
-<div id="mission_title" class="row">
-	<div class="small-12 columns">
-		<h3>Rate My Rentals Mission ...</h3>
-	</div>
-</div>
-<!-- Mission Statement Contents -->
-<div id="mission_statement" class="row">
-	<div class="small-12 columns">
-	<p>Mission Statement Contents. The mission statement should guide the actions of the organization, spell out its overall goal, provide a path, and guide decision-making. It provides "the framework or context within which the company's strategies are formulated." It is like a goal for what the company wants to do for the world.
+<!-- MISSION STATEMENT-->
+<div id="mission_statement">
+<br>
+	<h3 style="padding-left:30px;">Our Mission ...</h3>
+	<p style="font-style:italic; padding-left:30px;">Mission Statement Contents. The mission statement should guide the actions of the organization, spell out its overall goal, provide a path, and guide decision-making. It provides "the framework or context within which the company's strategies are formulated." It is like a goal for what the company wants to do for the world.
 	</p>
-	</div>
+<br>
 </div>
-<!-- Contact Us -->
-<div id="footer" class="row">
-	<div class="small-12 columns">
-		<i>Contact Us:</i> PHONE | EMAIL
-	</div>
+<!-- CONTACT US -->
+<div id="footer">
+		<i style="padding-left:30px;">Contact Us:</i> PHONE | EMAIL
 </div>
 <h1>Listing Rentals</h1>
 

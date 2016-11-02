@@ -1,7 +1,16 @@
 // Place all the styles related to the Rentals controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+#rating_title{
+	color:#660033;
+}
+#review_title{
+	background:#660033;
+	color:white;
+}
+#review, #ratings_div{
+	display: inline-block;
+}
 #top_bar {
 	background:#660033;
 	color:white;
