@@ -22,3 +22,10 @@
 	@include button-style(#800000, auto, auto);
 }
 
+@mixin arrow_color() {
+	$accordionmenu-arrow-color: #800000;
+}
+
+.arrow_style{
+	@include arrow_color();
+}
