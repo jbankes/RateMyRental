@@ -32,15 +32,16 @@
 <br>
 <!-- RENTAL LISTINGS -->
 <div id="rental_listings">
+	<!-- @rental.each_slice(3) -->
+	<!-- https://github.com/kristianmandrup/rails-gallery might be an option -->
     <% @rentals.each do |rental| %>
-      <div class="img">
-		<a href="<%= link_to 'Show', rental, data: {no_turbolink:true} %>">
-			<%rental.images.each do |image| %>
-          		<%if image.default == true %>
-             		<img src="<%= image_tag (root_url + '/images/' + image.filename) %>" width="200" height="300">
-          		<%end%>
-        	<%end%>
-		</a>
+		<div class="row">	
+		<%rental.images.each do |image| %>
+          	<%if image.default == true %>
+             	<%= image_tag (root_url + '/images/' + image.filename) %>
+          	<%end%>
+        <%end%>
+		</div>
     <% end %>
 </div>
 <!-- MISSION STATEMENT-->
