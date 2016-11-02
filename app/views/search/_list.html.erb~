@@ -3,7 +3,7 @@
 	<% if params[:filterrific][:search_query] %>
 		filters:
 		<% if params[:filterrific][:beds] %>
-			beds
+			<b><%= params[:filterrific][:search_query] %> Beds</b>
  		<% end %>
  	<% end %>
 	<% if @rentals.present? %>
