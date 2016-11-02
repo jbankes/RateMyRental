@@ -1,9 +1,25 @@
-	<div class="medium-2 columns">
-		<ul class="menu vertical" data-accordion-menu>
-			<li>
-				<a href="#">Advance search</a>
- 				<ul class="menu vertical nested">
-					<%= form_for_filterrific @filterrific do |f| %>
+<div class="medium-2 columns">
+	<fieldset class="fieldset">
+		<b>Advance search</b>
+		<%= form_for_filterrific @filterrific do |f| %>
+			<div>
+    				Beds
+    				<%= f.select(:beds,
+      					@filterrific.select_options[:beds],
+     					{ include_blank: '- Any -' }
+    				) %>
+  			</div>
+			<div>
+    				Baths
+    				<%= f.select(:baths,
+      					@filterrific.select_options[:baths],
+     					{ include_blank: '- Any -' }
+    				) %>
+  			</div>
+			<ul class="menu vertical" data-accordion-menu>
+				<li>
+					<a href="#">Amenities</a>
+					<ul class="menu vertical nested">
 						<div>
 							<%= f.label :washer_dryer, "Washer&Dryer" %>
 							<%= f.check_box :washer_dryer,{}, '1', '' %>
@@ -12,95 +28,89 @@
 							<%= f.label :parking, "Parking" %>
 							<%= f.check_box :parking,{}, '1', '' %>
 						</div>
-					<div>
-    				Beds
-    				<%= f.select(
-      				:beds,
-      				@filterrific.select_options[:beds],
-     					 { include_blank: '- Any -' }
-    				) %>
-  				</div>
-					<div>
-    				Baths
-    				<%= f.select(
-      				:baths,
-      				@filterrific.select_options[:baths],
-     					 { include_blank: '- Any -' }
-    				) %>
-  				</div>
-					<div>
+						<div>
 							<%= f.label :pets, "Pets" %>
 							<%= f.check_box :pets,{}, '1', ''  %>
-					</div>
-					<div>
+						</div>
+						<div>
 							<%= f.label :pool, "Pool" %>
 							<%= f.check_box :pool,{}, '1', '' %>
-					</div>
-					<div>
+						</div>
+						<div>
 							<%= f.label :spa, "Spa" %>
 							<%= f.check_box :spa,{}, '1', ''  %>
-					</div>
-					<div>
+						</div>
+						<div>
 							<%= f.label :gym, "Gym" %>
 							<%= f.check_box :gym,{}, '1', '' %>
-					</div>
-					<div>
+						</div>
+						<div>
 							<%= f.label :dishwasher, "Dishwasher" %>
 							<%= f.check_box :dishwasher,{}, '1', '' %>
-					</div>
-					<div>
+						</div>
+						<div>
 							<%= f.label :central_air, "Central Air" %>
 							<%= f.check_box :central_air,{}, '1', '' %>
-					</div>
-					<div>
+						</div>
+						<div>
 							<%= f.label :heater, "Heater" %>
-							<%= f.check_box :heater, ,{}, '1', '' %>
-					</div>
-					<div>
+							<%= f.check_box :heater ,{}, '1', '' %>
+						</div>
+					</ul>
+				</li>
+			</ul>
+			<ul class="menu vertical" data-accordion-menu>
+				<li>
+					<a href="#">Utilities</a>
+					<ul class="menu vertical nested">
+						<div>
 							<%= f.label :gas, "Gas" %>
 							<%= f.check_box :gas,{}, '1', '' %>
-					</div>
-					<div>
+						</div>
+						<div>
 							<%= f.label :electricity, "Electricity" %>
 							<%= f.check_box :electricity,{}, '1', '' %>
-					</div>
-					<div>
+						</div>
+						<div>
 							<%= f.label :trash, "Trash" %>
 							<%= f.check_box :trash,{}, '1', '' %>
-					</div>
-					<div>
+						</div>
+						<div>
 							<%= f.label :water, "Water" %>
 							<%= f.check_box :water,{}, '1', '' %>
-					</div>
-					<div>
+						</div>
+						<div>
 							<%= f.label :tv, "TV" %>
 							<%= f.check_box :tv,{}, '1', '' %>
-					</div>
-					<div>
+						</div>
+						<div>
 							<%= f.label :wifi, "Wifi" %>
 							<%= f.check_box :wifi,{}, '1', '' %>
-					</div>
-       		<%= f.hidden_field (:search_query) %>
- 					 <%= f.submit 'Filter'%>
-					<% end %>
-				</ul>
-			</li>
-		</ul>
-	</div>
-
+						</div>
+					</ul>
+				</li>
+			</ul>
+       			<%= f.hidden_field (:search_query) %>
+			<div class="text-center">
+				<%= f.submit 'Filter', :class=>"search_filter_button" %>
+			</div>
+		<% end %>
+	</fieldset>
+</div>
+<br>
 <div class="medium-8 columns">
-<%= form_for_filterrific @filterrific, :url => search_show_path do |f| %>
-  <div>
-    Search
-    <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
-    <%= f.text_field(
-      :search_query,
-      class: 'filterrific-periodically-observed'
-    ) %>
-  </div>
-<% end %>
-
-
+	<%= form_for_filterrific @filterrific, :url => search_show_path do |f| %>
+		<div>
+			<%# give the search field the 'filterrific-periodically-observed' class for live updates %>
+			<%= f.text_field(:search_query,
+      				class: 'filterrific-periodically-observed'
+    			) %>
+  		</div>
+		<div class="text-center">
+			<%= f.submit 'Search', :class=>"search_button" %>
+		</div>
+		<hr>
+	<% end %>
 </div>
 
 <%= render(
