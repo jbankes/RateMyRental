@@ -1,7 +1,49 @@
-<% if @rentals.present? %>
-  <% @rentals.each do |rental| %>
-    <%= link_to 'Show', rental %>
-    <%= rental.addr_full_adress %>
-<% else %>
-  <p>There are no rentals containing the term(s) <%= params[:search] %>.</p>
+	<div class="medium-2 columns">
+		<ul class="menu vertical" data-accordion-menu>
+			<li>
+				<a href="#">Advance search</a>
+ 				<ul class="menu vertical nested">
+					<%= form_for_filterrific @filterrific do |f| %>
+						<div>
+							<%= f.label :washer_dryer, "Washer&Dryer" %>
+							<%= f.check_box(:washer_dryer) %>
+						</div>
+						<div>
+							<%= f.label :parking, "Parking" %>
+							<%= f.check_box(:parking) %>
+						</div>
+					<div>
+    				Beds
+    				<%= f.select(
+      				:beds,
+      				@filterrific.select_options[:beds],
+     					 { include_blank: '- Any -' }
+    				) %>
+  				</div>
+       		<%= f.hidden_field (:search_query) %>
+ 					 <%= f.submit 'Filter'%>
+					<% end %>
+				</ul>
+			</li>
+		</ul>
+	</div>
+
+<div class="SearchBar">
+<%= form_for_filterrific @filterrific, :url => search_show_path do |f| %>
+  <div>
+    Search
+    <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
+    <%= f.text_field(
+      :search_query,
+      class: 'filterrific-periodically-observed'
+    ) %>
+  </div>
 <% end %>
+
+
+</div>
+
+<%= render(
+  partial: 'search/list',
+  locals: { rentals: @rentals }
+) %>
