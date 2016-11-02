@@ -1,0 +1,31 @@
+
+<div class="medium-8 columns">
+	<% if params[:filterrific][:search_query] %>
+		filters:
+		<% if params[:filterrific][:beds] %>
+			beds
+ 		<% end %>
+ 	<% end %>
+	<% if @rentals.present? %>
+		<% @rentals.each do |rental| %>
+			<div>
+				<%= link_to rental do %>
+					<div class="medium-3 columns">
+						<% rental.images.each do |image| %>
+							<% if image.default == true %>
+								<%= image_tag(image.filename, :class=>"thumbnail", size:"150") %>
+							<% end %>
+						<% end %>
+					</div>
+					<div>
+    						<b><%= rental.addr_full_adress %></b>
+					</div>
+				<% end %>
+			</div>
+			<hr>
+ 		<% end %>
+	<% else %>
+		<b>There are no rentals containing the term(s) <%= params[:filterrific][:search_query] %> try another address. </b>
+ 	<% end %>
+</div>
+

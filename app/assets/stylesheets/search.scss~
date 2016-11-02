@@ -1,0 +1,31 @@
+// Place all the styles related to the search controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'settings';
+@import 'foundation';
+@import 'button';
+
+
+.verticalLine {
+    border-right:  solid 1px #800000;
+}
+
+.search_button{
+	@include button();
+	@include button-style(#800000, auto, auto);
+
+	}
+
+.search_filter_button{
+	@include button();
+	@include button-size(small, true);
+	@include button-style(#800000, auto, auto);
+}
+
+@mixin arrow_color() {
+	$accordionmenu-arrow-color: #800000;
+}
+
+.arrow_style{
+	@include arrow_color();
+}
