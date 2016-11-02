@@ -1,5 +1,50 @@
-<p id="notice"><%= notice %></p>
-
+<!-- TOP BAR -->
+<div id="top_bar" class="top-bar">
+  <div class="top-bar-left">
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li id="top_bar" class="menu-text">Rate My Rental</li>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="menu">
+		<!-- Need to fix button link -->
+      	<li><a id="login_button" href="#" class="button">LOGIN</a></li>
+		<!-- Need to make link a button -->
+		<li id="top_bar"><%= link_to "<a id='add_button' href='#' class='button'>ADD</a>".html_safe, new_rental_path %></li>
+    </ul>
+  </div>
+</div>
+<!-- SEARCH BAR -->
+<form>
+<div id="search_bar" class="row">
+	<div class="large-12 columns">
+		<div class="row collapse">
+			<div class="small-10 small-center columns">
+				<input id="search_input" type="text" placeholder="Type adress here...">	
+			</div>
+			<div class="small-2 columns">
+				<a id="search_button" href="#" class="button postfix">Search</a>
+			</div>
+		</div>
+	</div>
+</div>
+</form>
+<br>
+<!-- RENTAL LISTINGS -->
+<div id="rental_listings">
+</div>
+<!-- MISSION STATEMENT-->
+<div id="mission_statement">
+<br>
+	<h3 style="padding-left:30px;">Our Mission ...</h3>
+	<p style="font-style:italic; padding-left:30px;">Mission Statement Contents. The mission statement should guide the actions of the organization, spell out its overall goal, provide a path, and guide decision-making. It provides "the framework or context within which the company's strategies are formulated." It is like a goal for what the company wants to do for the world.
+	</p>
+<br>
+</div>
+<!-- CONTACT US -->
+<div id="footer">
+		<i style="padding-left:30px;">Contact Us:</i> PHONE | EMAIL
+</div>
 <h1>Listing Rentals</h1>
 
 <div class="SearchBar">
