@@ -47,3 +47,6 @@ bower.json
 #Vagrant
 Vagrantfile
 .vagrant/
+
+# SimpleCov Testing
+coverage
