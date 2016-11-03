@@ -22,3 +22,11 @@
 	@include button-style(#800000, auto, auto);
 }
 
+.sumbit_link {
+	background:none!important;
+	border:none; 
+	padding:0!important;
+	font: inherit;
+	cursor: pointer;
+	color: red;
+}

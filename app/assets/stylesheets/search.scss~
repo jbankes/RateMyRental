@@ -22,10 +22,13 @@
 	@include button-style(#800000, auto, auto);
 }
 
-@mixin arrow_color() {
-	$accordionmenu-arrow-color: #800000;
-}
-
-.arrow_style{
-	@include arrow_color();
+.sumbit_link {
+	background:none!important;
+	border:none; 
+	padding:0!important;
+	font: inherit;
+     /*border is optional*/
+	border-bottom:1px solid #444; 
+	cursor: pointer;
+	color: red;
 }
