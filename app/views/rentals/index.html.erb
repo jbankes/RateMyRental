@@ -28,22 +28,25 @@
     </ul>
   </div>
 </div>
-
+<br>
 <!-- SEARCH BAR -->
-<form>
 <div id="search_bar" class="row">
 	<div class="large-12 columns">
 		<div class="row collapse">
-			<div class="small-10 small-center columns">
-				<input id="search_input" type="text" placeholder="Type adress here...">	
-			</div>
-			<div class="small-2 columns">
-				<a id="search_button" href="#" class="button postfix">Search</a>
+			<div class="small-12 small-center columns">
+				<div class="SearchBar">
+    				<%= form_for_filterrific @filterrific, :url => search_show_path do |f| %>
+    					<div>
+        					<%= f.text_field(
+        					:search_query,
+        					) %>
+    					</div>
+    				<% end %>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
-</form>
 <br>
 <!-- RENTAL LISTINGS -->
 <div id="rental_listings">
@@ -51,9 +54,8 @@
 <!-- MISSION STATEMENT-->
 <div id="mission_statement">
 <br>
-	<h3 style="padding-left:30px;">Our Mission ...</h3>
-	<p style="font-style:italic; padding-left:30px;">Mission Statement Contents. The mission statement should guide the actions of the organization, spell out its overall goal, provide a path, and guide decision-making. It provides "the framework or context within which the company's strategies are formulated." It is like a goal for what the company wants to do for the world.
-	</p>
+	<h4 style="padding-left:30px;">Our Mission ...</h4>
+	<p style="font-style:italic; padding-left:30px;">At Rate My Rental we strive to introduce and educate renters and make their home dreams a reality. </p>
 <br>
 </div>
 <!-- CONTACT US -->
@@ -62,16 +64,6 @@
 </div>
 <h1>Listing Rentals</h1>
 
-<div class="SearchBar">
-	<%= form_for_filterrific @filterrific, :url => search_show_path do |f| %>
-  	<div>
-    	Search
-    	<%= f.text_field(
-      	:search_query,
-    	) %>
-  	</div>
-	<% end %>
-</div>
 
 <table>
   <thead>
