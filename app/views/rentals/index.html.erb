@@ -15,129 +15,103 @@
   	</button>
 </div>
 <!-- TOP BAR -->
-<div id="top_bar" class="top-bar">
-  <div class="top-bar-left">
-    <ul class="dropdown menu" data-dropdown-menu>
-      <li id="top_bar" class="menu-text">Rate My Rental</li>
-    </ul>
-  </div>
-  <div class="top-bar-right">
-    <ul class="menu">
-      	<li id="top_bar"><a id="login_button" data-open="login_modal">LOGIN</a></li>
-		<li id="top_bar"><a id="add_button" data-open="add_modal">ADD</a> </li>
-    </ul>
+<div id="top_bar" data-sticky-container>
+  <div id="top_bar"class="title-bar" data-sticky data-options="marginBottom:0;" style="width:100%" data-top-anchor="1" data-btm-anchor="content:bottom">
+    <div class="title-bar-left">
+         <b style="color:#ffffff;">Rate My Rental</b>
+    </div>
+    <div class="title-bar-right">
+    	<a id="login_button" data-open="login_modal">LOGIN</a>
+    	<a id="add_button" data-open="add_modal">ADD</a>
+    </div>
   </div>
 </div>
 <br>
+<%= link_to 'New Rental', new_rental_path %>
 <!-- SEARCH BAR -->
 <div id="search_bar" class="row">
-	<div class="large-12 columns">
-		<div class="row collapse">
-			<div class="small-12 small-center columns">
-				<div class="SearchBar">
-    				<%= form_for_filterrific @filterrific, :url => search_show_path do |f| %>
-    					<div>
-        					<%= f.text_field(
-        					:search_query,
-        					) %>
-    					</div>
-    				<% end %>
-				</div>
-			</div>
+	<div id="search_bar" class="small-12 small-center columns">
+		<div id="search_bar"class="SearchBar">
+    		<%= form_for_filterrific @filterrific, :url => search_show_path do |f| %>
+    			<div>
+        			<%= f.text_field( :search_query,) %>
+    			</div>
+    		<% end %>
 		</div>
 	</div>
 </div>
-<br>
 <!-- RENTAL LISTINGS -->
-<div id="rental_listings">
-</div>
-<!-- MISSION STATEMENT-->
-<div id="mission_statement">
+<div id="rental_listings_div">
 <br>
-	<h4 style="padding-left:30px;">Our Mission ...</h4>
-	<p style="font-style:italic; padding-left:30px;">At Rate My Rental we strive to introduce and educate renters and make their home dreams a reality. </p>
-<br>
-</div>
-<!-- CONTACT US -->
-<div id="footer">
-		<i style="padding-left:30px;">Contact Us:</i> PHONE | EMAIL
-</div>
-<h1>Listing Rentals</h1>
-
-
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th>Image</th>
-      <th>Full address</th>
-      <th>Beds</th>
-      <th>Baths</th>
-      <th>Complex</th>
-      <th>Stories</th>
-      <th>Company Owned</th>
-      <th>Owner</th>
-      <th>Parking</th>
-      <th>Pets</th>
-      <th>Washer Dryer</th>
-      <th>Pool</th>
-      <th>Spa</th>
-      <th>Gym</th>
-      <th>Dishwasher</th>
-      <th>Central Air</th>
-      <th>Heater</th>
-      <th>Gas</th>
-      <th>Electricity</th>
-      <th>Trash</th>
-      <th>Water</th>
-      <th>Tv</th>
-      <th>Wifi</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
     <% @rentals.each do |rental| %>
-      <tr>
-	<td><%= link_to 'Show', rental, data: { no_turbolink: true } %></td>
-        <td><%= link_to 'Edit', edit_rental_path(rental) %></td>
-        <td><%= link_to 'Destroy', rental, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% rental.images.each do |image| %>
-          <% if image.default == true %>
-             <td><%= image_tag (root_url + "/images/" + image.filename) %>
-          <%end%>
-        <%end%>  
-        <td><%= rental.addr_full_adress %></td>
-        <td><%= rental.dets_beds %></td>
-        <td><%= rental.dets_baths %></td>
-        <td><%= rental.dets_is_complex %></td>
-        <td><%= rental.dets_stories %></td>
-        <td><%= rental.dets_company_owned %></td>
-        <td><%= rental.dets_owner %></td>
-        <td><%= rental.amen_parking %></td>
-        <td><%= rental.amen_pets %></td>
-        <td><%= rental.amen_washer_dryer %></td>
-        <td><%= rental.amen_pool %></td>
-        <td><%= rental.amen_spa %></td>
-        <td><%= rental.amen_gym %></td>
-        <td><%= rental.amen_dishwasher %></td>
-        <td><%= rental.amen_central_air %></td>
-        <td><%= rental.amen_heater %></td>
-        <td><%= rental.util_gas %></td>
-        <td><%= rental.util_electricity %></td>
-        <td><%= rental.util_trash %></td>
-        <td><%= rental.util_water %></td>
-        <td><%= rental.util_tv %></td>
-        <td><%= rental.util_wifi %></td>
-	<%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{rental.latitude},#{rental.longitude}&markers=#{rental.latitude},#{rental.longitude}&zoom=17&size=440x200&key=AIzaSyA4BHW3txEdqfxzdTlPwaHsYRSZbfeIcd8",
-	class: 'img-fluid img-rounded', alt: "#{rental.addr_full_adress} on the map"%><br><br>
-      </tr>
+    	<div id="rental_div" class="row">
+		<div class="small-12 small-center columns">
+			<div id="rental_default_image_div">
+    			<%= link_to 'Show', rental, data: { no_turbolink: true } %>
+        		<% rental.images.each do |image| %>
+          			<% if image.default == true %>
+             			<%= image_tag (root_url + "/images/" + image.filename) %>
+          			<%end%>
+        		<%end%>
+			</div>
+			<div id="addr_and_rating_div">
+				<ul>
+        			<li><%= rental.addr_full_adress %></li>
+					<li><b> Rating </b></li>
+				</ul>
+			</div>
+			<div id="details_div">
+				<ul>
+					<li><%= rental.dets_beds %> Bed </li>
+        			<li><%= rental.dets_baths %> Bath </li>
+					<li><b> Price </b></li>
+				</ul>
+			</div>
+			<div id="ammed_div">
+				<ul>
+					<%if(rental.amen_parking)%>
+						<li>Parking on site</li>
+					<%end%>
+                    <%if(rental.amen_pets)%>
+                        <li>Pets allowed</li>     
+                    <%end%> 
+                    <%if(rental.amen_washer_dryer)%>
+                        <li>Washer & Dryer</li>     
+                    <%end%> 
+                    <%if(rental.amen_pool)%>
+                        <li>Pool</li>     
+                    <%end%> 	
+                    <%if(rental.amen_spa)%>
+                        <li>Spa</li>     
+                    <%end%> 
+                    <%if(rental.amen_gym)%>
+                        <li>Gym</li>     
+                    <%end%> 
+                    <%if(rental.amen_dishwasher)%>
+                        <li>Dishwasher</li>     
+                    <%end%> 	
+                    <%if(rental.amen_central_air)%>
+                        <li>Central Air</li>     
+                    <%end%> 
+                    <%if(rental.amen_heater)%>
+                        <li>Heater</li>     
+                    <%end%> 
+				</ul>
+			</div>	
+		</div>
+		</div>
+		<br>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Rental', new_rental_path %>
+</div>
+<!-- MISSION STATEMENT & FOOTER -->
+<div id="footer" data-sticky-container>
+  <div id="footer"class="title-bar" data-sticky data-options="marginBottom:0;" style="width:100%" data-top-anchor="1" data-btm-anchor="content:bottom">
+    <div class="title-bar-left">
+    	<h4>Our Mission ...</h4>
+    	<i>At Rate My Rental we strive to introduce and educate renters and make their home dreams a reality. </i>
+	</div>
+    <div class="title-bar-right">
+		 Contact Us: PHONE | EMAIL 
+	</div>
+  </div>
+</div>
