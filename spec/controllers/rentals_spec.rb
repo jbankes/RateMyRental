@@ -1,5 +1,7 @@
 # Rentals Controller Spec
 require 'rails_helper'
+require 'rental'
+require 'review'
 
 RSpec.describe RentalsController, :type => :controller do
   describe 'GET #index' do
@@ -29,6 +31,22 @@ RSpec.describe RentalsController, :type => :controller do
       expect(response).to have_http_status(200)
     end
   end
+
+  describe 'GET #show rentals' do
+    context 'it respondes successfully' do
+      it 'responds with an HTTP 200 status code' do
+        expect(response).to be_success
+        expect(response).to have_http_status(200)
+      end
+    end
+
+    context 'creates the correct objects' do
+      it 'creates a new review object' do
+        expect(review).to be_a_new(Review)
+      end
+    end
+  end
+
 
 
 end
