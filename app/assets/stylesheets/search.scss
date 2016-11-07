@@ -7,19 +7,19 @@
 
 
 .verticalLine {
-    border-right:  solid 1px #800000;
+    border-right:  solid 1px #660033;
 }
 
 .search_button{
 	@include button();
-	@include button-style(#800000, auto, auto);
+	@include button-style(#660033, auto, auto);
 
 	}
 
 .search_filter_button{
 	@include button();
 	@include button-size(small, true);
-	@include button-style(#800000, auto, auto);
+	@include button-style(#660033, auto, auto);
 }
 
 .sumbit_link {
