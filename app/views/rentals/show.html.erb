@@ -1,14 +1,12 @@
 <!-- Top Bar -->
-<div id="top_bar" class="top-bar">
-  <div class="top-bar-left">
-    <ul class="dropdown menu" data-dropdown-menu>
-      <li id="top_bar" class="menu-text"><b><h2> < </h2></b></li>
-    </ul>
-  </div>
-  <div class="top-bar-right">
-    <ul class="dropdown menu" data-dropdown-menu>
-      <li id="top_bar" class="menu-text"><b><h2> <%=@rental.addr_full_adress %></h2></b></li>
-    </ul>
+<div id="rental_top_bar">
+  <div id="rental_top_bar"class="title-bar"  style="width:100%" data-top-anchor="1" data-btm-anchor="content:bottom">
+    <div class="title-bar-left">
+         <h3 style="color:#ffffff;"><</h3>
+    </div>
+    <div class="title-bar-right">
+        <h4><%=@rental.addr_full_adress %></h4>
+    </div>
   </div>
 </div>
 <br>
@@ -16,6 +14,7 @@
 <div class="row">
 	<div class="small-6 columns">
 		<b><h4 align="center"><%= @rental.dets_beds %> Bed | <%= @rental.dets_baths %> Bath | Calc $$ </h4></b>
+		<h6 align="center">Overall rating in stars </h6>
 	<br>
 		<table>
 			<tr>
@@ -87,7 +86,7 @@
                 <td>
                     <!-- Distance from CSUC -->
                     <% if @rental.geocoded? %>
-                        <b> Distance from CSUC: <%= @rental.distance_from([39.7276114, -121.8479014]) %></b>
+                        <b> Distance from CSUC: <%= @rental.distance_from([39.727900, -121.844173]) %></b>
                     <% end %>
                 </td>
                 <% if( @rental.amen_spa ) %>
@@ -203,6 +202,18 @@
 	<b><h2 align="center"> Reviews </h2></b>
 </div>
 <br>
+<!-- WRITE A REVIEW -->
+<div class="row">
+	<ul class="accordion" data-accordion>
+	<li id="accordion_review" class="accordion-item" data-accordion-item>
+		<a href="#" class="accordion-title">Write a review</a>
+		<div class="accordion-content" data-tab-content>
+			<%= render 'reviews/form' %>
+			<%= render 'images/form' %>
+		</div>
+	</li>
+	</ul>
+</div>
 <!-- REVIEWS -->
 <% @rental.reviews.each do |review| %>
 	<div class="row">
@@ -291,7 +302,8 @@
 
 <%= link_to 'Edit', edit_rental_path(@rental) %> |
 <%= link_to 'Back', rentals_path %>
-
+<!-- JAVASCRIPTS -->
+<script src="js/foundation.accordion.js"></script>
 
 
 
