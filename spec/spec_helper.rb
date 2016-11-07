@@ -105,8 +105,12 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
-config.default_formatter = 'doc'
-require 'simplecov'
-SimpleCov.start
+
+  # Verbose Output
+  config.default_formatter = 'doc'
+
+  # SimpleCov Implementation
+  require 'simplecov'
+  SimpleCov.start
 
 end

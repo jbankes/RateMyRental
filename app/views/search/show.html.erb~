@@ -79,14 +79,6 @@
 							<%= f.label :water, "Water" %>
 							<%= f.check_box :water,{}, '1', '' %>
 						</div>
-						<div>
-							<%= f.label :tv, "TV" %>
-							<%= f.check_box :tv,{}, '1', '' %>
-						</div>
-						<div>
-							<%= f.label :wifi, "Wifi" %>
-							<%= f.check_box :wifi,{}, '1', '' %>
-						</div>
 					</ul>
 				</li>
 			</ul>
