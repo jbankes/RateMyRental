@@ -7,12 +7,12 @@
 
 
 .verticalLine {
-    border-right:  solid 1px #800000;
+    border-right:  solid 1px #660033;
 }
 
 .search_button{
 	@include button();
-	@include button-style(#800000, auto, auto);
+	@include button-style(#660033, auto, auto);
 
 	}
 
@@ -22,10 +22,11 @@
 	@include button-style(#800000, auto, auto);
 }
 
-@mixin arrow_color() {
-	$accordionmenu-arrow-color: #800000;
-}
-
-.arrow_style{
-	@include arrow_color();
+.sumbit_link {
+	background:none!important;
+	border:none; 
+	padding:0!important;
+	font: inherit;
+	cursor: pointer;
+	color: red;
 }

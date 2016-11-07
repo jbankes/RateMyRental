@@ -9,7 +9,7 @@ class SearchController < ApplicationController
 				baths: Rental.options_for_select_baths
       		}
   	) or return
-		@rentals = @filterrific.find
+		@rentals = @filterrific.find.page params[:page]
 
   	respond_to do |format|
 		format.html
