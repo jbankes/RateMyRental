@@ -47,10 +47,9 @@
     	<div id="rental_div" class="row">
 		<div class="small-12 small-center columns">
 			<div id="rental_default_image_div">
-    			<%= link_to 'Show', rental, data: { no_turbolink: true } %>
         		<% rental.images.each do |image| %>
           			<% if image.default == true %>
-             			<%= image_tag (root_url + "/images/" + image.filename) %>
+            			<%= link_to (image_tag (root_url + "/images/" + image.filename), alt: image.filename), rental %> 	
           			<%end%>
         		<%end%>
 			</div>
