@@ -15,36 +15,28 @@
   	</button>
 </div>
 <!-- TOP BAR -->
-<div id="top_bar" class="top-bar">
-  <div class="top-bar-left">
-    <ul class="dropdown menu" data-dropdown-menu>
-      <li id="top_bar" class="menu-text">Rate My Rental</li>
-    </ul>
-  </div>
-  <div class="top-bar-right">
-    <ul class="menu">
-      	<li id="top_bar"><a id="login_button" data-open="login_modal">LOGIN</a></li>
-		<li id="top_bar"><a id="add_button" data-open="add_modal">ADD</a> </li>
-    </ul>
+<div id="top_bar" data-sticky-container>
+  <div id="top_bar"class="title-bar" data-sticky data-options="marginBottom:0;" style="width:100%" data-top-anchor="1" data-btm-anchor="content:bottom">
+    <div class="title-bar-left">
+         <b style="color:#ffffff;">Rate My Rental</b>
+    </div>
+    <div class="title-bar-right">
+    	<a id="login_button" data-open="login_modal">LOGIN</a>
+    	<a id="add_button" data-open="add_modal">ADD</a>
+    </div>
   </div>
 </div>
 <br>
 <%= link_to 'New Rental', new_rental_path %>
 <!-- SEARCH BAR -->
 <div id="search_bar" class="row">
-	<div class="large-12 columns">
-		<div class="row collapse">
-			<div class="small-12 small-center columns">
-				<div class="SearchBar">
-    				<%= form_for_filterrific @filterrific, :url => search_show_path do |f| %>
-    					<div>
-        					<%= f.text_field(
-        					:search_query,
-        					) %>
-    					</div>
-    				<% end %>
-				</div>
-			</div>
+	<div id="search_bar" class="small-12 small-center columns">
+		<div id="search_bar"class="SearchBar">
+    		<%= form_for_filterrific @filterrific, :url => search_show_path do |f| %>
+    			<div>
+        			<%= f.text_field( :search_query,) %>
+    			</div>
+    		<% end %>
 		</div>
 	</div>
 </div>
