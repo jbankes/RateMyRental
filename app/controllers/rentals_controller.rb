@@ -4,6 +4,7 @@ class RentalsController < ApplicationController
   # GET /rentals
   # GET /rentals.json
   def index
+    @rental = Rental.new
     @filterrific = initialize_filterrific(
     	Rental,
    		params[:filterrific]
