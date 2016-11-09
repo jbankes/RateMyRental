@@ -203,17 +203,19 @@
 </div>
 <br>
 <!-- WRITE A REVIEW -->
-<div class="row">
-	<ul class="accordion" data-accordion>
-	<li id="accordion_review" class="accordion-item" data-accordion-item>
-		<a href="#" class="accordion-title">Write a review</a>
-		<div class="accordion-content" data-tab-content>
-			<%= render 'reviews/form' %>
-			<%= render 'images/form' %>
-		</div>
-	</li>
-	</ul>
-</div>
+<% if user_signed_in? %>
+	<div class="row">
+		<ul class="accordion" data-accordion>
+		<li id="accordion_review" class="accordion-item" data-accordion-item>
+			<a href="#" class="accordion-title">Write a review</a>
+			<div class="accordion-content" data-tab-content>
+				<%= render 'reviews/form' %>
+				<%= render 'images/form' %>
+			</div>
+		</li>
+		</ul>
+	</div>
+<% end %>
 <!-- REVIEWS -->
 <% @rental.reviews.each do |review| %>
 	<div class="row">

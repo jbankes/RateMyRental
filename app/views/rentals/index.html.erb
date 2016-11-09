@@ -56,9 +56,10 @@
 		</div>
 	</div>
 </div>
-<% if user_signed_in? %>
-	<%= current_user.email %>
-<% end %>
+<!-- used for debugging which user is logged on -->
+<% #if user_signed_in? %>
+	<% #= current_user.email %>
+<% #end %>
 <!-- RENTAL LISTINGS -->
 <div id="rental_listings_div">
 <br>
