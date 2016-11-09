@@ -53,14 +53,14 @@
 	position:fixed;
 	top:0px;
 	width:100%;
-	height:50px;
+	height:55px;
 }
 #rental_top_bar{
 	background:#660033;
 	color:white;
 	font-weight:bold;
 	width:100%;
-	height:60px;
+	height:55px;
 }
 #login_button {
 	background:#660033;
@@ -91,6 +91,9 @@
 	bottom: 0;
 	width: 100%;
 	height: 75px; /* choose any height */
+}
+#logo {
+  width:78px;
 }
 .owl-carousel .item img{
   display: block;

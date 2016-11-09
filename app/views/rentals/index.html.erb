@@ -29,8 +29,8 @@
 <!-- TOP BAR -->
 <div id="top_bar" data-sticky-container>
   <div id="top_bar"class="title-bar" data-sticky data-options="marginBottom:0;" style="width:100%" data-top-anchor="1" data-btm-anchor="content:bottom">
-    <div class="title-bar-left" data-turbolinks="false">
-	    <b style="color:#ffffff;"><%= link_to 'RMR', rentals_path %></b>
+    <div id="logo" class="title-bar-left" data-turbolinks="false">
+	    <%= link_to (image_tag (root_url + "/images/rmr_logo_small.png"), alt: "RMR_logo"), rentals_path %>
     </div>
     <div class="title-bar-right">
 	<% if !user_signed_in? %>
