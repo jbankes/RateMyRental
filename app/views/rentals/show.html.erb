@@ -219,40 +219,42 @@
 <% end %>
 <!-- REVIEWS -->
 <% @rental.reviews.each do |review| %>
-	<div class="row">
-	<ul class="accordion" data-accordion>
-  	<li id="accordion_review"class="accordion-item" data-accordion-item>
-    	<a href="#" class="accordion-title"><%= review.overall %> out of 5 stars</a>
-    	<div class="accordion-content" data-tab-content>
-      		<% if !review.new_record? %>
-				<div id ="ratings_div">
-					<div id="rating_box">
-						<%= review.overall %><b id="rating_title">Overall</b>
+	<% if review.overall.present? %>
+		<div class="row">
+		<ul class="accordion" data-accordion>
+	  	<li id="accordion_review"class="accordion-item" data-accordion-item>
+	    	<a href="#" class="accordion-title"><%= review.overall %> out of 5 stars</a>
+	    	<div class="accordion-content" data-tab-content>
+	      		<% if !review.new_record? %>
+					<div id ="ratings_div">
+						<div id="rating_box">
+							<%= review.overall %><b id="rating_title">Overall</b>
+						</div>
+						<div id="rating_box">
+							<%= review.safety %><b id="rating_title">Safety</b>
+						</div>
+						<div id="rating_box">
+							<%= review.noise %><b id="rating_title">Noise</b>
+						</div>
+						<div id="rating_box">
+							<%= review.clean %><b id="rating_title">Clean</b>
+						</div>
+						<div id="rating_box">
+							<%= review.price %><b id="rating_title">Price</b>
+						</div>
 					</div>
-					<div id="rating_box">
-						<%= review.safety %><b id="rating_title">Safety</b>
+					<div id="review" style="vertical-align:top; margin-left:30px;" >
+						<p> <%=review.comment%> </p>
 					</div>
-					<div id="rating_box">
-						<%= review.noise %><b id="rating_title">Noise</b>
-					</div>
-					<div id="rating_box">
-						<%= review.clean %><b id="rating_title">Clean</b>
-					</div>
-					<div id="rating_box">
-						<%= review.price %><b id="rating_title">Price</b>
-					</div>
-			</div>
-			<div id="review" style="vertical-align:top; margin-left:30px;" >
-				<p> <%=review.comment%> </p>
-			</div>
-			<br>
-			<%= link_to 'Edit', edit_review_path(review) %>
-			<%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %>
+					<br>
+					<%= link_to 'Edit', edit_review_path(review) %>
+					<%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %>
 		</li>
 		</div>
+			<% end %>
+	   	</div>
+		</ul>
 	<% end %>
-   </div>
-</ul>
 
 <% end %>
 
@@ -297,7 +299,4 @@
 
 <!-- JAVASCRIPTS -->
 <script src="js/foundation.accordion.js"></script>
-
-
-
 
