@@ -37,11 +37,11 @@ class Rental < ActiveRecord::Base
 		where(amen_pets: true)
 	}
 	scope :pool, lambda { |pool|
-		return nil  if 0 == pool
+		return   if 0 == pool
 		where(amen_pool: true)
 	}
 	scope :spa, lambda { |spa|
-		return nil  if 0 == spa
+		return   if 0 == spa
 		where(amen_spa: true)
 	}
 	scope :gym, lambda { |gym|
