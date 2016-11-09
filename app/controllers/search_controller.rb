@@ -1,6 +1,7 @@
 class SearchController < ApplicationController
  
 	def show
+		@rental = Rental.new
 		@filterrific = initialize_filterrific(
 			Rental,
 			params[:filterrific],
