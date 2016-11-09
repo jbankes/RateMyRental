@@ -51,7 +51,7 @@
 			<div id="search_bar"class="SearchBar">
 	    		<%= form_for_filterrific @filterrific, :url => search_show_path do |f| %>
 	    			<div>
-	        			<%= f.text_field( :search_query,) %>
+	        			<%= f.text_field( :search_query, placeholder: "Search - ex: 12 disney way") %>
 	    			</div>
 	    		<% end %>
 			</div>
