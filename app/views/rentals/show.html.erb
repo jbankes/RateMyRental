@@ -293,17 +293,7 @@
 	         directionsDisplay.setMap(handler.getMap());
 	       });
         </script>
-	<% if @rental.geocoded? %>
-		<%= @rental.distance_from([39.727975, -121.844173]) %>
-	<% end %>
 
-<h3>Create New Review</h3>
-<%= render 'reviews/form' %>
-<%= render 'images/form' %>
-<br>
-
-<%= link_to 'Edit', edit_rental_path(@rental) %> |
-<%= link_to 'Back', rentals_path %>
 <!-- JAVASCRIPTS -->
 <script src="js/foundation.accordion.js"></script>
 

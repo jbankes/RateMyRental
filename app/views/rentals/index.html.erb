@@ -34,8 +34,8 @@
     </div>
     <div class="title-bar-right">
 	<% if !user_signed_in? %>
-		<a id="login_button" data-open="signup_modal">SIGNUP</a> || 
-		<a id="login_button" data-open="login_modal">LOGIN</a> &nbsp;
+		<a id="login_button" data-open="signup_modal">SIGNUP</a>  
+		<a id="add_button" data-open="login_modal">LOGIN</a> &nbsp;
 	<% else %>
 		<%= link_to "LOGOUT", destroy_user_session_path,:style=>'color: white; background:#660033;', method: :delete, class: 'login_button' %>
     		<a id="add_button" data-open="add_modal">ADD</a>
