@@ -11,11 +11,49 @@
   </div>
 </div>
 <br>
+<% @total_price = 0 %>
+<% @total_stars = 0 %>
+<% @num_reviews = 0 %>
+<% @rental.reviews.each do |review| %>
+	<% if !review.new_record? && review.price.present? && review.overall.present? %>
+		<% @total_price = review.price + @total_price %>
+		<% @total_stars = review.overall + @total_stars %>
+		<% @num_reviews = @num_reviews + 1 %>
+	<% end %>
+<% end %>
+<% @avg_price = @total_price / @num_reviews %>
+<% @avg_stars = @total_stars / @num_reviews %>
 <!-- RENTAL DETAILS -->
 <div class="row">
 	<div class="small-6 columns">
-		<b><h4 align="center"><%= @rental.dets_beds %> Bed | <%= @rental.dets_baths %> Bath | Calc $$ </h4></b>
-		<h6 align="center">Overall rating in stars </h6>
+		<b><h4 align="center"><%= @rental.dets_beds %> Bed | <%= @rental.dets_baths %> Bath | 
+				<% case @avg_price %>
+				<% when 1 %>
+					$
+				<% when 2 %>
+					$$
+				<% when 3 %>
+					$$$
+				<% when 4 %>
+					$$$$
+				<% when 5 %>
+					$$$$$
+				<% end %>
+		</h4></b>
+		<h2 align="center">
+				<% case @avg_price %>
+				<% when 1 %>
+					★
+				<% when 2 %>
+					★★
+				<% when 3 %>
+					★★★
+				<% when 4 %>
+					★★★★
+				<% when 5 %>
+					★★★★★
+				<% end %>
+		</h2>
 	<br>
 		<table>
 			<tr>
@@ -148,7 +186,7 @@
 		<div id="owl-carousel" class="owl-carousel">
 			<% @rental.images.each do |image| %>
 				<% if !image.new_record? %>
-					<div class ="item">
+					<div class="item">
 						<%= image_tag (root_url + "/images/" + image.filename) %>
 					</div>
 				<% end %>
@@ -206,7 +244,7 @@
 <!-- WRITE A REVIEW -->
 <% if user_signed_in? %>
 	<div class="row">
-		<ul class="accordion" data-accordion>
+		<ul class="accordion" data-accordion data-multi-expand="true" data-allow-all-closed="true">
 		<li id="accordion_review" class="accordion-item" data-accordion-item>
 			<a href="#" class="accordion-title">Write a review</a>
 			<div class="accordion-content" data-tab-content>
@@ -221,7 +259,7 @@
 <% @rental.reviews.each do |review| %>
 	<% if review.overall.present? %>
 		<div class="row">
-		<ul class="accordion" data-accordion>
+		<ul class="accordion" data-accordion data-multi-expand="true" data-allow-all-closed="true">
 	  	<li id="accordion_review"class="accordion-item" data-accordion-item>
 	    	<a href="#" class="accordion-title"><%= review.overall %> out of 5 stars</a>
 	    	<div class="accordion-content" data-tab-content>
