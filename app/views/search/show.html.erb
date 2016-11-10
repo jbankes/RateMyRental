@@ -33,7 +33,7 @@
       <%= link_to (image_tag (root_url + "/images/rmr_logo_small.png"), alt: "RMR_logo"), rentals_path %>
     </div>
 
-    <div class="title-bar-right">
+    <div id="right_header" class="title-bar-right">
 	<% if !user_signed_in? %>
 		<a id="login_button" data-open="signup_modal">SIGNUP</a> || 
 		<a id="login_button" data-open="login_modal">LOGIN</a> &nbsp;

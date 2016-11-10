@@ -94,12 +94,20 @@
 }
 #logo {
   width:78px;
+  position:relative;
+  top:50%;
+  transform: translateY(-50%);
 }
 .owl-carousel .item img{
   display: block;
   width: 100%;
   height: auto;
     }
+#right_header{
+  position:relative;
+  top:50%;
+  transform: translateY(-50%);
+}
 
 
 
