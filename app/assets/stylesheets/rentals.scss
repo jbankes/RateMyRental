@@ -100,15 +100,31 @@
   transform: translateY(-50%);
 }
 .owl-carousel .item img{
-  display: block;
   width: 100%;
-  height: auto;
-    }
+  display: block;
+}
+.owl-carousel .owl-item {
+height: 428px; 
+position: relative;
+}
+
+.owl-carousel .owl-item img {
+position: absolute;
+left: 0;
+right: 0;
+top: 50%;
+transform: translate(0,-50%); // IE9
+transform: translate3d(0,-50%,0); // Modern Browsers - better performance
+margin: 0 auto;
+}
 #right_header{
   position:relative;
   top:50%;
   transform: translateY(-50%);
 }
+
+
+
 
 
 
