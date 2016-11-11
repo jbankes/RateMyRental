@@ -142,13 +142,15 @@
 <div class="medium-8 columns">
 	<%= form_for_filterrific @filterrific, :url => search_show_path do |f| %>
 		<div>
-			<%# give the search field the 'filterrific-periodically-observed' class for live updates %>
-			<%= f.text_field(:search_query,
-      				class: 'filterrific-periodically-observed'
-    			) %>
-  		</div>
-		<div class="text-center">
-			<%= f.submit 'Search', :class=>"search_button" %>
+			<div class="query_bar">
+				<%# give the search field the 'filterrific-periodically-observed' class for live updates %>
+				<%= f.text_field(:search_query,
+	      				class: 'filterrific-periodically-observed'
+	    			) %>
+	  		</div>
+			<div class="text-center">
+				<%= f.submit 'Search', :class=>"search_button" %>
+			</div>
 		</div>
 	<% end %>
 </div>

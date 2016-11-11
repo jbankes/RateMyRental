@@ -13,7 +13,26 @@
     border-right:  solid 1px #660033;
 }
 
+.search_show_rentals {
+	padding-right: 18%;
+	width: 80%;
+}
+
+.test_border {
+	border: solid blue;
+	width: 100%;
+}
+
+.query_bar {
+	float: left;
+	padding-right: 20px;
+	padding-left: 3%;
+	width: 90%;
+}
+
 .search_button{
+	float: left;
+	height: 38.5px;
 	@include button();
 	@include button-style(#660033, auto, auto);
 
