@@ -68,41 +68,41 @@
 				<li>
 					<a href="#">Amenities</a>
 					<ul class="menu vertical nested">
-						<div>
-							<%= f.label :washer_dryer, "Washer&Dryer" %>
-							<%= f.check_box :washer_dryer,{}, '1', '' %>
+						<div id="search_checks">
+							<div id="rental_check"><%= f.check_box :washer_dryer,{}, '1', '' %></div>
+							<div id="rental_check_item"><%= f.label :washer_dryer, "Washer&D" %></div>
+						</div>
+						<div id="search_checks">
+							<div id="rental_check"><%= f.check_box :parking,{}, '1', '' %></div>
+							<div id="rental_check_item"><%= f.label :parking, "Parking" %></div>
+						</div>
+						<div id="search_checks">
+							<div id="rental_check"><%= f.check_box :pets,{}, '1', ''  %></div>
+							<div id="rental_check_item"><%= f.label :pets, "Pets" %></div>
+						</div>
+						<div id="search_checks">
+							<div id="rental_check"><%= f.check_box :pool,{}, '1', '' %></div>
+							<div id="rental_check_item"><%= f.label :pool, "Pool" %></div>
+						</div>
+						<div id="search_checks">
+							<div id="rental_check"><%= f.check_box :spa,{}, '1', ''  %></div>
+							<div id="rental_check_item"><%= f.label :spa, "Spa" %></div>
+						</div>
+						<div id="search_checks">
+							<div id="rental_check"><%= f.check_box :gym,{}, '1', '' %></div>
+							<div id="rental_check_item"><%= f.label :gym, "Gym" %></div>
+						</div>
+						<div id="search_checks">
+							<div id="rental_check"><%= f.check_box :dishwasher,{}, '1', '' %></div>
+							<div id="rental_check_item"><%= f.label :dishwasher, "Dishwasher" %></div>
+						</div>
+						<div id="search_checks">
+							<div id="rental_check"><%= f.check_box :central_air,{}, '1', '' %></div>
+							<div id="rental_check_item"><%= f.label :central_air, "Air Cond." %></div>
 						</div>
 						<div>
-							<%= f.label :parking, "Parking" %>
-							<%= f.check_box :parking,{}, '1', '' %>
-						</div>
-						<div>
-							<%= f.label :pets, "Pets" %>
-							<%= f.check_box :pets,{}, '1', ''  %>
-						</div>
-						<div>
-							<%= f.label :pool, "Pool" %>
-							<%= f.check_box :pool,{}, '1', '' %>
-						</div>
-						<div>
-							<%= f.label :spa, "Spa" %>
-							<%= f.check_box :spa,{}, '1', ''  %>
-						</div>
-						<div>
-							<%= f.label :gym, "Gym" %>
-							<%= f.check_box :gym,{}, '1', '' %>
-						</div>
-						<div>
-							<%= f.label :dishwasher, "Dishwasher" %>
-							<%= f.check_box :dishwasher,{}, '1', '' %>
-						</div>
-						<div>
-							<%= f.label :central_air, "Central Air" %>
-							<%= f.check_box :central_air,{}, '1', '' %>
-						</div>
-						<div>
-							<%= f.label :heater, "Heater" %>
 							<%= f.check_box :heater ,{}, '1', '' %>
+							<%= f.label :heater, "Heater" %>
 						</div>
 					</ul>
 				</li>
@@ -111,21 +111,22 @@
 				<li>
 					<a href="#">Utilities</a>
 					<ul class="menu vertical nested">
-						<div>
-							<%= f.label :gas, "Gas" %>
-							<%= f.check_box :gas,{}, '1', '' %>
+						<!-- if border is taken off of "search_checks", it doesn't line up. -->
+						<div id="search_checks">
+							<div id="rental_check"><%= f.check_box :gas,{}, '1', '' %></div>
+							<div id="rental_check_item"><%= f.label :gas, "Gas" %></div>
 						</div>
-						<div>
-							<%= f.label :electricity, "Electricity" %>
-							<%= f.check_box :electricity,{}, '1', '' %>
+						<div id="search_checks">
+							<div id="rental_check"><%= f.check_box :electricity,{}, '1', '' %></div>
+							<div id="rental_check_item"><%= f.label :electricity, "Electricity" %></div>
 						</div>
-						<div>
-							<%= f.label :trash, "Trash" %>
-							<%= f.check_box :trash,{}, '1', '' %>
+						<div id="search_checks">
+							<div id="rental_check"><%= f.check_box :trash,{}, '1', '' %></div>
+							<div id="rental_check_item"><%= f.label :trash, "Trash" %></div>
 						</div>
-						<div>
-							<%= f.label :water, "Water" %>
-							<%= f.check_box :water,{}, '1', '' %>
+						<div id="search_checks">
+							<div id="rental_check"><%= f.check_box :water,{}, '1', '' %></div>
+							<div id="rental_check_item"><%= f.label :water, "Water" %></div>
 						</div>
 					</ul>
 				</li>
