@@ -26,13 +26,29 @@ RSpec.describe ReviewsController, :type => :controller do
 
   describe 'GET #new rental review'do
   it 'creates new review'do
-    get :new
-    FactoryGirl.create(:rental).should_be_valid
-    rental.reviews.new
-  
-    expect(response).to be_a_new(rental.reviews.new)
+  factory = FactoryGirl.create(:rental)
+  review = factory.reviews.new
+  expect(factory).to be_valid
+  expect(review).to be_valid
+
+  #  expect(factory).to be_a_new(rental.reviews.new)
   end
 end
 
+describe 'GET #create review'do
+  it 'sets the new review to be live'do
+    factory = FactoryGirl.create(:rental)
+    review = FactoryGirl.create.(:review)
+    expect(factory).to be_valid
+    expect(review).to be_valid
+  end
+end
+describe 'GET #destroy' do
+  it'destroys a review successfully'do
+    factory = FactoryGirl.create(:rental)
+    response = factory.destroy()
+    expect(response).to be_valid
+  end
+end
 
 end
