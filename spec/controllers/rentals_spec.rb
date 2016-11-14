@@ -15,13 +15,6 @@ RSpec.describe RentalsController, :type => :controller do
       get :index
       expect(response).to render_template("index")
     end
-
-    # it 'loads all of the rentals into @rentals' do
-    #   rental1, rental2 = Rental.create!, Rental.create!
-    #   get :index
-    #
-    #   expect(assigns(:rental)).to match_array([rental1, rental2])
-    # end
   end
 
   describe 'GET #new rentals ' do
@@ -31,22 +24,5 @@ RSpec.describe RentalsController, :type => :controller do
       expect(response).to have_http_status(200)
     end
   end
-
-  describe 'GET #show rentals' do
-    context 'it respondes successfully' do
-      it 'responds with an HTTP 200 status code' do
-        expect(response).to be_success
-        expect(response).to have_http_status(200)
-      end
-    end
-
-    context 'creates the correct objects' do
-      it 'creates a new review object' do
-        expect(review).to be_a_new(Review)
-      end
-    end
-  end
-
-
 
 end

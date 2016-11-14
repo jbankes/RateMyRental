@@ -50,3 +50,6 @@ Vagrantfile
 
 # SimpleCov Testing
 coverage
+
+# Text editor backups
+.rb~

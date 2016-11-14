@@ -3,7 +3,7 @@ class Rental < ActiveRecord::Base
 	has_many :images, dependent: :destroy
 
 	geocoded_by :full_address
-	after_validation :geocode
+	#after_validation :geocode
 
 	filterrific(
   	#default_filter_params: { sorted_by: 'created_at_desc' },
