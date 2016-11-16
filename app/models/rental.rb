@@ -92,11 +92,11 @@ class Rental < ActiveRecord::Base
 	end
 
 	def self.options_for_select_beds
-	  order('LOWER(dets_beds)').map { |e| [e.dets_beds, e.id] }
+	  order('LOWER(dets_beds)').map { |e| [e.dets_beds] }.uniq
 	end
 
 	def self.options_for_select_baths
-	  order('LOWER(dets_baths)').map { |e| [e.dets_baths, e.id] }
+	  order('LOWER(dets_baths)').map { |e| [e.dets_baths] }.uniq
 	end
 		
 
