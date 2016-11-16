@@ -3,6 +3,7 @@ require 'rails_helper'
 require 'rental'
 
 RSpec.describe ReviewsController, :type => :controller do
+  include Devise::Test::ControllerHelpers
   describe 'GET #index' do
     it 'responds successfully with 200 status' do
       get :index
@@ -53,4 +54,56 @@ describe 'GET #destroy' do
   end
 end
 
+  describe "POST #create" do
+    Review.delete_all
+    context "with valid attributes" do
+      it "create new review" do
+	u = FactoryGirl.build :review
+        post :create, rental_id: u.rental.id ,review: u.attributes
+        expect(Review.count).to eq(1)
+      end
+    end
+	
+  end
+
+  describe "PUT #update" do
+    let(:valid) do 
+      { :comment => "good"}
+    end
+    it 'update should redirect to review page' do
+      u = FactoryGirl.create :review
+      put :update, :id => u.id, :review => valid
+      u.reload
+      expect(response).to redirect_to(u)
+    end
+    
+    it 'should update review' do
+      u = FactoryGirl.create :review
+      put :update, id: u.id, review: valid
+      u.reload
+      expect(u.comment).to eql valid[:comment]
+    end
+  end
+
+  describe 'DELETE #destroy' do
+    it "deletes the review" do
+      u = FactoryGirl.create(:review)
+      expect{
+        delete :destroy, :id => u.id     
+      }.to change{Review.count}.by(-1)
+    end
+    it "redirects to review#index" do
+      u = FactoryGirl.create(:review)
+      delete :destroy, :id => u.id
+      expect(response).to redirect_to(reviews_url)
+    end
+  end
+
+  describe 'GET #new' do
+    it 'creates a new review object' do
+      u = FactoryGirl.create :rental
+      get :new, rental_id: u.id
+      expect(u.reviews.new).to be_a_new(Review)
+    end
+  end
 end
