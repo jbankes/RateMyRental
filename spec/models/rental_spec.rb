@@ -237,7 +237,7 @@ RSpec.describe Rental, :type => :model do
     two = FactoryGirl.create(:rental,dets_beds: 2)
     three = FactoryGirl.create(:rental,dets_beds: 1)
     order = rentals.options_for_select_beds
-    expect(order).to eq ([[1,three.id],[2,one.id],[2,two.id]])
+    expect(order).to eq ([[1],[2]])
   end
 
   it 'should list the number of baths in order' do
@@ -246,7 +246,7 @@ RSpec.describe Rental, :type => :model do
     two = FactoryGirl.create(:rental,dets_baths: 2)
     three = FactoryGirl.create(:rental,dets_baths: 1)
     order = rentals.options_for_select_baths
-    expect(order).to eq ([[1,three.id],[2,one.id],[2,two.id]])
+    expect(order).to eq ([[1],[2]])
   end
 
 end
