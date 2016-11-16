@@ -1,7 +1,6 @@
 # This is for automatic testing on Travis CI.
 # Similar to Jenkins but it is hosted by Travis and
 # students get this free.
-
 language: ruby
 rvm:
-  - 2.3.0
+- 2.3.0

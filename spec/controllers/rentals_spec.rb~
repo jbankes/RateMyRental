@@ -15,13 +15,6 @@ RSpec.describe RentalsController, :type => :controller do
       get :index
       expect(response).to render_template("index")
     end
-
-    # it 'loads all of the rentals into @rentals' do
-    #   rental1, rental2 = Rental.create!, Rental.create!
-    #   get :index
-    #
-    #   expect(assigns(:rental)).to match_array([rental1, rental2])
-    # end
   end
 
   describe 'GET #new rentals ' do
@@ -32,6 +25,7 @@ RSpec.describe RentalsController, :type => :controller do
     end
   end
 
+<<<<<<< HEAD
   describe 'GET #show rentals' do
     context 'it respondes successfully' do
       it 'responds with an HTTP 200 status code' do
@@ -88,6 +82,7 @@ RSpec.describe RentalsController, :type => :controller do
       expect(u.addr_street_num).to eql valid[:addr_street_num]
     end
     it 'should fail updating rental' do
+      u = FactoryGirl.create :rental
       put :update, :id => u.id, :rental => invalid
       u.reload
       expect(response).to render_template(:edit)
@@ -124,4 +119,6 @@ RSpec.describe RentalsController, :type => :controller do
     end
   end
 
+=======
+>>>>>>> 73f35993a1e9a6560db8ffc2f815d8993bd4e183
 end

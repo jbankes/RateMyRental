@@ -15,13 +15,6 @@ RSpec.describe RentalsController, :type => :controller do
       get :index
       expect(response).to render_template("index")
     end
-
-    # it 'loads all of the rentals into @rentals' do
-    #   rental1, rental2 = Rental.create!, Rental.create!
-    #   get :index
-    #
-    #   expect(assigns(:rental)).to match_array([rental1, rental2])
-    # end
   end
 
   describe 'GET #new rentals ' do
