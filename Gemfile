@@ -77,3 +77,6 @@ end
 
 # gem for image slider
 gem 'owlcarousel-rails'
+
+# gem for pagination
+gem 'kaminari'

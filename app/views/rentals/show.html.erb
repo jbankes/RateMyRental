@@ -1,20 +1,59 @@
 <!-- Top Bar -->
 <div id="rental_top_bar">
   <div id="rental_top_bar"class="title-bar"  style="width:100%" data-top-anchor="1" data-btm-anchor="content:bottom">
-    <div class="title-bar-left">
-         <h3 style="color:#ffffff;"><</h3>
+    <div id="logo" class="title-bar-left" data-turbolinks="false">
+       <%= link_to (image_tag (root_url + "images/rmr_logo_small.png"), alt: "RMR_logo"), rentals_path, :style=>'background:#660033' %>
     </div>
-    <div class="title-bar-right">
-        <h4><%=@rental.addr_full_adress %></h4>
+
+    <div id="right_header" class="title-bar-right">
+       <h4><%=@rental.addr_full_adress %></h4>
     </div>
   </div>
 </div>
 <br>
+<% @total_price = 0 %>
+<% @total_stars = 0 %>
+<% @num_reviews = 0 %>
+<% @rental.reviews.each do |review| %>
+	<% if !review.new_record? && review.price.present? && review.overall.present? %>
+		<% @total_price = review.price + @total_price %>
+		<% @total_stars = review.overall + @total_stars %>
+		<% @num_reviews = @num_reviews + 1 %>
+	<% end %>
+<% end %>
+<% @avg_price = @total_price / @num_reviews %>
+<% @avg_stars = @total_stars / @num_reviews %>
 <!-- RENTAL DETAILS -->
 <div class="row">
 	<div class="small-6 columns">
-		<b><h4 align="center"><%= @rental.dets_beds %> Bed | <%= @rental.dets_baths %> Bath | Calc $$ </h4></b>
-		<h6 align="center">Overall rating in stars </h6>
+		<b><h4 align="center"><%= @rental.dets_beds %> Bed | <%= @rental.dets_baths %> Bath | 
+				<% case @avg_price %>
+				<% when 1 %>
+					$
+				<% when 2 %>
+					$$
+				<% when 3 %>
+					$$$
+				<% when 4 %>
+					$$$$
+				<% when 5 %>
+					$$$$$
+				<% end %>
+		</h4></b>
+		<h2 align="center">
+				<% case @avg_price %>
+				<% when 1 %>
+					★
+				<% when 2 %>
+					★★
+				<% when 3 %>
+					★★★
+				<% when 4 %>
+					★★★★
+				<% when 5 %>
+					★★★★★
+				<% end %>
+		</h2>
 	<br>
 		<table>
 			<tr>
@@ -147,7 +186,7 @@
 		<div id="owl-carousel" class="owl-carousel">
 			<% @rental.images.each do |image| %>
 				<% if !image.new_record? %>
-					<div class ="item">
+					<div class="item">
 						<%= image_tag (root_url + "/images/" + image.filename) %>
 					</div>
 				<% end %>
@@ -203,53 +242,57 @@
 </div>
 <br>
 <!-- WRITE A REVIEW -->
-<div class="row">
-	<ul class="accordion" data-accordion>
-	<li id="accordion_review" class="accordion-item" data-accordion-item>
-		<a href="#" class="accordion-title">Write a review</a>
-		<div class="accordion-content" data-tab-content>
-			<%= render 'reviews/form' %>
-			<%= render 'images/form' %>
-		</div>
-	</li>
-	</ul>
-</div>
+<% if user_signed_in? %>
+	<div class="row">
+		<ul class="accordion" data-accordion data-multi-expand="true" data-allow-all-closed="true">
+		<li id="accordion_review" class="accordion-item" data-accordion-item>
+			<a href="#" class="accordion-title">Write a review</a>
+			<div class="accordion-content" data-tab-content>
+				<%= render 'reviews/form' %>
+				<%= render 'images/form' %>
+			</div>
+		</li>
+		</ul>
+	</div>
+<% end %>
 <!-- REVIEWS -->
 <% @rental.reviews.each do |review| %>
-	<div class="row">
-	<ul class="accordion" data-accordion>
-  	<li id="accordion_review"class="accordion-item" data-accordion-item>
-    	<a href="#" class="accordion-title"><%= review.overall %> out of 5 stars</a>
-    	<div class="accordion-content" data-tab-content>
-      		<% if !review.new_record? %>
-				<div id ="ratings_div">
-					<div id="rating_box">
-						<%= review.overall %><b id="rating_title">Overall</b>
+	<% if review.overall.present? %>
+		<div class="row">
+		<ul class="accordion" data-accordion data-multi-expand="true" data-allow-all-closed="true">
+	  	<li id="accordion_review"class="accordion-item" data-accordion-item>
+	    	<a href="#" class="accordion-title"><%= review.overall %> out of 5 stars</a>
+	    	<div class="accordion-content" data-tab-content>
+	      		<% if !review.new_record? %>
+					<div id ="ratings_div">
+						<div id="rating_box">
+							<%= review.overall %><b id="rating_title">Overall</b>
+						</div>
+						<div id="rating_box">
+							<%= review.safety %><b id="rating_title">Safety</b>
+						</div>
+						<div id="rating_box">
+							<%= review.noise %><b id="rating_title">Noise</b>
+						</div>
+						<div id="rating_box">
+							<%= review.clean %><b id="rating_title">Clean</b>
+						</div>
+						<div id="rating_box">
+							<%= review.price %><b id="rating_title">Price</b>
+						</div>
 					</div>
-					<div id="rating_box">
-						<%= review.safety %><b id="rating_title">Safety</b>
+					<div id="review" style="vertical-align:top; margin-left:30px;" >
+						<p> <%=review.comment%> </p>
 					</div>
-					<div id="rating_box">
-						<%= review.noise %><b id="rating_title">Noise</b>
-					</div>
-					<div id="rating_box">
-						<%= review.clean %><b id="rating_title">Clean</b>
-					</div>
-					<div id="rating_box">
-						<%= review.price %><b id="rating_title">Price</b>
-					</div>
-			</div>
-			<div id="review" style="vertical-align:top; margin-left:30px;" >
-				<p> <%=review.comment%> </p>
-			</div>
-			<br>
-			<%= link_to 'Edit', edit_review_path(review) %>
-			<%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %>
+					<br>
+					<%= link_to 'Edit', edit_review_path(review) %>
+					<%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %>
 		</li>
 		</div>
+			<% end %>
+	   	</div>
+		</ul>
 	<% end %>
-   </div>
-</ul>
 
 <% end %>
 
@@ -291,20 +334,7 @@
 	         directionsDisplay.setMap(handler.getMap());
 	       });
         </script>
-	<% if @rental.geocoded? %>
-		<%= @rental.distance_from([39.727975, -121.844173]) %>
-	<% end %>
 
-<h3>Create New Review</h3>
-<%= render 'reviews/form' %>
-<%= render 'images/form' %>
-<br>
-
-<%= link_to 'Edit', edit_rental_path(@rental) %> |
-<%= link_to 'Back', rentals_path %>
 <!-- JAVASCRIPTS -->
 <script src="js/foundation.accordion.js"></script>
-
-
-
 

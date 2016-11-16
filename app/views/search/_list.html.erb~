@@ -1,11 +1,63 @@
 
 <div class="medium-8 columns">
 	<% if params[:filterrific][:search_query] %>
-		filters:
-		<% if params[:filterrific][:beds] %>
-			<b><%= params[:filterrific][:search_query] %> Beds</b>
+		Filters selected:
+		<% if params[:filterrific][:beds]&&params[:filterrific][:beds]>"0" %>
+			<b><%= params[:filterrific][:beds] %> Bed(s). </b>
  		<% end %>
+		<% if params[:filterrific][:baths]&&params[:filterrific][:baths]>"0" %>
+			<b><%= params[:filterrific][:baths] %> Baths(s). </b>
+ 		<% end %>
+		<% if params[:filterrific][:washer_dryer]=="1" %>
+			<b> Washer&Dryer. </b>
+ 		<% end %>
+		<% if params[:filterrific][:parking]=="1" %>
+			<b> Parking. </b>
+		<% end %>
+		<% if params[:filterrific][:pets]=="1" %>
+			<b> Pets. </b>
+		<% end %>
+		<% if params[:filterrific][:pool]=="1" %>
+			<b> Pool. </b>
+		<% end %>
+		<% if params[:filterrific][:spa]=="1" %>
+			<b> Spa. </b>
+		<% end %>
+		<% if params[:filterrific][:Gym]=="1" %>
+			<b> Gym. </b>
+		<% end %>
+		<% if params[:filterrific][:dishwasher]=="1" %>
+			<b> Dishwasher. </b>
+		<% end %>
+		<% if params[:filterrific][:central_air]=="1" %>
+			<b> Central Air. </b>
+		<% end %>
+		<% if params[:filterrific][:heater]=="1" %>
+			<b> Heater. </b>
+		<% end %>
+		<% if params[:filterrific][:gas]=="1" %>
+			<b> Gas. </b>
+		<% end %>
+		<% if params[:filterrific][:electricity]=="1" %>
+			<b> Electricity. </b>
+		<% end %>
+		<% if params[:filterrific][:trash]=="1" %>
+			<b> Trash. </b>
+		<% end %>
+		<% if params[:filterrific][:water]=="1" %>
+			<b> Water. </b>
+		<% end %>
+		<% if params[:filterrific].count == 1 %>
+			<b> none. </b>
+		<% end %>
+		<% if params[:filterrific].count > 1 %>
+			<%= form_for_filterrific @filterrific, :url => search_show_path do |f| %>
+					<%= f.hidden_field (:search_query) %>
+					<%= f.submit 'Reset Filters',  :class => "sumbit_link" %>
+			<% end %>
+		<% end %>
  	<% end %>
+	<hr>
 	<% if @rentals.present? %>
 		<% @rentals.each do |rental| %>
 			<div>
@@ -24,6 +76,8 @@
 			</div>
 			<hr>
  		<% end %>
+	<ul class="pagination text-center" role="navigation" aria-label="Pagination">
+	<%= paginate @rentals %> </ul>
 	<% else %>
 		<b>There are no rentals containing the term(s) <%= params[:filterrific][:search_query] %> try another address. </b>
  	<% end %>

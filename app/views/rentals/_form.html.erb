@@ -12,117 +12,169 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :addr_full_adress %><br>
-    <%= f.text_field :addr_full_adress %>
+    <%= f.text_field :addr_full_adress, placeholder: "Full Street Address" %>
   </div>
   <div class="field">
-    <%= f.label :addr_street_name %><br>
-    <%= f.text_field :addr_street_name %>
+    <%= f.text_field :addr_street_name, placeholder: "Street Name" %>
   </div>
   <div class="field">
-    <%= f.label :addr_street_num %><br>
-    <%= f.number_field :addr_street_num %>
+    <%= f.number_field :addr_street_num, placeholder: "Street Number" %>
   </div>
   <div class="field">
-    <%= f.label :addr_zip %><br>
-    <%= f.number_field :addr_zip %>
+    <%= f.number_field :addr_zip, placeholder: "Zipcode" %>
   </div>
   <div class="field">
-    <%= f.label :addr_city %><br>
-    <%= f.text_field :addr_city %>
+    <%= f.text_field :addr_city, placeholder: "City" %>
   </div>
   <div class="field">
-    <%= f.label :addr_state %><br>
-    <%= f.text_field :addr_state %>
+    <%= f.text_field :addr_state, placeholder: "State" %>
   </div>
   <div class="field">
-    <%= f.label :addr_country %><br>
-    <%= f.text_field :addr_country %>
+    <%= f.text_field :addr_country, placeholder: "Country" %>
   </div>
   <div class="field">
-    <%= f.label :dets_beds %><br>
-    <%= f.number_field :dets_beds %>
+    <%= f.number_field :dets_beds, placeholder: "Number of Beds" %>
   </div>
   <div class="field">
-    <%= f.label :dets_baths %><br>
-    <%= f.number_field :dets_baths %>
+    <%= f.number_field :dets_baths, placeholder: "Number of Bathrooms" %>
   </div>
   <div class="field">
-    <%= f.label :dets_is_complex %><br>
-    <%= f.check_box :dets_is_complex %>
+	  <div id="rental_check"><%= f.check_box :dets_is_complex %></div>
+	  <div id="rental_check_item"><%= f.label :Complex %></div>
   </div>
   <div class="field">
-    <%= f.label :dets_stories %><br>
-    <%= f.number_field :dets_stories %>
+    <%= f.number_field :dets_stories, placeholder: "Number of Stories" %>
   </div>
   <div class="field">
-    <%= f.label :dets_company_owned %><br>
-    <%= f.check_box :dets_company_owned %>
+	  <div id="rental_check"><%= f.check_box :dets_company_owned %></div>
+	  <div id="rental_check_item"><%= f.label :Company_owned %></div>
   </div>
   <div class="field">
-    <%= f.label :dets_owner %><br>
-    <%= f.text_field :dets_owner %>
+    <%= f.text_field :dets_owner, placeholder: "Owner" %>
   </div>
-  <div class="field">
-    <%= f.label :amen_parking %><br>
-    <%= f.check_box :amen_parking %>
-  </div>
-  <div class="field">
-    <%= f.label :amen_pets %><br>
-    <%= f.check_box :amen_pets %>
-  </div>
-  <div class="field">
-    <%= f.label :amen_washer_dryer %><br>
-    <%= f.check_box :amen_washer_dryer %>
-  </div>
-  <div class="field">
-    <%= f.label :amen_pool %><br>
-    <%= f.check_box :amen_pool %>
-  </div>
-  <div class="field">
-    <%= f.label :amen_spa %><br>
-    <%= f.check_box :amen_spa %>
-  </div>
-  <div class="field">
-    <%= f.label :amen_gym %><br>
-    <%= f.check_box :amen_gym %>
-  </div>
-  <div class="field">
-    <%= f.label :amen_dishwasher %><br>
-    <%= f.check_box :amen_dishwasher %>
-  </div>
-  <div class="field">
-    <%= f.label :amen_central_air %><br>
-    <%= f.check_box :amen_central_air %>
-  </div>
-  <div class="field">
-    <%= f.label :amen_heater %><br>
-    <%= f.check_box :amen_heater %>
-  </div>
-  <div class="field">
-    <%= f.label :util_gas %><br>
-    <%= f.check_box :util_gas %>
-  </div>
-  <div class="field">
-    <%= f.label :util_electricity %><br>
-    <%= f.check_box :util_electricity %>
-  </div>
-  <div class="field">
-    <%= f.label :util_trash %><br>
-    <%= f.check_box :util_trash %>
-  </div>
-  <div class="field">
-    <%= f.label :util_water %><br>
-    <%= f.check_box :util_water %>
-  </div>
-  <div class="field">
-    <%= f.label :util_tv %><br>
-    <%= f.check_box :util_tv %>
-  </div>
-  <div class="field">
-    <%= f.label :util_wifi %><br>
-    <%= f.check_box :util_wifi %>
-  </div>
+  <table>
+	<thead>
+	<tr>
+		<th width="50%"> Amenities </th>
+		<th width="50%"> Utilities </th>
+	</tr>
+	</thead>
+  <tbody>
+  <tr>
+	<td>
+		<div class="field">
+	 		<div id="rental_check"><%= f.check_box :amen_parking %></div>
+		 	<div id="rental_check_item"><%= f.label :Parking %></div>
+	  	</div>
+	</td>
+	<td>
+	  	<div class="field">
+		  	<div id="rental_check"><%= f.check_box :util_gas %></div>
+		  	<div id="rental_check_item"><%= f.label "Gas" %></div>
+	  	</div>
+	</td>
+   </tr>
+  	<td>
+  		<div class="field">
+	    	  	<div id="rental_check"><%= f.check_box :amen_pets %></div>
+		  	<div id="rental_check_item"><%= f.label :Pets %></div>
+	  	</div>
+  	 </td>
+	 <td>
+	  	<div class="field">
+		  	<div id="rental_check"><%= f.check_box :util_electricity %></div>
+		  	<div id="rental_check_item"><%= f.label "Electricity" %></div>
+	  	</div>
+	</td>
+  </tr>
+  <tr>
+	 <td>
+	  	<div class="field">
+		  	<div id="rental_check"><%= f.check_box :amen_washer_dryer %></div>
+		  	<div id="rental_check_item"><%= f.label "Washer and dryer" %></div>
+	  	</div>
+  	 </td>
+	 <td>
+	  	<div class="field">
+		  	<div id="rental_check"><%= f.check_box :util_trash %></div>
+			<div id="rental_check_item"><%= f.label "Trash" %></div>
+	  	</div>
+	 </td>
+ </tr>
+ <tr>
+	 <td>
+	  	<div class="field">
+		  	<div id="rental_check"><%= f.check_box :amen_pool %></div>
+			<div id="rental_check_item"><%= f.label "Pool" %></div>
+	  	</div>
+	 </td>
+	 <td>
+	  	<div class="field">
+		  	<div id="rental_check"><%= f.check_box :util_water %></div>
+		  	<div id="rental_check_item"><%= f.label "Water" %></div>
+	  	</div>
+	 </td>
+  </tr>
+  <tr>
+	  <td>
+	  	<div class="field">
+		  	<div id="rental_check"><%= f.check_box :amen_spa %></div>
+		  	<div id="rental_check_item"><%= f.label "Spa" %></div>
+	  	</div>
+	  </td>
+	  <td>
+	  	<div class="field">
+		  	<div id="rental_check"><%= f.check_box :util_tv %></div>
+		  	<div id="rental_check_item"><%= f.label "TV" %></div>
+	  	</div>
+	  </td>
+  </tr>
+  <tr>
+	  <td>
+	  	<div class="field">
+		  	<div id="rental_check"><%= f.check_box :amen_gym %></div>
+		  	<div id="rental_check_item"><%= f.label "Gym" %></div>
+	  	</div>
+  	  </td>
+	  <td>
+	  	<div class="field">
+		  	<div id="rental_check"><%= f.check_box :util_wifi %></div>
+		  	<div id="rental_check_item"><%= f.label "Wifi" %></div>
+	  	</div>
+	  </td>
+  </tr>
+  <tr>
+	  <td>
+	  	<div class="field">
+		  	<div id="rental_check"><%= f.check_box :amen_dishwasher %></div>
+		  	<div id="rental_check_item"><%= f.label "Dishwasher" %></div>
+	  	</div>
+  	  </td>
+	  <td>
+	  </td>
+  </tr>
+  <tr>
+  	<td>
+	  	<div class="field">
+		  	<div id="rental_check"><%= f.check_box :amen_central_air %></div>
+		  	<div id="rental_check_item"><%= f.label "Central Air" %></div>
+	  	</div>
+	</td>
+	<td>
+	</td>
+  </tr>
+  <tr>
+	  <td>
+	  	<div class="field">
+		 	 <div id="rental_check"><%= f.check_box :amen_heater %></div>
+			 <div id="rental_check_item"><%= f.label "Heating" %></div>
+	  	</div>
+	  </td>
+	  <td>
+	  </td>
+  </tr>
+  </tbody>
+  </table>
   <div class="actions">
     <%= f.submit %>
   </div>

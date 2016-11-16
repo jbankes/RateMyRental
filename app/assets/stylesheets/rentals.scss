@@ -12,19 +12,44 @@
 	width:75%;
 	height:200px;
 	margin-bottom:10px;
-	padding:5px 5px 5px 5px;
+	//padding:5px 5px 5px 5px;
+}
+#search_checks {
+	float: left;
+	width: 125px;
+}
+#rental_check {
+	float: left;
+}
+#rental_check_item {
+	float: left;
+	padding-left: 10px;
+	margin-top: -2px;
+}
+#rental_form_table {
+	border-style: solid;
 }
 #rental_default_image_div{
 	display:inline-block;
 	width:25%;
-	height:100px;
-	padding:5px 5px 5px 5px;
+	//padding:5px 5px 5px 5px;
+}
+#rental_default_image_div img{
+	position: relative;
+	top: 25px;
+	height: 150px;
+	width: 200px;
 }
 #addr_and_rating_div, #details_div, #ammed_div{
 	display:inline-block;
 }
 #search_bar{
 	background:#f2f2f2;
+	margin-top: 20px;
+}
+#search_back {
+	width: 100%;
+	background: #f2f2f2;
 }
 #rating_title{
 	color:#660033;
@@ -43,14 +68,15 @@
 	position:fixed;
 	top:0px;
 	width:100%;
-	height:50px;
+	height:55px;
+	z-index: 1;
 }
 #rental_top_bar{
 	background:#660033;
 	color:white;
 	font-weight:bold;
 	width:100%;
-	height:60px;
+	height:55px;
 }
 #login_button {
 	background:#660033;
@@ -82,11 +108,39 @@
 	width: 100%;
 	height: 75px; /* choose any height */
 }
+#logo {
+  width:78px;
+  position:relative;
+  top:50%;
+  transform: translateY(-50%);
+}
 .owl-carousel .item img{
-  display: block;
   width: 100%;
-  height: auto;
-    }
+  display: block;
+}
+.owl-carousel .owl-item {
+background: #D8D8D8;
+height: 428px; 
+position: relative;
+}
+
+.owl-carousel .owl-item img {
+position: absolute;
+left: 0;
+right: 0;
+top: 50%;
+transform: translate(0,-50%); // IE9
+transform: translate3d(0,-50%,0); // Modern Browsers - better performance
+margin: 0 auto;
+}
+#right_header{
+  position:relative;
+  top:50%;
+  transform: translateY(-50%);
+}
+
+
+
 
 
 

@@ -102,6 +102,7 @@ class Rental < ActiveRecord::Base
 	def self.options_for_select_baths
 	  order('LOWER(dets_baths)').map { |e| [e.dets_baths, e.id] }
 	end
+
 		
 
 end

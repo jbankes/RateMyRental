@@ -1,16 +1,51 @@
+<!-- LOGIN Modal -->
+<div class="reveal" id="login_modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+    <p class="lead" id="render_add_rental"> 
+    	<%= render 'devise/sessions/new' %>
+    </p>
+    <button class="close-button" data-close aria-label="Close modal" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<!-- SIGNUP Modal -->
+<div class="reveal" id="signup_modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+    <p class="lead" id="render_add_rental"> 
+    	<%= render 'devise/registrations/new' %>
+    </p>
+    <button class="close-button" data-close aria-label="Close modal" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<!-- ADD Modal -->
+<div class="reveal" id="add_modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+	<h3>Add a Rental</h3>
+  	<p class="lead" id="render_add_rental">
+	   <%= render 'rentals/form' %>
+	</p>
+	<button class="close-button" data-close aria-label="Close modal" type="button">
+    	<span aria-hidden="true">&times;</span>
+  	</button>
+</div>
 <!-- STICKY NAV BAR -->
 <div id="top_bar" data-sticky-container>
   <div id="top_bar"class="title-bar" data-sticky data-options="marginBottom:0;" style="width:100%" data-top-anchor="1" data-btm-anchor="content:bottom">
-    <div class="title-bar-left">
-         <b style="color:#ffffff;">Rate My Rental</b>
+    <div id="logo" class="title-bar-left" data-turbolinks="false">
+      <%= link_to (image_tag (root_url + "/images/rmr_logo_small.png"), alt: "RMR_logo"), rentals_path, :style=>'background:#660033' %>
     </div>
-    <div class="title-bar-right">
-        <a id="login_button" data-open="login_modal">LOGIN</a>
-        <a id="add_button" data-open="add_modal">ADD</a>
+
+    <div id="right_header" class="title-bar-right">
+	<% if !user_signed_in? %>
+		<a id="login_button" data-open="signup_modal">SIGNUP</a> || 
+		<a id="login_button" data-open="login_modal">LOGIN</a> &nbsp;
+	<% else %>
+		<%= link_to "LOGOUT", destroy_user_session_path, :style=>'color:white; background:#660033;', method: :delete, class: 'login_button' %>
+    		<a id="add_button" data-open="add_modal">ADD</a>
+	<% end %>
     </div>
   </div>
 </div>
 <br>
+<div id="search_body">
 <div class="medium-2 columns">
 	<fieldset class="fieldset">
 		<b>Advance search</b>
@@ -33,41 +68,41 @@
 				<li>
 					<a href="#">Amenities</a>
 					<ul class="menu vertical nested">
-						<div>
-							<%= f.label :washer_dryer, "Washer&Dryer" %>
-							<%= f.check_box :washer_dryer,{}, '1', '' %>
+						<div id="search_checks">
+							<div id="rental_check"><%= f.check_box :washer_dryer,{}, '1', '' %></div>
+							<div id="rental_check_item"><%= f.label :washer_dryer, "Washer&D" %></div>
+						</div>
+						<div id="search_checks">
+							<div id="rental_check"><%= f.check_box :parking,{}, '1', '' %></div>
+							<div id="rental_check_item"><%= f.label :parking, "Parking" %></div>
+						</div>
+						<div id="search_checks">
+							<div id="rental_check"><%= f.check_box :pets,{}, '1', ''  %></div>
+							<div id="rental_check_item"><%= f.label :pets, "Pets" %></div>
+						</div>
+						<div id="search_checks">
+							<div id="rental_check"><%= f.check_box :pool,{}, '1', '' %></div>
+							<div id="rental_check_item"><%= f.label :pool, "Pool" %></div>
+						</div>
+						<div id="search_checks">
+							<div id="rental_check"><%= f.check_box :spa,{}, '1', ''  %></div>
+							<div id="rental_check_item"><%= f.label :spa, "Spa" %></div>
+						</div>
+						<div id="search_checks">
+							<div id="rental_check"><%= f.check_box :gym,{}, '1', '' %></div>
+							<div id="rental_check_item"><%= f.label :gym, "Gym" %></div>
+						</div>
+						<div id="search_checks">
+							<div id="rental_check"><%= f.check_box :dishwasher,{}, '1', '' %></div>
+							<div id="rental_check_item"><%= f.label :dishwasher, "Dishwasher" %></div>
+						</div>
+						<div id="search_checks">
+							<div id="rental_check"><%= f.check_box :central_air,{}, '1', '' %></div>
+							<div id="rental_check_item"><%= f.label :central_air, "Air Cond." %></div>
 						</div>
 						<div>
-							<%= f.label :parking, "Parking" %>
-							<%= f.check_box :parking,{}, '1', '' %>
-						</div>
-						<div>
-							<%= f.label :pets, "Pets" %>
-							<%= f.check_box :pets,{}, '1', ''  %>
-						</div>
-						<div>
-							<%= f.label :pool, "Pool" %>
-							<%= f.check_box :pool,{}, '1', '' %>
-						</div>
-						<div>
-							<%= f.label :spa, "Spa" %>
-							<%= f.check_box :spa,{}, '1', ''  %>
-						</div>
-						<div>
-							<%= f.label :gym, "Gym" %>
-							<%= f.check_box :gym,{}, '1', '' %>
-						</div>
-						<div>
-							<%= f.label :dishwasher, "Dishwasher" %>
-							<%= f.check_box :dishwasher,{}, '1', '' %>
-						</div>
-						<div>
-							<%= f.label :central_air, "Central Air" %>
-							<%= f.check_box :central_air,{}, '1', '' %>
-						</div>
-						<div>
-							<%= f.label :heater, "Heater" %>
 							<%= f.check_box :heater ,{}, '1', '' %>
+							<%= f.label :heater, "Heater" %>
 						</div>
 					</ul>
 				</li>
@@ -76,29 +111,22 @@
 				<li>
 					<a href="#">Utilities</a>
 					<ul class="menu vertical nested">
-						<div>
-							<%= f.label :gas, "Gas" %>
-							<%= f.check_box :gas,{}, '1', '' %>
+						<!-- if border is taken off of "search_checks", it doesn't line up. -->
+						<div id="search_checks">
+							<div id="rental_check"><%= f.check_box :gas,{}, '1', '' %></div>
+							<div id="rental_check_item"><%= f.label :gas, "Gas" %></div>
 						</div>
-						<div>
-							<%= f.label :electricity, "Electricity" %>
-							<%= f.check_box :electricity,{}, '1', '' %>
+						<div id="search_checks">
+							<div id="rental_check"><%= f.check_box :electricity,{}, '1', '' %></div>
+							<div id="rental_check_item"><%= f.label :electricity, "Electricity" %></div>
 						</div>
-						<div>
-							<%= f.label :trash, "Trash" %>
-							<%= f.check_box :trash,{}, '1', '' %>
+						<div id="search_checks">
+							<div id="rental_check"><%= f.check_box :trash,{}, '1', '' %></div>
+							<div id="rental_check_item"><%= f.label :trash, "Trash" %></div>
 						</div>
-						<div>
-							<%= f.label :water, "Water" %>
-							<%= f.check_box :water,{}, '1', '' %>
-						</div>
-						<div>
-							<%= f.label :tv, "TV" %>
-							<%= f.check_box :tv,{}, '1', '' %>
-						</div>
-						<div>
-							<%= f.label :wifi, "Wifi" %>
-							<%= f.check_box :wifi,{}, '1', '' %>
+						<div id="search_checks">
+							<div id="rental_check"><%= f.check_box :water,{}, '1', '' %></div>
+							<div id="rental_check_item"><%= f.label :water, "Water" %></div>
 						</div>
 					</ul>
 				</li>
@@ -114,15 +142,16 @@
 <div class="medium-8 columns">
 	<%= form_for_filterrific @filterrific, :url => search_show_path do |f| %>
 		<div>
-			<%# give the search field the 'filterrific-periodically-observed' class for live updates %>
-			<%= f.text_field(:search_query,
-      				class: 'filterrific-periodically-observed'
-    			) %>
-  		</div>
-		<div class="text-center">
-			<%= f.submit 'Search', :class=>"search_button" %>
+			<div class="query_bar">
+				<%# give the search field the 'filterrific-periodically-observed' class for live updates %>
+				<%= f.text_field(:search_query,
+	      				class: 'filterrific-periodically-observed'
+	    			) %>
+	  		</div>
+			<div class="text-center">
+				<%= f.submit 'Search', :class=>"search_button" %>
+			</div>
 		</div>
-		<hr>
 	<% end %>
 </div>
 
@@ -130,3 +159,4 @@
   partial: 'search/list',
   locals: { rentals: @rentals }
 ) %>
+</div>
