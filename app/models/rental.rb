@@ -2,8 +2,10 @@ class Rental < ActiveRecord::Base
 	has_many :reviews, dependent: :destroy
 	has_many :images, dependent: :destroy
 
+        validates :addr_full_adress, presence: true
+
 	geocoded_by :full_address
-	#after_validation :geocode
+	after_validation :geocode
 
 	filterrific(
   	#default_filter_params: { sorted_by: 'created_at_desc' },
@@ -88,7 +90,9 @@ class Rental < ActiveRecord::Base
   # Create address
 	def full_address
 		# street = addr_street_num.to_s + " " + addr_street_name
-		[addr_street_num.to_s + " " + addr_street_name, addr_city, addr_country].compact.join(', ')
+		if addr_street_num != nil && addr_street_name !=nil
+		  [addr_street_num.to_s + " " + addr_street_name, addr_city, addr_country].compact.join(', ')
+		end
 	end
 
 	def self.options_for_select_beds

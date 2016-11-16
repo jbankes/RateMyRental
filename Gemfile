@@ -49,6 +49,7 @@ end
 group :test do
   gem 'rake'
   gem 'faker'
+  gem 'database_cleaner'
 end
 
 # Code coverage implementation

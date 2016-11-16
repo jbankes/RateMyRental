@@ -88,7 +88,6 @@ RSpec.describe RentalsController, :type => :controller do
       expect(u.addr_street_num).to eql valid[:addr_street_num]
     end
     it 'should fail updating rental' do
-      u = FactoryGirl.create :rental
       put :update, :id => u.id, :rental => invalid
       u.reload
       expect(response).to render_template(:edit)
