@@ -1,15 +1,53 @@
 <!-- Top Bar -->
-<div id="rental_top_bar">
-  <div id="rental_top_bar"class="title-bar"  style="width:100%" data-top-anchor="1" data-btm-anchor="content:bottom">
-    <div id="logo" class="title-bar-left" data-turbolinks="false">
-       <%= link_to (image_tag (root_url + "images/rmr_logo_small.png"), alt: "RMR_logo"), rentals_path, :style=>'background:#660033' %>
-    </div>
+<!-- LOGIN Modal -->
+<div class="reveal" id="login_modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+    <p class="lead" id="render_add_rental">
+    	<%= render 'devise/sessions/new' %>
+    </p>
+    <button class="close-button" data-close aria-label="Close modal" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<!-- SIGNUP Modal -->
+<div class="reveal" id="signup_modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+    <p class="lead" id="render_add_rental">
+    	<%= render 'devise/registrations/new' %>
+    </p>
+    <button class="close-button" data-close aria-label="Close modal" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<!-- ADD Modal -->
+<div class="reveal" id="add_modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+	<h3>Add a Rental</h3>
+  	<p class="lead" id="render_add_rental">
+	   <%= render 'rentals/form' %>
+	</p>
+	<button class="close-button" data-close aria-label="Close modal" type="button">
+    	<span aria-hidden="true">&times;</span>
+  	</button>
+</div>
 
+
+<!-- TOP BAR -->
+<div id="top_bar" data-sticky-container>
+  <div id="top_bar"class="title-bar" data-sticky data-options="marginBottom:0;" style="width:100%" data-top-anchor="1" data-btm-anchor="content:bottom">
+    <div id="logo" class="title-bar-left" data-turbolinks="false">
+	    <%= link_to (image_tag (root_url + "/images/rmr_logo_small.png"), alt: "RMR_logo"), rentals_path, :style=>'background:#660033' %>
+    </div>
     <div id="right_header" class="title-bar-right">
-       <h4><%=@rental.addr_full_adress %></h4>
+	<% if !user_signed_in? %>
+		<a id="login_button" data-open="signup_modal">SIGNUP</a>
+		<a id="add_button" data-open="login_modal">LOGIN</a> &nbsp;
+	<% else %>
+		<%= link_to "LOGOUT", destroy_user_session_path,:style=>'color: white; background:#660033;', method: :delete, class: 'login_button' %>
+    		<a id="add_button" data-open="add_modal">ADD</a>
+	<% end %>
     </div>
   </div>
 </div>
+
+<div class="rental_wrap">
 <br>
 <% @total_price = 0 %>
 <% @total_stars = 0 %>
@@ -26,7 +64,8 @@
 <!-- RENTAL DETAILS -->
 <div class="row">
 	<div class="small-6 columns">
-		<b><h4 align="center"><%= @rental.dets_beds %> Bed | <%= @rental.dets_baths %> Bath | 
+		<b><h4 align="center"><%=@rental.addr_full_adress %><br>
+      <%= @rental.dets_beds %> Bed | <%= @rental.dets_baths %> Bath |
 				<% case @avg_price %>
 				<% when 1 %>
 					$
@@ -71,7 +110,7 @@
                     <td> <b>Reserved Parking</b> </td>
                 <% else %>
                     <td><strike> Reserved Parking</strike> </td>
-                <% end %> 
+                <% end %>
                 <% if( @rental.util_gas ) %>
                     <td> <b>Gas</b> </td>
                 <% else %>
@@ -84,7 +123,7 @@
                     <td> <b>Pets Allowed</b> </td>
                 <% else %>
                     <td><strike> Pets Allowed</strike> </td>
-                <% end %> 
+                <% end %>
                 <% if( @rental.util_electricity ) %>
                     <td> <b>Electricity</b> </td>
                 <% else %>
@@ -101,7 +140,7 @@
                     <td> <b>Washer & Dryer</b> </td>
                 <% else %>
                     <td><strike> Washer & Dryer</strike> </td>
-                <% end %> 
+                <% end %>
                 <% if( @rental.util_trash ) %>
                     <td> <b>Trash</b> </td>
                 <% else %>
@@ -114,7 +153,7 @@
                     <td> <b>Pool</b> </td>
                 <% else %>
                     <td><strike> Pool</strike> </td>
-                <% end %> 
+                <% end %>
                 <% if( @rental.util_water ) %>
                     <td> <b>Water</b> </td>
                 <% else %>
@@ -132,7 +171,7 @@
                     <td> <b>Spa</b> </td>
                 <% else %>
                     <td><strike> Spa</strike> </td>
-                <% end %> 
+                <% end %>
                 <% if( @rental.util_tv ) %>
                     <td> <b>Cable</b> </td>
                 <% else %>
@@ -145,7 +184,7 @@
                     <td> <b>Gym</b> </td>
                 <% else %>
                     <td><strike> Gym</strike> </td>
-                <% end %> 
+                <% end %>
                 <% if( @rental.util_wifi ) %>
                     <td> <b>Wifi</b> </td>
                 <% else %>
@@ -158,7 +197,7 @@
                     <td> <b>Dishwasher</b> </td>
                 <% else %>
                     <td><strike> Dishwasher</strike> </td>
-                <% end %> 
+                <% end %>
                 <td> </td>
             </tr>
             <tr>
@@ -167,7 +206,7 @@
                     <td> <b>Central Air</b> </td>
                 <% else %>
                     <td><strike> Central Air</strike> </td>
-                <% end %> 
+                <% end %>
                 <td> </td>
             </tr>
             <tr>
@@ -176,7 +215,7 @@
                     <td> <b>Heater</b> </td>
                 <% else %>
                     <td><strike> Heater</strike> </td>
-                <% end %> 
+                <% end %>
                 <td> </td>
             </tr>
 		</table>
@@ -215,10 +254,10 @@
             function calcRoute() {
           var origin = new google.maps.LatLng(<%= @rental.latitude %>, <%= @rental.longitude %>);
                   var destination = new google.maps.LatLng(39.727900, -121.844173);
-                                                                          
+
           var request = {
-              origin:      origin, 
-              destination: destination, 
+              origin:      origin,
+              destination: destination,
               travelMode:  google.maps.TravelMode.WALKING
          };
          directionsService.route(request, function(response, status) {
@@ -315,10 +354,10 @@
          	function calcRoute() {
 		  var origin = new google.maps.LatLng(<%= @rental.latitude %>, <%= @rental.longitude %>);
        	          var destination = new google.maps.LatLng(39.727900, -121.844173);
-													  					  
+
 		  var request = {
-		      origin:      origin, 
-		      destination: destination, 
+		      origin:      origin,
+		      destination: destination,
 		      travelMode:  google.maps.TravelMode.WALKING
 		 };
 		 directionsService.route(request, function(response, status) {
@@ -337,4 +376,4 @@
 
 <!-- JAVASCRIPTS -->
 <script src="js/foundation.accordion.js"></script>
-
+</div>

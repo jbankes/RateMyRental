@@ -13,11 +13,11 @@ RSpec.describe ImagesController, :type => :controller do
 
   #describe 'GET #new ' do
   #  it 'returns new image for rental' do
-      context 'with no parameters' do
-        it 'has no images' do
-          repsonse = Rental.new
-        end
-      end
+    #  context 'with no parameters' do
+    #    it 'has no images' do
+    #      repsonse = Rental.new
+    #    end
+    #  end
       #expect(@image).to be_an_instance_of Image
       #expect(repsonse).to be_an_instance_of Image
   #    expect(response).to be_success

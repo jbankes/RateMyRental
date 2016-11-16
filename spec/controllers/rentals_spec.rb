@@ -58,12 +58,12 @@ RSpec.describe RentalsController, :type => :controller do
         expect(response).to render_template(:new)
 	end
     end
-	
+
   end
 
   describe "PUT #update" do
     #Rental.delete_all
-    let(:valid) do 
+    let(:valid) do
       { :addr_street_num => 1000}
     end
     let(:invalid) do {:addr_full_adress => nil} end
@@ -73,12 +73,15 @@ RSpec.describe RentalsController, :type => :controller do
       u.reload
       expect(response).to redirect_to(u)
     end
-    
+
     it 'should update rental' do
       u = FactoryGirl.create :rental
       put :update, id: u.id, rental: valid
       u.reload
       expect(u.addr_street_num).to eql valid[:addr_street_num]
+
+      
+
     end
     it 'should fail updating rental' do
       u = FactoryGirl.create :rental
@@ -92,7 +95,7 @@ RSpec.describe RentalsController, :type => :controller do
     it "deletes the rental" do
       u = FactoryGirl.create(:rental)
       expect{
-        delete :destroy, :id => u.id     
+        delete :destroy, :id => u.id
       }.to change{Rental.count}.by(-1)
     end
     it "redirects to rentals#index" do

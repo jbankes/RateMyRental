@@ -1,6 +1,9 @@
 // Place all the styles related to the Rentals controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.rental_wrap {
+	margin-top: 50px;
+}
 #rental_listings_div{
 	overflow:auto;
 	background:#f2f2f2;
@@ -120,7 +123,7 @@
 }
 .owl-carousel .owl-item {
 background: #D8D8D8;
-height: 428px; 
+height: 428px;
 position: relative;
 }
 
@@ -138,9 +141,3 @@ margin: 0 auto;
   top:50%;
   transform: translateY(-50%);
 }
-
-
-
-
-
-

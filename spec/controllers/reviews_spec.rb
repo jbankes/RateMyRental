@@ -27,16 +27,16 @@ RSpec.describe ReviewsController, :type => :controller do
   #   end
   # end
 
-  describe 'GET #new rental review'do
-  it 'creates new review'do
-  factory = FactoryGirl.create(:rental)
-  review = factory.reviews.new
-  expect(factory).to be_valid
-  expect(review).to be_valid
+  #describe 'GET #new rental review'do
+  #it 'creates new review'do
+  #factory = FactoryGirl.create(:rental)
+  #review = factory.reviews.new
+  #expect(factory).to be_valid
+  #expect(review).to be_valid
 
   #  expect(factory).to be_a_new(rental.reviews.new)
-  end
-end
+  #end
+#end
 
 describe 'GET #create review'do
   it 'sets the new review to be live'do
@@ -63,11 +63,11 @@ end
         expect(Review.count).to eq(1)
       end
     end
-	
+
   end
 
   describe "PUT #update" do
-    let(:valid) do 
+    let(:valid) do
       { :comment => "good"}
     end
     it 'update should redirect to review page' do
@@ -76,7 +76,7 @@ end
       u.reload
       expect(response).to redirect_to(u)
     end
-    
+
     it 'should update review' do
       u = FactoryGirl.create :review
       put :update, id: u.id, review: valid
@@ -89,7 +89,7 @@ end
     it "deletes the review" do
       u = FactoryGirl.create(:review)
       expect{
-        delete :destroy, :id => u.id     
+        delete :destroy, :id => u.id
       }.to change{Review.count}.by(-1)
     end
     it "redirects to review#index" do
@@ -101,7 +101,7 @@ end
 
   describe 'GET #new' do
     it 'creates a new review object' do
-      u = FactoryGirl.create :rental
+      u = FactoryGirl.build :rental
       get :new, rental_id: u.id
       expect(u.reviews.new).to be_a_new(Review)
     end
