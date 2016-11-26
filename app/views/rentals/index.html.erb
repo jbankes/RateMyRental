@@ -1,6 +1,6 @@
 <!-- LOGIN Modal -->
 <div class="reveal" id="login_modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-    <p class="lead" id="render_add_rental"> 
+    <p class="lead" id="render_add_rental">
     	<%= render 'devise/sessions/new' %>
     </p>
     <button class="close-button" data-close aria-label="Close modal" type="button">
@@ -9,7 +9,7 @@
 </div>
 <!-- SIGNUP Modal -->
 <div class="reveal" id="signup_modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-    <p class="lead" id="render_add_rental"> 
+    <p class="lead" id="render_add_rental">
     	<%= render 'devise/registrations/new' %>
     </p>
     <button class="close-button" data-close aria-label="Close modal" type="button">
@@ -34,7 +34,7 @@
     </div>
     <div id="right_header" class="title-bar-right">
 	<% if !user_signed_in? %>
-		<a id="login_button" data-open="signup_modal">SIGNUP</a>  
+		<a id="login_button" data-open="signup_modal">SIGNUP</a>
 		<a id="add_button" data-open="login_modal">LOGIN</a> &nbsp;
 	<% else %>
 		<%= link_to "LOGOUT", destroy_user_session_path,:style=>'color: white; background:#660033;', method: :delete, class: 'login_button' %>
@@ -71,7 +71,7 @@
 			<div id="rental_default_image_div" data-turbolinks="false">
         		<% rental.images.each do |image| %>
           			<% if image.default == true %>
-					<%= link_to (image_tag (root_url + "/images/" + image.filename), alt: image.filename), rental %> 	
+					<%= link_to (image_tag (root_url + "/images/" + image.filename), alt: image.filename), rental %>
           			<%end%>
         		<%end%>
 			</div>
@@ -94,31 +94,31 @@
 						<li>Parking on site</li>
 					<%end%>
                     <%if(rental.amen_pets)%>
-                        <li>Pets allowed</li>     
-                    <%end%> 
+                        <li>Pets allowed</li>
+                    <%end%>
                     <%if(rental.amen_washer_dryer)%>
-                        <li>Washer & Dryer</li>     
-                    <%end%> 
+                        <li>Washer & Dryer</li>
+                    <%end%>
                     <%if(rental.amen_pool)%>
-                        <li>Pool</li>     
-                    <%end%> 	
+                        <li>Pool</li>
+                    <%end%>
                     <%if(rental.amen_spa)%>
-                        <li>Spa</li>     
-                    <%end%> 
+                        <li>Spa</li>
+                    <%end%>
                     <%if(rental.amen_gym)%>
-                        <li>Gym</li>     
-                    <%end%> 
+                        <li>Gym</li>
+                    <%end%>
                     <%if(rental.amen_dishwasher)%>
-                        <li>Dishwasher</li>     
-                    <%end%> 	
+                        <li>Dishwasher</li>
+                    <%end%>
                     <%if(rental.amen_central_air)%>
-                        <li>Central Air</li>     
-                    <%end%> 
+                        <li>Central Air</li>
+                    <%end%>
                     <%if(rental.amen_heater)%>
-                        <li>Heater</li>     
-                    <%end%> 
+                        <li>Heater</li>
+                    <%end%>
 				</ul>
-			</div>	
+			</div>
 		</div>
 		</div>
 		<br>
@@ -132,7 +132,7 @@
     	<i>At Rate My Rental we strive to introduce and educate renters and make their home dreams a reality. </i>
 	</div>
     <div class="title-bar-right">
-		 Contact Us: PHONE | EMAIL 
+		 Contact Us: PHONE | EMAIL
 	</div>
   </div>
 </div>
