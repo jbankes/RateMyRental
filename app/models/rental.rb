@@ -3,7 +3,7 @@ class Rental < ActiveRecord::Base
 	has_many :images, dependent: :destroy
 
 	geocoded_by :full_address
-	after_validation :geocode
+	#after_validation :geocode
 
 	filterrific(
   	#default_filter_params: { sorted_by: 'created_at_desc' },
@@ -92,11 +92,11 @@ class Rental < ActiveRecord::Base
 	end
 
 	def self.options_for_select_beds
-	  order('LOWER(dets_beds)').map { |e| [e.dets_beds, e.id] }
+	  order('LOWER(dets_beds)').map { |e| [e.dets_beds] }.uniq
 	end
 
 	def self.options_for_select_baths
-	  order('LOWER(dets_baths)').map { |e| [e.dets_baths, e.id] }
+	  order('LOWER(dets_baths)').map { |e| [e.dets_baths] }.uniq
 	end
 
 		
